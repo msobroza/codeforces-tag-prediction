@@ -1,0 +1,29 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    F["Committed method folder<br/>assets/methods/f2llm_late_fusion/model<br/>its files, and pretrained.json pinning the weights"]
+    F -- "serving package" --> B
+    subgraph B["Build context: build/serving/f2llm_late_fusion/ (gitignored)"]
+        direction TB
+        M["model/: an MLflow model from code<br/>MLmodel (signature, metadata), entry.py,<br/>code/codeforces_tags, artifacts/model"]
+        W["weights/: the files the folder pins,<br/>copied and hashed again"]
+        L["requirements.lock.txt<br/>uv.lock's pins, with hashes"]
+        D["Dockerfile<br/>a copy of deploy/Dockerfile"]
+    end
+    B -- "serving.local: mlflow models serve" --> S["Local model server<br/>127.0.0.1, one worker, CPU"]
+    B -- "serving build: docker build" --> I["Image codeforces-tags/f2llm_late_fusion<br/>tags: the git short sha, latest"]
+    I --> C["Docker Compose<br/>profile cpu or gpu"]
+    I --> K["Kubernetes<br/>overlay cpu or gpu"]
+    I --> G["SageMaker endpoint<br/>docker run IMAGE serve"]
+    C --> X["Container, port 8080<br/>nginx, uvicorn (one worker),<br/>MLflow's scoring server, entry.py"]
+    K --> X
+    G --> X
+    U["Streamlit app, serving smoke, the serving notebook<br/>serving/client.py"] -- "GET /ping, POST /invocations" --> X
+    U -. "or" .-> S
+    U -. "links of the served method" .-> UI["MLflow UI: serving mlflow-ui<br/>tag-methods experiment, the method's run,<br/>prompt versions"]
+    classDef key fill:#dbe9f6,stroke:#1f77b4
+    classDef server fill:#d8f0d8,stroke:#3c8c3c
+    classDef client fill:#e6e6f5,stroke:#5c5ca8
+    class F,M,W,L,D key
+    class S,X server
+    class U,UI client
+    style B fill:#f4f8fc,stroke:#1f77b4

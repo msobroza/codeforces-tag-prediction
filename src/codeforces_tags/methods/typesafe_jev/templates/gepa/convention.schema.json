@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "convention": {
+      "type": "string",
+      "description": "A few short sentences on what Codeforces tags are, true for every tag."
+    }
+  },
+  "required": ["convention"],
+  "additionalProperties": false
+}

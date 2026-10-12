@@ -1,0 +1,6 @@
+# Coverage of the finetuning CI job, which runs the ModernBERT methods' tests with their dependency
+# group (CLAUDE.md, Tests and CI for a method's dependency group). The default job omits both
+# folders; this job measures them alone, with the default job's floors.
+[tool.coverage.run]
+source_dirs = ["src/codeforces_tags/methods/modernbert", "tests/methods/modernbert"]
+branch = true

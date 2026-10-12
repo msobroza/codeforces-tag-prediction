@@ -1,0 +1,50 @@
+{
+  "files": [
+    {
+      "path": "1_Pooling/config.json",
+      "sha256": "7fd8d0afdbd487713d0991b520b489590739393aa928383f4a853f460b9c2df1"
+    },
+    {
+      "path": "added_tokens.json",
+      "sha256": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680"
+    },
+    {
+      "path": "config.json",
+      "sha256": "a4e75368c654d7f560eedbc19bfc4c4e1951fda51bd99e8c9262c271bc88f15e"
+    },
+    {
+      "path": "config_sentence_transformers.json",
+      "sha256": "ed6d9b6cef4b09c247757030f0281741ab2671c988e52fcfa311300452bba8b1"
+    },
+    {
+      "path": "merges.txt",
+      "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+    },
+    {
+      "path": "model.safetensors",
+      "sha256": "d950e8a1e04cbe3df4acb46a15263c5eb79e3131b8084fb4c3075efc32b3e8fc"
+    },
+    {
+      "path": "modules.json",
+      "sha256": "21ddb3037a55ebf4549eb5c1dc44c3f28f10b56ec7f1335c92fd90e5b30d88ac"
+    },
+    {
+      "path": "special_tokens_map.json",
+      "sha256": "76862e765266b85aa9459767e33cbaf13970f327a0e88d1c65846c2ddd3a1ecd"
+    },
+    {
+      "path": "tokenizer.json",
+      "sha256": "38360d5a512a43641b36d6fba2df87b8a3f5464c6b5c76f03e82d6d795175566"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "sha256": "5509339cb257813101feee0d5d166281482be6a87c464546e1f6d6c027d84d76"
+    },
+    {
+      "path": "vocab.json",
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    }
+  ],
+  "repo_id": "codefuse-ai/F2LLM-0.6B",
+  "revision": "eb2778d335980b42b986c75d7fe3a78be19ef3a6"
+}

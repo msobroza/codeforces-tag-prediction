@@ -1,0 +1,72 @@
+codeforces-tag-prediction
+Copyright (c) 2026 Max Sobroza
+
+This repository holds content under three licences. The section "Data and
+licences" of README.md says the same.
+
+
+1. MIT License (LICENSE)
+
+Everything that items 2 and 3 do not name: the code, the frozen results, and
+the documentation and figures written for this project.
+
+
+2. Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+   https://creativecommons.org/licenses/by-nc/4.0/
+
+Excerpts of the dataset: problem statements and accepted solutions published
+on codeforces.com, as xCodeEval collected them, in places truncated or
+normalised. They are not covered by the MIT License. They appear in:
+
+  - the outputs of some notebooks (notebooks/*.ipynb);
+  - notebooks/figures/mlflow/03_record_drawer.png;
+  - notebooks/figures/mlflow/07_trace_drawer.png;
+  - notebooks/figures/streamlit/test_problem.png;
+  - docs/slides/images/trace_drawer.png;
+  - notebooks/figures/mlflow/02_dataset_records.png and
+    notebooks/figures/mlflow/11_traces_cost.png, as the first few words of
+    statements;
+  - the slide deck: docs/slides/slides.pdf and docs/slides/slides.html.
+
+Source and attribution: the problems come from codeforces.com, through
+xCodeEval: Mohammad Abdullah Matin Khan, M Saiful Bari, Xuan Long Do, Weishi
+Wang, Md Rizwan Parvez and Shafiq Joty. XCodeEval: An Execution-based Large
+Scale Multilingual Multitask Benchmark for Code Understanding, Generation,
+Translation and Retrieval. ACL 2024. https://doi.org/10.18653/v1/2024.acl-long.367
+
+The xCodeEval paper and its authors' GitHub README give CC BY-NC 4.0; its
+Hugging Face card has given CC BY 4.0 since September 2025. This repository
+follows the stricter of the two. The dataset itself is not shipped here.
+
+
+3. Apache License 2.0 (notebooks/figures/mlflow_docs/LICENSE-mlflow.txt)
+
+The three figures of MLflow's documentation in notebooks/figures/mlflow_docs/,
+copyright Databricks, Inc., reproduced unmodified (the README of that folder
+names each source), and their copies embedded in
+notebooks/12_model_serving.ipynb.
+
+
+Pretrained models (not shipped here)
+
+The fetch commands download these weights, pinned by revision and sha256.
+Their licences, as their model cards state them:
+
+  - answerdotai/ModernBERT-base (modernbert_base_full): Apache License 2.0
+  - answerdotai/ModernBERT-large (modernbert_lora): Apache License 2.0
+  - codefuse-ai/F2LLM-0.6B (the f2llm_* methods): Apache License 2.0
+
+A Docker image that "python -m codeforces_tags.serving build" makes for an
+F2LLM method holds the F2LLM-0.6B weights, under that licence.
+
+
+Recorded model outputs
+
+The answers files assets/methods/*/answers_*.jsonl are the responses of
+OpenAI's API (the code2tag-* and descode2tag-* methods) and of TypeSafe's API
+(the jev-* methods), recorded for this project: tag lists or per-tag
+probabilities, request ids, hashes and token counts, never API keys or problem
+text. The near-duplicate verdicts in assets/near_duplicates/ were written by
+two Claude judges, and the words that the GEPA search rewrote, in
+assets/methods/jev-statement-code-gepa/tuning/, by OpenAI's gpt-6-luna, both
+for this project.

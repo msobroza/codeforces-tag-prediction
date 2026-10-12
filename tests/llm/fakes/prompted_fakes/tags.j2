@@ -1,0 +1,8 @@
+{#- The prompt of the fake zero-shot methods: one problem's fields, then the tags to choose from. -#}
+Tag the problem that this {{ language }} program solves.
+Description: {{ prob_desc_description }}
+Notes: {{ prob_desc_notes }}
+
+{{ source_code }}
+
+Choose from: {{ all_tags | join(", ") }}

@@ -1,0 +1,29 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    subgraph pipeline["The pipeline: raw problems in, one score per tag out"]
+        direction TB
+        R["raw_to_problems<br/>cleans the raw fields,<br/>builds the statement"]
+        R --> ST["Statement block<br/>TF-IDF of the statement,<br/>followed by the notes if included"]
+        R --> CO["Code block<br/>TF-IDF of the solution's<br/>tokens, weight code_weight"]
+        R --> CU["Cue block: 5 sample I/O cues<br/>weight cue_weight<br/>not kept by the frozen<br/>configuration"]
+        ST --> L["One linear model per tag<br/>logistic regression or linear SVM<br/>score: its decision function"]
+        CO --> L
+        CU -.-> L
+    end
+    subgraph fit["CrossFittedTagThresholds.fit, on the dev set"]
+        direction TB
+        O["1. Out-of-fold scores<br/>fold k scored by a clone of the<br/>pipeline fitted on the other 4 folds"]
+        O --> X["2. Cross-fitted thresholds<br/>fold k's thresholds chosen<br/>on the other 4 folds' scores"]
+        X --> P["Out-of-fold predictions<br/>their macro F1 is the value<br/>of one Optuna trial"]
+        O --> F["3. Final thresholds<br/>chosen on all out-of-fold scores"]
+        F -- "cross_fit stops here" --> RF["4. Refit, only in fit_tag_model<br/>for the chosen configuration:<br/>a clone fitted on the whole dev set"]
+    end
+    pipeline -- "cloned for each fit" --> fit
+    classDef dev fill:#d8f0d8,stroke:#3c8c3c
+    classDef key fill:#dbe9f6,stroke:#1f77b4
+    classDef dropped fill:#eeeeee,stroke:#888888,stroke-dasharray: 5 5,color:#666666
+    class O,X,P,F,RF dev
+    class R,ST,CO,L key
+    class CU dropped
+    style pipeline fill:#f4f8fc,stroke:#1f77b4
+    style fit fill:#f4faf4,stroke:#3c8c3c

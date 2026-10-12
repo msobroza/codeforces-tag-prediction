@@ -1,0 +1,51 @@
+<section id="duplicates" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Data quality</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Duplicate problems</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">82 version pairs; a random split leaks about 26</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="width:680px;background:#E6ECF2;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:26px;line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#2F6DB5">Easy · B1 · difficulty 800</p>
+<h3 style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Wonderful Coloring 1</h3>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Paint a string's letters in two colours; print how many are red.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+<p style="margin:0;font-size:26px;line-height:1.3;background:#14213D;color:#F5F7FA;padding:4px 16px;border-radius:999px">strings</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">greedy</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px">
+<p style="margin:0;font-size:26px;line-height:1.3;color:#6A7180">TF-IDF cosine</p>
+<p style="margin:0;font-size:72px;font-weight:600;line-height:1;color:#0F766E">0.497</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">0.8 misses it</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">LLMs: <b style="color:#14213D">versions</b></p>
+<p style="margin:0;font-size:30px;line-height:1.3;font-weight:600;color:#14213D">→ one group</p>
+</div>
+<div style="width:680px;background:#E6ECF2;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:26px;line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#0F766E">Hard · B2 · difficulty 1400</p>
+<h3 style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Wonderful Coloring 2</h3>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Same rules on integers with k colours; print the colouring.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">greedy</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">binary search</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">constructive algorithms</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">data structures</p>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:32px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="padding:4px 0;width:46%;text-align:left;font-weight:600;color:#14213D">Detector</th><th style="padding:4px 0;text-align:right;width:27%;font-weight:600;color:#14213D">Missed of 82</th><th style="padding:4px 0;text-align:right;width:27%;font-weight:600;color:#14213D">Largest group</th></tr>
+<tr><td style="padding:4px 0">TF-IDF cosine ≥ 0.8</td><td style="padding:4px 0;text-align:right">11</td><td style="padding:4px 0;text-align:right">2</td></tr>
+<tr><td style="padding:4px 0">TF-IDF cosine ≥ 0.4</td><td style="padding:4px 0;text-align:right">0</td><td style="padding:4px 0;text-align:right">11, chained</td></tr>
+<tr><td style="padding:4px 0;font-weight:600;color:#0F766E">0.4 + two LLM verdicts</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">0</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">2</td></tr>
+</table>
+</div>
+<div style="width:520px;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Labels disagree</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">strings only on the easy version</p>
+</div>
+</div>
+<aside>A real pair from the data, described in my own words. Wonderful Coloring 1 and 2 are the easy and hard versions of one problem, released together in 2021: the easy one paints letters of a string with two colours and asks for a count; the hard one generalises to a sequence of integers with k colours and asks for the colouring itself. Their TF-IDF cosine is only 0.497, so a 0.8 threshold would miss them, while a 0.4 threshold catches them but chains unrelated problems into groups of up to 11. That is why candidates at 0.4 go to two independent LLM verdicts, here both "versions", and the pair becomes one group that lands whole in one dev fold. Note the tags: the easy version is tagged strings, the hard one has no focus tag at all, a reminder that labels are not fully consistent. Across the data, 82 pairs are such versions; a random split would put about 26 of them across train and test.</aside>
+</section>

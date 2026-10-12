@@ -1,0 +1,104 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: ${{ matrix.check }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - check: ruff
+            run: |
+              uv run ruff check .
+              uv run ruff format --check .
+          - check: pylint
+            run: uv run pylint src tests
+          - check: complexity
+            # Prints every function's complexity, then fails above the limit set in
+            # pyproject.toml ([tool.ruff.lint.mccabe] max-complexity), and on any function of
+            # the package of radon grade C or worse: radon also counts boolean operators and
+            # comprehensions, which ruff does not.
+            run: |
+              uv run radon cc --show-complexity --average src
+              uv run ruff check --select C901 .
+              test -z "$(uv run radon cc --min C src)"
+          - check: tests
+            # pytest measures line + branch coverage of the package and of the tests, and fails
+            # below the floor set in pyproject.toml ([tool.coverage.report] fail_under); the table
+            # goes to the run summary. Then the package alone must stay above that floor, and
+            # every line of the tests must run: a test line that never runs is dead code.
+            run: |
+              uv run pytest
+              uv run coverage report --format=markdown >> "$GITHUB_STEP_SUMMARY"
+              uv run coverage report --include="src/*" --skip-covered
+              uv run coverage report --include="tests/*" --fail-under=100 --skip-covered
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.2.0  # this repo publishes no moving major tag
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked
+      - name: Run ${{ matrix.check }}
+        run: ${{ matrix.run }}
+
+  finetuning:
+    # The ModernBERT methods' tests need the finetuning group (torch, transformers, peft), which the
+    # other jobs never install. They run offline on the CPU, with tiny random models, and hold the
+    # package and its tests to the same floors as the default job (CLAUDE.md, Tests and CI for a
+    # method's dependency group).
+    name: finetuning
+    runs-on: ubuntu-latest
+    env:
+      HF_HUB_OFFLINE: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.2.0  # this repo publishes no moving major tag
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked --group finetuning
+      - name: Run the ModernBERT methods' tests
+        run: |
+          uv run --group finetuning pytest tests/methods/test_registry.py tests/methods/modernbert --cov-config=tests/methods/modernbert/coverage.toml
+          uv run --group finetuning coverage report --include="src/codeforces_tags/methods/modernbert/*" --fail-under=95 --skip-covered
+          uv run --group finetuning coverage report --include="tests/methods/modernbert/*" --fail-under=100 --skip-covered
+
+  f2llm:
+    # The F2LLM embedding methods need the f2llm group (torch), which the check jobs never install.
+    # This job syncs the default groups too (not --only-group): tests/conftest.py imports mlflow. It
+    # runs offline: the tests build tiny random models and never download weights.
+    name: f2llm
+    runs-on: ubuntu-latest
+    env:
+      HF_HUB_OFFLINE: "1"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.2.0  # this repo publishes no moving major tag
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked --group f2llm
+      - name: Run the f2llm tests
+        # The folder is passed explicitly because addopts ignores it. Its own coverage config
+        # measures the package and its tests alone; the package must keep 95% line + branch
+        # coverage and every line of its tests must run, as in the default job. The fresh
+        # import of every command runs here too: the default job, without torch, skips the
+        # f2llm command.
+        run: |
+          uv run pytest tests/methods/test_registry.py tests/methods/f2llm "tests/tracking/test_environment.py::test_no_command_lets_mlflow_start_telemetry_or_hint" --cov-config=tests/methods/f2llm/coverage.toml
+          uv run coverage report --include="src/codeforces_tags/methods/f2llm/*" --fail-under=95
+          uv run coverage report --include="tests/methods/f2llm/*" --fail-under=100

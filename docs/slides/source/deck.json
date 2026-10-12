@@ -1,0 +1,72 @@
+{
+  "v": 4,
+  "attachments": {},
+  "createdOnFiles": {
+    "at": "2026-10-09T10:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "faces": {
+    "ibm-plex-sans": {
+      "family": "IBM Plex Sans",
+      "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    },
+    "jetbrains-mono": {
+      "family": "JetBrains Mono",
+      "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+    }
+  },
+  "lists": "css",
+  "order": [
+    "cover",
+    "problem",
+    "div-data",
+    "data-tags",
+    "data-counts",
+    "data-pairs",
+    "div-protocol",
+    "duplicates",
+    "split",
+    "pipeline",
+    "repro",
+    "strategies",
+    "div-results",
+    "paper",
+    "results",
+    "table",
+    "div-methods",
+    "methods",
+    "pertag",
+    "jev",
+    "code",
+    "contract",
+    "traces",
+    "cli",
+    "serving",
+    "serving-run",
+    "conclusion"
+  ],
+  "sections": {
+    "s1": {
+      "description": "The task, and what the data looks like",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "Near-duplicates, the split, the pipeline and the protocol that chooses methods",
+      "start": "div-protocol"
+    },
+    "s3": {
+      "description": "The paper's baselines, then test macro F1, latency and cost of every frozen method",
+      "start": "div-results"
+    },
+    "s4": {
+      "description": "How each method works, the code, the CLI and serving",
+      "start": "div-methods"
+    },
+    "s5": {
+      "description": "What we learned",
+      "start": "conclusion"
+    }
+  },
+  "title": "Codeforces Tag Prediction"
+}

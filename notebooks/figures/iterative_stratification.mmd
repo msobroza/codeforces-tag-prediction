@@ -1,0 +1,15 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    IN["Items: near-duplicate groups<br/>Labels: their focus tags, frequent tag pairs<br/>and release year"] --> INIT["Each fold starts with what it needs:<br/>need[fold] = items / 5<br/>need[fold][label] = items with the label / 5"]
+    INIT --> LEFT{"Any item<br/>not placed yet?"}
+    LEFT -- "no" --> DONE["5 folds"]
+    LEFT -- "yes" --> RARE["1. Pick the rarest label l:<br/>the fewest unplaced items, at least one<br/>(ties at random)"]
+    RARE --> NEXT{"An unplaced item<br/>with label l?"}
+    NEXT -- "no: next label" --> LEFT
+    NEXT -- "yes" --> FOLD["2. Put it in the fold that needs l most:<br/>the largest need[fold][l]<br/>(ties: the largest need[fold], then at random)"]
+    FOLD --> UPDATE["3. That fold needs less:<br/>need[fold] − 1, and need[fold][m] − 1<br/>for every label m of the item"]
+    UPDATE -- "next item" --> NEXT
+    classDef key fill:#dbe9f6,stroke:#1f77b4
+    classDef done fill:#d8f0d8,stroke:#3c8c3c
+    class RARE,FOLD key
+    class DONE done

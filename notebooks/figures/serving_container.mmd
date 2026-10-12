@@ -1,0 +1,24 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart LR
+    subgraph image["The image's layers, the least often changed first (deploy/Dockerfile)"]
+        direction TB
+        L1["python:3.12.12-slim"] --> L2["nginx, from Debian"]
+        L2 --> L3["pip install --no-deps --require-hashes<br/>-r requirements.lock.txt: uv.lock's pins"]
+        L3 --> L4["COPY weights /opt/ml/weights"]
+        L4 --> L5["COPY model /opt/ml/model"]
+        L5 --> L6["ENV: one worker, pickle loading off, telemetry off,<br/>offline, the weight folders, CODEFORCES_DEVICE=auto"]
+    end
+    subgraph run["The container: MLflow's entrypoint, _serve('local')"]
+        direction TB
+        P["nginx on port 8080<br/>MLflow's nginx.conf: /ping and /invocations"] --> V["uvicorn on 127.0.0.1:8000<br/>MLFLOW_MODELS_WORKERS=1"]
+        V --> S["MLflow's scoring server, FastAPI<br/>loads /opt/ml/model from code"]
+        S --> E["entry.py: ServedMethodModel<br/>codeforces_tags from model/code"]
+        E --> T["The tagging method<br/>weights: CODEFORCES_PRETRAINED_DIR<br/>device: CODEFORCES_DEVICE, cpu or cuda"]
+    end
+    image -- "docker run, compose,<br/>Kubernetes, SageMaker" --> run
+    classDef layer fill:#dbe9f6,stroke:#1f77b4
+    classDef process fill:#d8f0d8,stroke:#3c8c3c
+    class L1,L2,L3,L4,L5,L6 layer
+    class P,V,S,E,T process
+    style image fill:#f4f8fc,stroke:#1f77b4
+    style run fill:#f4faf4,stroke:#3c8c3c

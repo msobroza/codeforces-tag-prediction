@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "true": {
+      "type": "object",
+      "description": "What counts as a yes: the tag applies.",
+      "properties": {
+        "definition": {
+          "type": "string",
+          "description": "One or two sentences: when Codeforces puts the tag on a problem."
+        },
+        "includes": {
+          "type": "array",
+          "description": "Short phrases, one idea each: what the tag covers.",
+          "items": {"type": "string"},
+          "minItems": 1
+        }
+      },
+      "required": ["definition", "includes"],
+      "additionalProperties": false
+    },
+    "false": {
+      "type": "object",
+      "description": "What counts as a no: the tag does not apply.",
+      "properties": {
+        "definition": {
+          "type": "string",
+          "description": "One or two sentences: when Codeforces leaves the tag off a problem."
+        },
+        "excludes": {
+          "type": "array",
+          "description": "Short phrases, one idea each: what looks like the tag but is not it.",
+          "items": {"type": "string"},
+          "minItems": 1
+        }
+      },
+      "required": ["definition", "excludes"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["true", "false"],
+  "additionalProperties": false
+}

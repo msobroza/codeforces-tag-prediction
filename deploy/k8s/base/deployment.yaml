@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: model-server
+  labels:
+    app.kubernetes.io/name: model-server
+spec:
+  # One replica, one MLflow worker: each worker would hold its own copy of the method.
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: model-server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: model-server
+    spec:
+      containers:
+        - name: model-server
+          # A placeholder: the per-method overlay replaces it with codeforces-tags/<method>:<sha>.
+          image: codeforces-tags/model-server
+          # A tag a node already holds is never pulled again: overlays name a git sha, not latest.
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          # API keys, for API methods only (deploy/.env.serving.example):
+          #   kubectl create secret generic codeforces-tags-env --from-env-file=deploy/.env.serving
+          envFrom:
+            - secretRef:
+                name: codeforces-tags-env
+                optional: true
+          resources:
+            requests:
+              cpu: "1"
+              memory: 4Gi
+            limits:
+              memory: 8Gi
+          # /ping answers 200 once the method has loaded (nginx answers 502 until then): up to
+          # 300 s for a method that loads 1.2 GB of weights on a busy node.
+          startupProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 8080
+            periodSeconds: 30
+            timeoutSeconds: 5

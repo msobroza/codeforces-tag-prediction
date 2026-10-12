@@ -1,0 +1,19 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    subgraph deploy["deploy/sagemaker/deploy.sh: only on the user's go"]
+        direction TB
+        E1["ECR repository codeforces-tags/f2llm_late_fusion<br/>docker login, tag, push"] --> E2["create-model<br/>Environment: CODEFORCES_DEVICE=cpu or cuda,<br/>EXTRA_ENV; never an API key"]
+        E2 --> E3["create-endpoint-config<br/>ml.m5.xlarge (cpu), or ml.g4dn.xlarge (gpu)<br/>with an inference AMI of driver 580;<br/>startup health check up to 600 s"]
+        E3 --> E4["create-endpoint<br/>wait until InService"]
+    end
+    E4 --> CT["SageMaker runs: docker run IMAGE serve<br/>GET /ping and POST /invocations on port 8080"]
+    INV["invoke.sh PAYLOAD_FILE OUT_FILE<br/>invoke-endpoint --body fileb://PAYLOAD_FILE"] --> CT
+    DEL["delete.sh: the endpoint, its config, the model"] -.-> CT
+    LOC["Checked on this machine instead:<br/>docker run --pull never<br/>-p 127.0.0.1:8080:8080 IMAGE serve,<br/>then serving smoke"] -. "the same container contract" .-> CT
+    classDef paidstep fill:#fff1bf,stroke:#b38600
+    classDef server fill:#d8f0d8,stroke:#3c8c3c
+    classDef local fill:#dbe9f6,stroke:#1f77b4
+    class E1,E2,E3,E4,INV,DEL paidstep
+    class CT server
+    class LOC local
+    style deploy fill:#fffaeb,stroke:#b38600

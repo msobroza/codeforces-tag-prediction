@@ -1,0 +1,31 @@
+# The model server on one GPU. A GPU node needs NVIDIA's device plugin, which advertises
+# nvidia.com/gpu, and a driver of 580 or later (the cu130 torch's floor); the toleration lets the
+# pod onto nodes tainted for GPU work.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+patches:
+  - target:
+      kind: Deployment
+      name: model-server
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: model-server
+      spec:
+        template:
+          spec:
+            containers:
+              - name: model-server
+                env:
+                  - name: CODEFORCES_DEVICE
+                    value: cuda
+                resources:
+                  limits:
+                    nvidia.com/gpu: 1
+            tolerations:
+              - key: nvidia.com/gpu
+                operator: Exists
+                effect: NoSchedule

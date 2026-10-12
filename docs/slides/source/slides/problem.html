@@ -1,0 +1,54 @@
+<section id="problem" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D">The task</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.3;color:#0F766E">One exercise in, any of the 8 focus tags out</p>
+</div>
+<div style="display:flex;gap:40px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Input: one Codeforces exercise</p>
+<ul style="margin:0;padding-left:36px;font-size:30px;line-height:1.3;color:#3D4658">
+<li>Statement, notes and sample tests</li>
+<li>An accepted Python solution</li>
+<li>A quarter of them in Python 2</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Output: any number of 8 tags</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">math</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">graphs</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">strings</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">number theory</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">trees</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">geometry</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">games</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">probabilities</p>
+</div>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">46% of exercises have none of the 8.</p>
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">4,982</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">exercises [1]</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">Macro F1</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">mean of 8 per-tag F1</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">&lt; 10 s</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">for one prediction</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">1 GPU</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">RTX 2080 Ti, 11 GB</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">One CLI</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">methods, predict, evaluate</p>
+</div>
+</div>
+<p style="margin:0;font-size:24px;line-height:1.3;color:#6A7180;white-space:nowrap">[1] Khan et al., <i>XCodeEval</i>, ACL 2024 (arXiv:2303.03004). Data: CC BY-NC 4.0.</p>
+<aside>Each exercise comes with its statement and one accepted Python solution. The task statement asks for the eight focus tags; an exercise can have several, or none (46% have none). Every tag counts equally in the macro F1, so the rare tags such as probabilities and games weigh as much as math. Goals (PROBLEM.md): per-tag metrics, a command line that predicts and evaluates, and a prediction in under ten seconds. My constraint: everything trains and runs on one consumer GPU, an RTX 2080 Ti with 11 GB of memory. It shaped the methods: ModernBERT is tuned on one fold and the large model gets LoRA, F2LLM's 0.6-billion-parameter encoder stays frozen, and on the GPU every prediction goes one problem at a time. The data and the paper's baselines come from xCodeEval, by Khan and colleagues, published at ACL 2024 (arXiv 2303.03004).</aside>
+</section>

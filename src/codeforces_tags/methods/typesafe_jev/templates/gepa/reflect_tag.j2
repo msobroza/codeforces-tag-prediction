@@ -1,0 +1,46 @@
+{#- The reflection prompt of a tag piece, in the search over Jev's words (docs/adr/0010). reflection.reflection_request renders it with: tag, convention, question (filled with the tag), current (the piece's text: its criteria as indented JSON), current_length and length_cap (characters of compact JSON), summary (the tag's summary record) and examples (its example records, worst first). Every word is in each reflection request's hash: an edit sends every reflection of a rerun again. -#}
+{%- macro probability(value) -%}{{ "n/a" if value is none else "%.3f" | format(value) }}{%- endmacro -%}
+You are improving the words that Jev reads for one Codeforces tag, `{{ tag }}`.
+
+Jev is a fast yes/no judge. For each Codeforces problem it reads the statement and one Python solution, then answers one question per tag with the probability that the answer is yes. It does not reason step by step: it reads its definitions literally. It says yes when the problem matches what the definition counts as a yes, and no when it matches what the definition counts as a no. A vague word, a missing case or a misleading example in the definition becomes a wrong answer.
+
+Every question starts from this convention, which you do not change:
+
+{{ convention }}
+
+The question for this tag, which you do not change:
+
+{{ question }}
+
+The current definition of `{{ tag }}`, as JSON. "true" says what counts as a yes: a definition and what it includes. "false" says what counts as a no: a definition and what it excludes.
+
+{{ current }}
+
+How Jev did on `{{ tag }}` over a sample of {{ summary.positives + summary.negatives }} problems ({{ summary.positives }} with the tag, {{ summary.negatives }} without it): its mean probability of yes was {{ probability(summary.mean_probability_positives) }} on the problems with the tag, and {{ probability(summary.mean_probability_negatives) }} on those without it.
+
+Below are the problems of the sample on which Jev's answer was furthest from Codeforces' tags, worst first ({{ examples | length }} of them). Each statement and solution is cut to its first characters.
+{% for example in examples %}
+### Example {{ loop.index }}
+
+Codeforces put `{{ tag }}` on it: {{ example.gold }}. Jev's probability of yes: {{ probability(example.probability) }}.
+
+Statement:
+
+{{ example.statement }}
+
+Solution:
+
+{{ example.solution }}
+{% endfor %}
+### Your task
+
+Rewrite the definition of `{{ tag }}` so that Jev answers problems like these the way Codeforces does. Follow these rules:
+
+1. Generalise. Find what the errors reveal about how Codeforces' problem setters use `{{ tag }}`: which ideas earn it, and which ones they leave to other tags. Write that down as rules that hold for many problems, not as fixes for these ones.
+2. Never name, quote or paraphrase a specific problem. Take no story, character, object, number, input format or phrase from the examples: they are a sample, and the definition must serve problems Jev has never seen.
+3. Keep the yes/no structure. "true" holds a definition of a yes, in one or two sentences, and the list of what it includes; "false" holds a definition of a no and the list of what it excludes.
+4. Write short items: each one a phrase of a few words, with one idea, as in the current definition. Keep what already works, and change only what the errors call for.
+5. Stay within {{ length_cap }} characters: the whole definition, written as compact JSON, must hold at most that many (the current one holds {{ current_length }}).
+6. Speak only about `{{ tag }}`. The convention and the question stay as they are.
+
+Return only the JSON object of the new definition, with the keys "true" and "false", and nothing else.

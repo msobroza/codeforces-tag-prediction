@@ -1,0 +1,81 @@
+# Prompt descode2tag: the xCodeEval paper's DesCode2Tag, which asks an LLM for a problem's tags
+# from its statement, its notes and its solution (docs/adr/0003). The template is Jinja2,
+# rendered by codeforces_tags.templating; its first line is a comment, never rendered. It is the
+# Code2Tag template with four problem lines after the opening sentence (verify_extra checks it).
+#
+# Version 2, the structured answer: the prompt of descode2tag-json. It is version 1's template
+# (descode2tag.v1.yaml) with response_format, the strict JSON schema the answer follows, sent as
+# problem_tags (SCHEMA_NAME of settings.py). The request hash covers the schema in its own key
+# order, so its keys are written in that order.
+#
+# Frozen since the first dev request: the template, the schema and the settings are in every
+# request's hash, and each method folder of assets/methods/ holds the same text. A new wording is
+# a new prompt under a new name, read by new methods; this file never changes.
+name: descode2tag
+version: 2
+output_format: json
+template: |
+  {#- DesCode2Tag: the tags of a problem from its statement, notes and solution. Approved before the first request and never edited after it (docs/adr/0003). It is the Code2Tag prompt with four problem lines after the opening sentence: deleting lines 2 to 5 of a rendered prompt gives the Code2Tag prompt, which verify_extra checks. A missing field prints None, so the block is always four labelled lines. Same style, constants and tag list as code2tag.j2. -#}
+  Predict the tags of a programming problem given a program written in {{ lang_cluster }} language to solve it.
+  Description: {{ prob_desc_description }}
+  Input Specification: {{ prob_desc_input_spec }}
+  Output Specification: {{ prob_desc_output_spec }}
+  Notes: {{ prob_desc_notes }}
+
+  Here is the code:
+
+  {{ source_code }}
+
+  Choose the tags from this list: {{ all_tags | join(", ") }}
+
+  Provide the tags of the problem, separated by commas, without any description or extra tokens.
+response_format:
+  type: object
+  properties:
+    tags:
+      type: array
+      items:
+        type: string
+        enum:
+          - "*special"
+          - 2-sat
+          - binary search
+          - bitmasks
+          - brute force
+          - chinese remainder theorem
+          - combinatorics
+          - constructive algorithms
+          - data structures
+          - dfs and similar
+          - divide and conquer
+          - dp
+          - dsu
+          - expression parsing
+          - fft
+          - flows
+          - games
+          - geometry
+          - graph matchings
+          - graphs
+          - greedy
+          - hashing
+          - implementation
+          - interactive
+          - math
+          - matrices
+          - meet-in-the-middle
+          - number theory
+          - probabilities
+          - schedules
+          - shortest paths
+          - sortings
+          - string suffix structures
+          - strings
+          - ternary search
+          - trees
+          - two pointers
+      minItems: 0
+      maxItems: 37
+  required:
+    - tags
+  additionalProperties: false

@@ -1,0 +1,57 @@
+# The model server of one tagging method, from the image that
+# `python -m codeforces_tags.serving build --method <name>` built on this machine (docs/adr/0012).
+# Streamlit and the MLflow UI run on the host, never here. One profile at a time: both publish
+# the same port.
+#
+#   METHOD=tfidf docker compose -f deploy/docker-compose.yml --profile cpu up
+#   docker compose -f deploy/docker-compose.yml --profile gpu up
+#
+# METHOD (default f2llm_late_fusion), TAG (default latest) and PORT (default 8080) come from the
+# shell. The container's other variables come from deploy/.env.serving, if it exists (gitignored:
+# copy deploy/.env.serving.example). It needs Docker Compose 2.24 or later, which reads an
+# env_file entry with `path` and `required`. The gpu profile needs an NVIDIA driver of 580 or
+# later and the NVIDIA Container Toolkit. No restart policy: MLflow's entrypoint exits with status
+# 0 when the server dies, so `on-failure` would never restart it.
+name: codeforces-tags
+
+x-model-server: &model-server
+  image: codeforces-tags/${METHOD:-f2llm_late_fusion}:${TAG:-latest}
+  # Built here by `serving build`: a missing image fails with "No such image", never a pull.
+  pull_policy: never
+  # The model server has no authentication: it is published on this machine only.
+  ports:
+    - "127.0.0.1:${PORT:-8080}:8080"
+  env_file:
+    - path: .env.serving
+      required: false
+  # The slim image has no curl. /ping answers 200 once the method has loaded; nginx answers 502
+  # until then, which urlopen raises on.
+  healthcheck:
+    test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/ping', timeout=5)
+    interval: 10s
+    timeout: 10s
+    retries: 3
+    start_period: 120s
+
+services:
+  model-server-cpu:
+    <<: *model-server
+    profiles: [cpu]
+    environment:
+      CODEFORCES_DEVICE: cpu
+  model-server-gpu:
+    <<: *model-server
+    profiles: [gpu]
+    environment:
+      CODEFORCES_DEVICE: cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

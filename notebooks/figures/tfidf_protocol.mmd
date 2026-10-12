@@ -1,0 +1,17 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    S["Frozen split<br/>assets/split/split.csv"] -- "part = dev, 80%" --> F["Dev set: 5 folds<br/>whole near-duplicate groups"]
+    S -- "part = test, 20%" --> T["Test set<br/>not read until the end"]
+    F --> O["1. Out-of-fold scores<br/>fold k scored by a pipeline<br/>fitted on the other 4 folds"]
+    O --> X["2. Cross-fitted thresholds<br/>fold k's thresholds chosen<br/>on the other 4 folds' scores"]
+    X --> M["Out-of-fold macro F1<br/>the value of one Optuna trial"]
+    M -- "next configuration" --> O
+    M -- "200 trials complete" --> C["Selection<br/>the trial with the best value"]
+    C --> R["tuning freeze<br/>3. Final thresholds, chosen on<br/>all out-of-fold scores<br/>4. Refit on the whole dev set"]
+    R --> E["Score the test set, once<br/>predictions frozen in<br/>assets/methods/tfidf/"]
+    T --> E
+    E --> N["Notebook 04 reads<br/>the frozen predictions"]
+    classDef test fill:#fde2c8,stroke:#c46a1b
+    classDef dev fill:#d8f0d8,stroke:#3c8c3c
+    class T,E,N test
+    class F,O,X,M,C,R dev

@@ -1,0 +1,49 @@
+{
+  "rule": "R2",
+  "threshold_rule": {
+    "name": "platt-lipton",
+    "feature": "logit",
+    "clip": 0.0001,
+    "C": "inf",
+    "solver": "newton-cholesky",
+    "tol": 1e-12,
+    "grid": 0.01
+  },
+  "base": "jev-statement-code",
+  "base_files": {
+    "answers_dev.jsonl": {
+      "sha256": "db00f0ab0b4de1b6ffa7312abb594dd6e8c68e9c78509fa062ba702cb71a9f53",
+      "commit": "3d6c9701c5ca9f902d49e683a0181db8c40ae2e6"
+    },
+    "answers_test.jsonl": {
+      "sha256": "f303092681dc6b695bd6ab252a990291740ddda08a18be7761244d690c652c75",
+      "commit": "96d44d4fa88fb70e1f75f1eb54bdb363d868d2f2"
+    },
+    "scores.csv": {
+      "sha256": "71e2792c41a8b6e1f733d14b5a010a4553f67a39c266e5a8d7ed7bad6a9032e0",
+      "commit": "0a034d3e54011ecd5b89cd5732849fae8257e181"
+    },
+    "run_record.json": {
+      "sha256": "e668e25f58f62be34091f91b2f922c561f415acd44ee92d7a108ecefb4064e08",
+      "commit": "0a034d3e54011ecd5b89cd5732849fae8257e181"
+    }
+  },
+  "thresholds": {
+    "math": 0.375,
+    "graphs": 0.825,
+    "strings": 0.835,
+    "number theory": 0.765,
+    "trees": 0.655,
+    "geometry": 0.635,
+    "games": 0.815,
+    "probabilities": 0.695
+  },
+  "nested_choice": [
+    "R2",
+    "R2",
+    "R2",
+    "R2",
+    "R2"
+  ],
+  "nested_macro_f1": 0.7379237429578807
+}

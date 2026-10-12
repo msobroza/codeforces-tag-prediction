@@ -1,0 +1,131 @@
+{
+  "method": "tfidf",
+  "recipe_sha256": "89816f750cc47ba1f114fbca2cf5e26e81d81c79ca3473b2beaf402703130b7e",
+  "git": {
+    "commit": "a4d17858cbc1775e204b3be1c9eefcb90afa62bc",
+    "code_dirty": false
+  },
+  "environment": {
+    "python": "3.12.12",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "packages": {
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "skops": "0.16.0",
+      "mlflow": "3.16.1"
+    },
+    "lock_mismatches": {},
+    "uv_lock_sha256": "df660b90c362988ce4c2421d05902cd8a358af332670a3e8d6d8591f4e34ab05",
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "prefix": "libgomp",
+        "version": null,
+        "num_threads": 12
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.31.dev",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.34.106.0",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "torch": null
+  },
+  "dataset_sha256": "266d2792ebbc985570cf804a540cecc6248c6ed44b1bf298cb13bf38b937e413",
+  "split_sha256": "a6ab006cf108ecfb1b43970750371c85a08e1a26aa4a47beaf5a984dbe5029d9",
+  "verdicts_sha256": "0959222915e5a49323d8ca4803ef584a0c1c20f5accf58e4bbe77e5b403db60c",
+  "settings": {
+    "MODEL_SEED": 0,
+    "MODEL_MAX_ITER": 5000,
+    "CUE_TREE_MIN_NODES": 4,
+    "CUE_MAX_SAMPLE_LINES": 200,
+    "CUE_PLAYER_WORDS": [
+      "alice",
+      "bob",
+      "first",
+      "second",
+      "draw",
+      "petya",
+      "vasya",
+      "win",
+      "lose",
+      "winner",
+      "loser"
+    ],
+    "TEXT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec",
+      "prob_desc_notes"
+    ],
+    "STATEMENT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec"
+    ],
+    "RUSSIAN_LETTER_SHARE": 0.5,
+    "FOCUS_TAGS": [
+      "math",
+      "graphs",
+      "strings",
+      "number theory",
+      "trees",
+      "geometry",
+      "games",
+      "probabilities"
+    ]
+  },
+  "allow_dirty": false,
+  "created_at": "2026-10-08T10:15:03+00:00",
+  "prompts": [],
+  "method_entries": {
+    "params": {
+      "classifier": "linear_svm",
+      "c": 0.618625967607333,
+      "class_weight": "none",
+      "include_notes": true,
+      "statement_ngram_max": 2,
+      "statement_min_df": 3,
+      "statement_max_df": 0.6232112320034677,
+      "statement_sublinear_tf": true,
+      "code_weight": 0.2239861331707812,
+      "code_ngram_max": 1,
+      "code_min_df": 4,
+      "code_sublinear_tf": false,
+      "cue_weight": 0.0,
+      "blocks": [
+        "statement",
+        "code"
+      ]
+    },
+    "thresholds": {
+      "math": -0.4202211312010906,
+      "graphs": -0.45521602009224527,
+      "strings": -0.2858115903804686,
+      "number theory": -0.4465640859041049,
+      "trees": -0.35704460112154557,
+      "geometry": -0.39015298203778553,
+      "games": -0.3188226277955065,
+      "probabilities": -0.6180353601439532
+    },
+    "max_n_iter": 27,
+    "dev_in_sample": false,
+    "supersedes": []
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "method": "jev-statement-code-gepa-platt",
+  "model": "jev-1.13.0",
+  "settings_sha256": "06af4fe4800c075056772daaea56c2dc6da42e48b923d8682f435d0d421d1579",
+  "tags": [
+    "math",
+    "graphs",
+    "strings",
+    "number theory",
+    "trees",
+    "geometry",
+    "games",
+    "probabilities"
+  ],
+  "thresholds": [
+    0.445,
+    0.835,
+    0.845,
+    0.765,
+    0.655,
+    0.635,
+    0.815,
+    0.595
+  ]
+}

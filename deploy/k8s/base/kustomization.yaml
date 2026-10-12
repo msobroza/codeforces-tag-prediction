@@ -1,0 +1,9 @@
+# The model server of one tagging method (docs/adr/0012). Apply an overlay, never this base: the
+# per-method overlay that `python -m codeforces_tags.serving manifests` writes under build/k8s/
+# names the method's image, prefixes the names and labels the method's pods, over
+# overlays/cpu or overlays/gpu, which set the device.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - deployment.yaml
+  - service.yaml

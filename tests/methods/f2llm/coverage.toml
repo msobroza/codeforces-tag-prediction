@@ -1,0 +1,3 @@
+[tool.coverage.run]
+source_dirs = ["src/codeforces_tags/methods/f2llm", "tests/methods/f2llm"]
+branch = true

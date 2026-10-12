@@ -1,0 +1,19 @@
+{
+  "classifier": "linear_svm",
+  "c": 0.618625967607333,
+  "class_weight": "none",
+  "include_notes": true,
+  "statement_ngram_max": 2,
+  "statement_min_df": 3,
+  "statement_max_df": 0.6232112320034677,
+  "statement_sublinear_tf": true,
+  "code_weight": 0.2239861331707812,
+  "code_ngram_max": 1,
+  "code_min_df": 4,
+  "code_sublinear_tf": false,
+  "cue_weight": 0.0,
+  "blocks": [
+    "statement",
+    "code"
+  ]
+}

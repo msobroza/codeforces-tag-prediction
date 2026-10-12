@@ -1,0 +1,86 @@
+{
+ "date": "2026-10-04",
+ "dataset": "code_classification_dataset (4,982 problems), statements after codeforces_tags preprocessing",
+ "detector_under_audit": {
+  "vectors": "TF-IDF on prob_desc_description, word 1-2 grams, sublinear tf",
+  "similarity": "cosine",
+  "threshold_in_config_at_audit_time": 0.8,
+  "default_after_audit": "two stages: TF-IDF cosine >= 0.4 on prob_desc_description, then these verdicts"
+ },
+ "candidate_signals": {
+  "word": "detector cosine >= 0.4",
+  "char": "char_wb 3-5 gram TF-IDF cosine >= 0.6",
+  "same_sample_in": "identical non-empty sample inputs",
+  "same_contest_and_word": "same release timestamp and word cosine >= 0.25",
+  "both_version": "same release timestamp and both statements mention an easy/hard version",
+  "code": "solution-code token TF-IDF cosine >= 0.85"
+ },
+ "candidate_pairs": 522,
+ "tiers": {
+  "A: word>=0.4": {
+   "population": 203,
+   "judged": 203,
+   "selection": "all"
+  },
+  "B: word<0.4, strong signal": {
+   "population": 72,
+   "judged": 72,
+   "selection": "all (same contest, both mention a version, or char >= 0.6)"
+  },
+  "C: word<0.4, weak signal only (sample)": {
+   "population": 247,
+   "judged": 60,
+   "selection": "random sample, random_state=0 (only identical sample input or similar code)"
+  },
+  "D: same contest, no signal (random control)": {
+   "population": 9651,
+   "judged": 150,
+   "selection": "random sample, numpy default_rng(1)"
+  }
+ },
+ "shuffle_seed": 2,
+ "text_shown_to_judges": {
+  "description_chars": 2500,
+  "input_spec_chars": 700,
+  "output_spec_chars": 400,
+  "hidden": "sample ids, similarity scores, signals and tiers"
+ },
+ "judging": {
+  "first_pass": "10 LLM agents (Claude), ~49 pairs each, every pair labelled once",
+  "second_pass_round_1": "1 independent LLM agent, blind to the first label, on the pairs selected by second_pass_round_1_rule",
+  "second_pass_round_1_rule": "judged duplicate with word < 0.8, or low confidence, or judged not duplicate with word >= 0.8",
+  "second_pass_round_1_pairs": 22,
+  "second_pass_round_2": "9 independent LLM agents, blind to the first label, ~51 pairs each, on every pair not re-judged in round 1, so that every pair has two judges",
+  "second_pass_round_2_pairs": 463,
+  "agreement_duplicate_vs_not": "484 of 485",
+  "disagreements": [
+   {
+    "pair_id": 393,
+    "sample_ids": [
+     1028,
+     3366
+    ],
+    "judge1": "versions",
+    "judge2": "related"
+   }
+  ],
+  "final_rule": "duplicate when at least one judge says same_problem or versions: a wrong link only keeps two problems on the same side of a split, while a wrong cut leaks"
+ },
+ "results": {
+  "confirmed_duplicate_pairs": 82,
+  "min_word_cosine_of_a_duplicate": 0.497,
+  "min_char_cosine_of_a_duplicate": 0.554,
+  "duplicates_found_below_word_0.4": 0
+ },
+ "judges": {
+  "model": "claude-opus-5-5",
+  "reasoning_effort": "xhigh",
+  "extended_thinking": "on: the recorded transcripts contain thinking blocks",
+  "temperature_and_token_limits": "harness defaults, not set",
+  "output": "structured, validated against src/codeforces_tags/near_duplicates/audit/templates/labels.schema.json",
+  "prompts": "src/codeforces_tags/near_duplicates/audit/templates/*.j2 (Jinja2); rendering them reproduces the 20 prompts of the recorded judges exactly (30 transcripts: 10 first-pass launches were interrupted after a few seconds and relaunched with the same prompts; only the relaunched answers are used)",
+  "harness_of_the_recorded_run": "Claude Code 2.1.284 (desktop) workflow subagents. Each judge received the task prompt indented under a harness header, the subagent system prompt and the repository's CLAUDE.md (duplicate counts, no pair labels). The first-pass and round-1 judges were also relayed the user question that triggered the run (how the threshold was set, and how to rule out missed pairs); the round-2 judges were not. Tools used: Read, Bash",
+  "reproduction": "python -m codeforces_tags.near_duplicates.audit judge <pass> <folder> runs claude-agent-sdk with the same model, effort, prompt and schema. Differences from the recorded run: the SDK's own minimal system prompt, the CLI bundled with the SDK (2.1.286 with claude-agent-sdk 0.2.163), no CLAUDE.md and no relayed question, and a single tool, Read, confined to the texts/ folder that holds only the pair texts (every other call is refused)",
+  "runs_utc": "first pass and round 1: 2026-10-04 15:05-15:08; round 2: 2026-10-04 15:48-15:49"
+ }
+}

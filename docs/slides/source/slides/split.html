@@ -1,0 +1,61 @@
+<section id="split" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Train and test split</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">Test mirrors the data; no duplicate pair is split</p>
+</div>
+<div style="display:flex;align-items:stretch;gap:12px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">4,982 problems</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">one Python solution each</p>
+</div>
+<p style="margin:0;align-self:center;font-size:40px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Near-duplicates</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">203 TF-IDF pairs, 82 kept by LLMs</p>
+</div>
+<p style="margin:0;align-self:center;font-size:40px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">4,900 groups</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">82 pairs, 4,818 singletons</p>
+</div>
+<p style="margin:0;align-self:center;font-size:40px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Stratify [2]</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">whole groups; 8 tags, 9 pairs, year</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex">
+<p style="margin:0;width:1332px;font-size:26px;line-height:1.3;color:#3D4658">Dev · 3,988 problems: train and tune, in 5 folds of 790 to 806</p>
+<p style="margin:0;width:332px;font-size:26px;line-height:1.3;color:#3D4658">Test · 994 (20%), once</p>
+</div>
+<div style="display:flex;height:72px">
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 1</p></div>
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 2</p></div>
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 3</p></div>
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 4</p></div>
+<div style="width:268px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 5</p></div>
+<div style="width:332px;background:#0F766E;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Test</p></div>
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="padding:4px 0;font-weight:600;color:#14213D;width:56%;text-align:left">Share of problems</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:22%;text-align:right">All</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:22%;text-align:right">Test</th></tr>
+<tr><td style="padding:4px 0">math</td><td style="padding:4px 0;text-align:right">28.3%</td><td style="padding:4px 0;text-align:right">28.3%</td></tr>
+<tr><td style="padding:4px 0">number theory (worst)</td><td style="padding:4px 0;text-align:right">7.0%</td><td style="padding:4px 0;text-align:right">7.2%</td></tr>
+<tr><td style="padding:4px 0">none of the 8</td><td style="padding:4px 0;text-align:right">46.2%</td><td style="padding:4px 0;text-align:right">46.2%</td></tr>
+</table>
+</div>
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="padding:4px 0;font-weight:600;color:#14213D;width:56%;text-align:left">Against 50 random splits</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:20%;text-align:right">Frozen</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:24%;text-align:right">Random</th></tr>
+<tr><td style="padding:4px 0">Duplicate pairs split</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">0</td><td style="padding:4px 0;text-align:right">25.8</td></tr>
+<tr><td style="padding:4px 0">Worst tag share off by</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">3.1%</td><td style="padding:4px 0;text-align:right">28.1%</td></tr>
+<tr><td style="padding:4px 0">Year mix off by</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">0.6%</td><td style="padding:4px 0;text-align:right">3.7%</td></tr>
+</table>
+</div>
+</div>
+<p style="margin:0;font-size:24px;line-height:1.3;color:#6A7180;white-space:nowrap">[2] K. Sechidis, G. Tsoumakas, I. Vlahavas. <i>On the Stratification of Multi-Label Data</i>. ECML PKDD 2011.</p>
+<aside>The first step finds problems that are versions of each other: TF-IDF on the descriptions proposes 203 pairs at cosine 0.4 or more, and two independent verdicts from Claude Opus 5.5 keep the 82 that are easy and hard versions of one problem; the verdicts agree on 484 of the 485 pairs they judged. Then iterative stratification, the method of Sechidis, Tsoumakas and Vlahavas from ECML PKDD 2011, places whole groups: it takes the rarest label first and puts each of its groups in the fold that lacks it most, balancing the 8 tags, the 9 pairs shared by 20 or more problems and the release year; problems without a focus tag are stratified apart, by year. The test fifth, 994 problems, is scored once, and mirrors the data: math is 28.3% of it as of all problems, and the worst tag, number theory, is 7.2% against 7.0%; the dev part is cut again into five folds the same way. Against 50 random splits, the frozen one leaks no pair (random by problem leaks 26 on average) and its worst tag is 3.1% off its share, against 28% for random group splits. The split is frozen in assets/split/split.csv.</aside>
+</section>

@@ -1,0 +1,54 @@
+<section id="code" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Code structure</h2><p style="font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One package shared by notebooks, methods and CLI</p></div>
+<div style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;align-items:stretch;gap:16px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">1 · Data</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">data/<br>preprocessing/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Clean text; read Python 2 and 3.</p>
+</div>
+<p style="align-self:center;font-size:44px;color:#6A7180">→</p>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">2 · Split</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">near_duplicates/<br>splitting.py</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Freeze dev, test, 5 folds.</p>
+</div>
+<p style="align-self:center;font-size:44px;color:#6A7180">→</p>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">3 · Methods</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">methods/  model/<br>llm/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">14 registered, 13 frozen.</p>
+</div>
+<p style="align-self:center;font-size:44px;color:#6A7180">→</p>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">4 · Report</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">evaluation/<br>cli.py</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Per-tag F1, bootstrap intervals.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">tuning/ tracking/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">Optuna and MLflow</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">assets/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">The committed record</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">notebooks/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">01–09, frozen files</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">tests/ docs/adr/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">110 test files, 8 ADRs</p>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">One contract</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Every method predicts, saves, freezes and verifies alike.</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Light prediction path</p><p style="font-size:30px;line-height:1.3;color:#3D4658">MLflow, Optuna and SDKs imported only where needed.</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Verifiable</p><p style="font-size:30px;line-height:1.3;color:#3D4658">verify re-derives every frozen number offline.</p></div>
+</div>
+<aside>The package flows left to right. Data reads the raw samples and cleans them; the split groups near-duplicate problems and freezes dev, test and the folds once. Every method plugs into one contract, a TaggingMethod with predict and save, registered in one table: fourteen are registered, thirteen are frozen. Evaluation and the CLI turn predictions into per-tag scores. Around it: tuning and tracking run the Optuna studies and mirror everything to MLflow; assets is the committed record, so nothing needs a paid call to be checked again; notebooks read only frozen files; the tests and eight ADRs pin the rules. Three rules hold everywhere: one contract for every method, heavy libraries off the prediction path, and a verify command that re-derives every frozen number.</aside>
+</section>

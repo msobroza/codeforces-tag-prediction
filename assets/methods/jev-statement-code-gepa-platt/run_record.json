@@ -1,0 +1,151 @@
+{
+  "method": "jev-statement-code-gepa-platt",
+  "recipe_sha256": "2001648e13229a69862157492f5e70500851e6661202dba3931e42bb7d59f0a3",
+  "git": {
+    "commit": "f042acaffe28f5972016a7d49792f455b6542b29",
+    "code_dirty": false
+  },
+  "environment": {
+    "python": "3.12.12",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "packages": {
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "skops": "0.16.0",
+      "mlflow": "3.16.1",
+      "typesafe-sdk": "0.7.2"
+    },
+    "lock_mismatches": {},
+    "uv_lock_sha256": "fa1a1f2aa3b4ee1fee59c82753897d0be482106f2fe2b2022bbd44eadebcb68c",
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.31.dev",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.34.106.0",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "prefix": "libgomp",
+        "version": null,
+        "num_threads": 12
+      }
+    ],
+    "torch": null
+  },
+  "dataset_sha256": "266d2792ebbc985570cf804a540cecc6248c6ed44b1bf298cb13bf38b937e413",
+  "split_sha256": "a6ab006cf108ecfb1b43970750371c85a08e1a26aa4a47beaf5a984dbe5029d9",
+  "verdicts_sha256": "0959222915e5a49323d8ca4803ef584a0c1c20f5accf58e4bbe77e5b403db60c",
+  "settings": {
+    "MODEL_SEED": 0,
+    "MODEL_MAX_ITER": 5000,
+    "CUE_TREE_MIN_NODES": 4,
+    "CUE_MAX_SAMPLE_LINES": 200,
+    "CUE_PLAYER_WORDS": [
+      "alice",
+      "bob",
+      "first",
+      "second",
+      "draw",
+      "petya",
+      "vasya",
+      "win",
+      "lose",
+      "winner",
+      "loser"
+    ],
+    "TEXT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec",
+      "prob_desc_notes"
+    ],
+    "STATEMENT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec"
+    ],
+    "RUSSIAN_LETTER_SHARE": 0.5,
+    "FOCUS_TAGS": [
+      "math",
+      "graphs",
+      "strings",
+      "number theory",
+      "trees",
+      "geometry",
+      "games",
+      "probabilities"
+    ]
+  },
+  "allow_dirty": false,
+  "created_at": "2026-10-10T18:28:04+00:00",
+  "prompts": [],
+  "method_entries": {
+    "settings": {
+      "model": "jev-1.13.0",
+      "state_fields": [
+        "statement",
+        "solution"
+      ],
+      "settings_sha256": "06af4fe4800c075056772daaea56c2dc6da42e48b923d8682f435d0d421d1579"
+    },
+    "base": {
+      "name": "jev-statement-code-gepa",
+      "files": {
+        "answers_dev.jsonl": {
+          "sha256": "fa17f0ca4f7fa571f3da98737f82a1e282c27bdf01771efd2808fbd1e4d4ff69",
+          "commit": "4c8fb32bc8172f1f97c9f150b471701296b72366"
+        },
+        "answers_test.jsonl": {
+          "sha256": "2d525b7dda839133236f0b1ce48af871c31155bdb7b1f2ab7f34d3a4f1cdb85e",
+          "commit": "1136cf61c1926a8c913adb25bc0badb773a8f07c"
+        },
+        "scores.csv": {
+          "sha256": "f8026a94d34236da83ea046d0e30cd837c81fe856c08f95e7fdc78fb24b36e09",
+          "commit": "78b63e666ec8b08b2d7879aeff3f3cc812bd34d7"
+        },
+        "run_record.json": {
+          "sha256": "6e8f0a6507e22690b8fee20adfe244ab1d2df3bdf31e313b47768e85c34d25ac",
+          "commit": "78b63e666ec8b08b2d7879aeff3f3cc812bd34d7"
+        }
+      }
+    },
+    "served_models": [
+      "jev-1.13.0"
+    ],
+    "threshold_rule": {
+      "name": "platt-lipton",
+      "feature": "logit",
+      "clip": 0.0001,
+      "C": "inf",
+      "solver": "newton-cholesky",
+      "tol": 1e-12,
+      "grid": 0.01
+    },
+    "dev_in_sample": true,
+    "test_informed": {
+      "notebook": "notebooks/10_jev_gepa.ipynb",
+      "commits": [
+        "8b9c456",
+        "5a8366b"
+      ],
+      "note": "the rule was proposed after the test drop of jev-statement-code-gepa was read"
+    },
+    "latency_from": "jev-statement-code-gepa"
+  }
+}

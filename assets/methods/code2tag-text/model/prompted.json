@@ -1,0 +1,72 @@
+{
+  "spec": {
+    "name": "code2tag-text",
+    "prompt_name": "code2tag",
+    "template_path": "templates/code2tag.j2",
+    "schema_path": null,
+    "schema_name": null,
+    "fields": [
+      "source_code"
+    ],
+    "constants": {
+      "lang_cluster": "Python"
+    },
+    "settings": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "none",
+      "temperature": 0.3157894736842105,
+      "top_p": 1.0,
+      "max_output_tokens": 512,
+      "output_format": "text"
+    },
+    "all_tags": [
+      "*special",
+      "2-sat",
+      "binary search",
+      "bitmasks",
+      "brute force",
+      "chinese remainder theorem",
+      "combinatorics",
+      "constructive algorithms",
+      "data structures",
+      "dfs and similar",
+      "divide and conquer",
+      "dp",
+      "dsu",
+      "expression parsing",
+      "fft",
+      "flows",
+      "games",
+      "geometry",
+      "graph matchings",
+      "graphs",
+      "greedy",
+      "hashing",
+      "implementation",
+      "interactive",
+      "math",
+      "matrices",
+      "meet-in-the-middle",
+      "number theory",
+      "probabilities",
+      "schedules",
+      "shortest paths",
+      "sortings",
+      "string suffix structures",
+      "strings",
+      "ternary search",
+      "trees",
+      "two pointers"
+    ],
+    "extra": {}
+  },
+  "prompt": {
+    "name": "code2tag",
+    "version": 1,
+    "uri": "prompts:/code2tag/1",
+    "content_sha256": "c70232aeccd8269142306351764022811d2f47c1180fedb5448510dd0fdfca67",
+    "template": "{#- Code2Tag: the tags of a problem from its solution alone. Approved before the first request and never edited after it (docs/adr/0003). The text copies the style of the authors' APR and program-synthesis templates, names no focus tag and sets no prior on the number of tags. lang_cluster is the constant LANGUAGE of settings.py, not the dataset's column; all_tags is config.ALL_TAGS. -#}\nPredict the tags of a programming problem given a program written in {{ lang_cluster }} language to solve it.\n\nHere is the code:\n\n{{ source_code }}\n\nChoose the tags from this list: {{ all_tags | join(\", \") }}\n\nProvide the tags of the problem, separated by commas, without any description or extra tokens.\n",
+    "response_format": null
+  }
+}

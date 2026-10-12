@@ -1,0 +1,37 @@
+<section id="serving" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Serving a method</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One frozen method, one Docker image, three targets</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Built from the committed files</p>
+<div style="display:flex;align-items:stretch;gap:10px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Frozen method</p><p style="margin:0;font-size:28px;line-height:1.3;color:#3D4658">the folder in assets/methods</p></div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1.15;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">MLflow model</p><p style="margin:0;font-size:28px;line-height:1.3;color:#3D4658">pinned requirements, hashed weights</p></div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1.15;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Docker image</p><p style="margin:0;font-size:28px;line-height:1.3;color:#3D4658">MLflow's server behind nginx, CPU or GPU</p></div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1.1;display:flex;flex-direction:column;gap:6px;background:#14213D;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#F5F7FA;white-space:nowrap">POST /invocations</p><p style="margin:0;font-size:28px;line-height:1.3;color:#D5DAE3">tags, scores and thresholds</p></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Runs on</p>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:20px 24px"><p style="margin:0;font-size:32px;font-weight:600;line-height:1.2;color:#14213D">Docker Compose</p><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">on localhost only; a CPU and a GPU profile</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:20px 24px"><p style="margin:0;font-size:32px;font-weight:600;line-height:1.2;color:#14213D">Kubernetes</p><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">kustomize, CPU and GPU overlays, ClusterIP</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:20px 24px"><p style="margin:0;font-size:32px;font-weight:600;line-height:1.2;color:#14213D">SageMaker</p><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">aws CLI scripts, behind IAM</p></div>
+</div>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:20px 24px">
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.2;color:#14213D">Clients</p>
+<p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">a Streamlit app · smoke: 20 test problems against the frozen predictions · links to the run and prompts in MLflow</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:20px 24px">
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.2;color:#14213D">Run so far</p>
+<p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">tfidf (906 MB image): Docker and a kind cluster, CPU<br>f2llm_late_fusion (7.89 GB): Docker, CPU and GPU<br>median 3.40 s on the CPU, 0.148 s on the GPU</p>
+</div>
+</div>
+<aside>A frozen method also runs as a model server: MLflow's own, in one Docker image per method (ADR 0012). The image is built from the committed method folder only, never from the MLflow store: an MLflow model saved from code, the requirements pinned from uv.lock and installed with hashes, and the weights copied and hashed again. Inside, nginx answers on port 8080 in front of MLflow's server, one prediction at a time, offline, with pickle loading off; one environment variable picks the CPU or the GPU at deploy time, so the same image runs on both. The same image runs on Docker Compose, published on localhost only; on Kubernetes, with kustomize overlays for CPU and GPU behind a ClusterIP service; and on SageMaker through aws CLI scripts. There is no authentication or TLS inside the image: localhost, the cluster or IAM keep it private. Clients all share one small client: a Streamlit app, a smoke test that checks 20 test problems against the frozen predictions, and links from the app to the method's run and prompt versions in the MLflow UI. What has really run so far: tfidf, a 906 MB image, under Docker and on a local kind cluster, on the CPU; and f2llm_late_fusion, a 7.89 GB image, under Docker, on the CPU, 3.40 seconds at the median over 20 test problems, and under the GPU profile, 0.148 seconds at the median, holding 2.4 GB of GPU memory. A GPU Kubernetes node, SageMaker and the API methods are written and tested offline but not yet run.</aside>
+</section>

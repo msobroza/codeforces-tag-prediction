@@ -1,0 +1,265 @@
+[project]
+name = "codeforces-tags"
+version = "0.1.0"
+description = "Multi-label tag prediction for Codeforces algorithmic exercises (xCodeEval subset)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Max Sobroza" }]
+requires-python = ">=3.11"
+dependencies = [
+    "iterative-stratification>=0.1.9",
+    "jinja2>=3.1",
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "pyyaml>=6.0",
+    "scikit-learn>=1.5",
+    "scipy>=1.13",
+    "skops>=0.16",
+]
+
+[project.urls]
+Repository = "https://github.com/msobroza/codeforces-tag-prediction"
+
+# The command line of the project (also `python -m codeforces_tags`): `uv sync` installs it.
+[project.scripts]
+codeforces-tags = "codeforces_tags.cli:main"
+
+[dependency-groups]
+analysis = [
+    "ipykernel>=6.29",
+    "jupyterlab>=4.2",
+    "matplotlib>=3.9",
+    "nbconvert>=7.16",
+    "seaborn>=0.13",
+]
+# The Streamlit client of a model server (apps/streamlit_app.py, docs/adr/0012), run on the user's
+# machine only: kept out of default-groups, so CI never installs it and no test needs it. Altair,
+# which draws the app's chart of scores, comes with streamlit. Run the app from the repository root
+# with `uv run --group app streamlit run apps/streamlit_app.py`.
+app = [
+    "streamlit>=1.59",
+]
+audit = [
+    "claude-agent-sdk>=0.1",
+]
+dev = [
+    "pylint>=4.1.2",
+    "pytest>=8.3",
+    "pytest-cov>=7.1.0",
+    "radon>=6.0.1",
+    "ruff>=0.6",
+]
+# The F2LLM embedding methods (methods/f2llm): a GPU stack, kept out of default-groups so that the
+# default CI job and the TF-IDF baseline never install it. Install it with
+# `uv sync --group f2llm`. The floors match the `finetuning` group's, so that both groups lock the
+# same torch, transformers and peft.
+f2llm = [
+    "huggingface-hub>=1.0",
+    "peft>=0.21",
+    "safetensors>=0.4",
+    "torch>=2.9",
+    "transformers>=5.19,<6",
+]
+# Rendering the estimator diagram of notebook 04 (notebooks/figures/estimator_diagram.py), the
+# MLflow UI screenshots of notebooks 05 and 10 (notebooks/figures/mlflow_ui.py) and the Streamlit
+# app's screenshots of notebook 12 (notebooks/figures/streamlit_app.py, which needs the app group
+# too): the playwright package drives the system Chrome. Kept out of default-groups, so CI never
+# installs it. Run a tool with `uv run --group figures python notebooks/figures/<tool>.py`.
+figures = [
+    "playwright==1.63.0",
+]
+llm = [
+    "openai>=3.24",
+]
+# The tuning studies, MLflow, and gepa, which runs the search over Jev's words (docs/adr/0010):
+# pinned, without extras, since it is pure Python and needs no other package.
+modeling = [
+    "gepa==0.1.4",
+    "mlflow>=3.16",
+    "optuna>=5.0",
+    "threadpoolctl>=3.1",
+]
+# Fine-tuning a pretrained transformer (the ModernBERT methods, codeforces_tags.methods.modernbert):
+# a GPU stack, kept out of default-groups so the default CI job and the TF-IDF baseline never
+# install it. Install with `uv sync --group finetuning`; CI's finetuning job runs the methods' tests.
+finetuning = [
+    "peft>=0.21",
+    "safetensors>=0.4",
+    "torch>=2.9",
+    "transformers>=5.19",  # train_sampling_strategy, and warmup_steps as a ratio
+]
+# TypeSafe's Jev (docs/adr/0007): the SDK is imported only inside the jev_session of the TypeSafe
+# methods and every test fakes it, so no default group, and not the default CI job, installs it.
+llm-typesafe = [
+    "typesafe-sdk>=0.7.2",
+]
+# MLflow's model server, in the image of a served method (python -m codeforces_tags.serving,
+# docs/adr/0012): `serving package` exports this group from uv.lock, with the project's
+# dependencies and the method's own groups, into the image's requirements.lock.txt. Kept out of
+# default-groups: the modeling group already installs mlflow here.
+serving = [
+    "mlflow>=3.16",
+]
+
+[tool.uv]
+default-groups = ["analysis", "dev", "modeling"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/codeforces_tags"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+# Ruff leaves the Markdown files as they are written.
+extend-exclude = ["*.md"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "C90", "D", "TID251", "TID253"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+# Heavy libraries, and the plotting ones only the notebooks and the tracking commands use, stay
+# off the prediction path: only the modules listed under per-file-ignores (TID253) may import them
+# at module level. A method's own libraries (e.g. torch) are not listed: the core and the other
+# methods never import them (CLAUDE.md, Code style).
+# The TypeSafe SDK is listed although it is a method's own library: the TypeSafe methods import
+# it only inside client.jev_session, and this keeps a module-level import from creeping in.
+banned-module-level-imports = [
+    "claude_agent_sdk",
+    "gepa",
+    "matplotlib",
+    "mlflow",
+    "openai",
+    "optuna",
+    "playwright",
+    "seaborn",
+    "typesafe_sdk",
+]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+# No pickle: loading a pickle runs any code it holds. The safe formats to use instead are listed
+# under "No pickle" in CLAUDE.md.
+"pickle".msg = "Loading a pickle runs arbitrary code; use CSV, JSON or npz (CLAUDE.md, No pickle)."
+"_pickle".msg = "_pickle is pickle's C module: loading a pickle runs arbitrary code (CLAUDE.md, No pickle)."
+"dill".msg = "dill is pickle: loading it runs arbitrary code (CLAUDE.md, No pickle)."
+"cloudpickle".msg = "cloudpickle is pickle: loading it runs arbitrary code (CLAUDE.md, No pickle)."
+"joblib".msg = "joblib files are pickles; save scikit-learn models with skops.io or ONNX."
+"shelve".msg = "shelve stores pickles: loading one runs arbitrary code (CLAUDE.md, No pickle)."
+"pandas.read_pickle".msg = "Loading a pickle runs arbitrary code; read CSV or JSON instead."
+"pandas.io.pickle".msg = "pandas.io.pickle reads and writes pickles; read CSV or JSON instead."
+# ruff matches the qualified name: torch re-exports torch.serialization's load and save.
+"torch.save".msg = "torch.save pickles; save weights with safetensors (CLAUDE.md, No pickle)."
+"torch.load".msg = "torch.load unpickles, which runs any code; read safetensors (CLAUDE.md, No pickle)."
+"torch.serialization.save".msg = "torch.save pickles; save weights with safetensors (CLAUDE.md, No pickle)."
+"torch.serialization.load".msg = "torch.load unpickles, which runs any code; read safetensors (CLAUDE.md, No pickle)."
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Test names describe the behaviour they check; notebooks have no module docstring. Tests,
+# notebooks, the figure render tools (which drive a browser with playwright), the analysis package
+# (the notebooks' code and the figures the tracking commands log), the tuning command, the tracking
+# package, the LLM toolkit's command, each tagging method's command, tracking and tuning modules,
+# and the serving package's deployment entry file, packaging and commands (serving/entry.py,
+# serving/package.py and serving/__main__.py, docs/adr/0012) may import the heavy libraries that
+# TID253 keeps off the prediction path.
+"tests/*" = ["D103", "TID253"]
+"*.ipynb" = ["D100", "TID253"]
+"notebooks/figures/*.py" = ["TID253"]
+"src/codeforces_tags/analysis/*" = ["TID253"]
+"src/codeforces_tags/tuning/search.py" = ["TID253"]
+"src/codeforces_tags/tuning/tracking.py" = ["TID253"]
+"src/codeforces_tags/tuning/__main__.py" = ["TID253"]
+"src/codeforces_tags/tracking/*" = ["TID253"]
+"src/codeforces_tags/llm/__main__.py" = ["TID253"]
+"src/codeforces_tags/methods/*/__main__.py" = ["TID253"]
+"src/codeforces_tags/methods/*/tracking.py" = ["TID253"]
+"src/codeforces_tags/methods/*/tuning.py" = ["TID253"]
+"src/codeforces_tags/methods/typesafe_jev/search_commands.py" = ["TID253"]
+"src/codeforces_tags/serving/entry.py" = ["TID253"]
+"src/codeforces_tags/serving/package.py" = ["TID253"]
+"src/codeforces_tags/serving/__main__.py" = ["TID253"]
+
+[tool.ruff.lint.mccabe]
+# CI's complexity check fails any function above this McCabe complexity, as ruff counts it (the
+# top of radon's grade B). It also fails a function of the package that radon grades C, since
+# radon counts boolean operators and comprehensions too (.github/workflows/ci.yml).
+max-complexity = 10
+
+[tool.pylint.main]
+py-version = "3.11"
+# Find files by walking the folders: iterative-stratification installs a top-level `tests`
+# package, which pylint would otherwise take for this repo's tests/ folder.
+recursive = true
+
+[tool.pylint.basic]
+# Test names describe the behaviour they check; private helpers are documented by their caller.
+no-docstring-rgx = "^(_|test_)"
+# X: scikit-learn's name for the rows an estimator fits on or scores.
+good-names-rgxs = ["^X$"]
+
+[tool.pylint.classes]
+# A scikit-learn estimator sets its fitted attributes in fit, not in __init__.
+defining-attr-methods = ["__init__", "__new__", "setUp", "asyncSetUp", "__post_init__", "fit"]
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pylint.typecheck]
+# The libraries of the finetuning and f2llm groups, absent from the default job, which still lints
+# the ModernBERT and F2LLM methods and their tests: without this, pylint reports E0401
+# (import-error) on each of their imports (CLAUDE.md, Tests and CI for a method's dependency group).
+ignored-modules = ["huggingface_hub", "peft", "safetensors", "tokenizers", "torch", "transformers"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# importlib mode lets test files share a name across folders (tests/**/test_pipeline.py).
+# The ModernBERT methods' tests need the finetuning group, and the F2LLM methods' tests the f2llm
+# group: each group's own CI job runs them, passing the folder explicitly, which overrides --ignore.
+addopts = [
+    "--import-mode=importlib",
+    "--cov",
+    "--cov-report=term-missing",
+    "--ignore=tests/methods/f2llm",
+    "--ignore=tests/methods/modernbert",
+]
+filterwarnings = [
+    # seaborn 0.13 still passes matplotlib's deprecated `vert` argument when drawing boxplots.
+    "ignore:vert. bool was deprecated:DeprecationWarning",
+    # mlflow 3.16's SQL tracking store still asks SQLAlchemy 2.1 for the deprecated `noload`
+    # loader strategy, when the store's modules are first imported.
+    "ignore:The ``noload`` loader strategy is deprecated:DeprecationWarning:mlflow",
+    # A tagging method is logged with an explicit signature and no input example: MLflow would
+    # load the method and predict the example while logging it.
+    "ignore:.*An input example was not provided:UserWarning:mlflow",
+    # mlflow.data.from_pandas, on the sample ids of a part (log_method): sample ids are never
+    # missing, and mlflow 3.16 still calls DataFrame.all with positional arguments.
+    "ignore:Hint. Inferred schema contains integer column:UserWarning:mlflow",
+    "ignore:Starting with pandas version 4.0 all arguments of all:Warning:mlflow",
+]
+
+[tool.coverage.run]
+# The tests are measured too: a test line that never runs (a test shadowed by another of the same
+# name, an unused fixture or helper) is dead code. source_dirs, not source: "tests" would also
+# match the top-level tests package that iterative-stratification installs.
+source_pkgs = ["codeforces_tags"]
+source_dirs = ["tests"]
+branch = true
+# Measured by the f2llm and finetuning jobs, with the same floors: each with a coverage config of
+# its own (tests/methods/f2llm/coverage.toml, tests/methods/modernbert/coverage.toml).
+omit = [
+    "src/codeforces_tags/methods/f2llm/*",
+    "src/codeforces_tags/methods/modernbert/*",
+    "tests/methods/f2llm/*",
+    "tests/methods/modernbert/*",
+]
+
+[tool.coverage.report]
+# Line + branch coverage floor of the package. pytest checks it on the package and the tests
+# together; CI also checks it on src/ alone, and requires every line of tests/ to run.
+fail_under = 95

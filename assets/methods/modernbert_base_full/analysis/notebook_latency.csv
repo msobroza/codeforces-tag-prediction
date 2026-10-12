@@ -1,0 +1,171 @@
+device,model,sample_id,seconds
+gpu,one model,2425,0.029991916002472863
+gpu,one model,1897,0.02902016900770832
+gpu,one model,4234,0.023969670000951737
+gpu,one model,4498,0.04006419700453989
+gpu,one model,689,0.02935840899590403
+gpu,one model,1829,0.031181870988802984
+gpu,one model,2380,0.03058027299994137
+gpu,one model,1736,0.025747877996764146
+gpu,one model,738,0.025547021999955177
+gpu,one model,1593,0.027222643999266438
+gpu,one model,1375,0.02564789001189638
+gpu,one model,1340,0.026167178992182016
+gpu,one model,3458,0.05527556999004446
+gpu,one model,2726,0.03629335899313446
+gpu,one model,4880,0.026146442993194796
+gpu,one model,2717,0.025480597993009724
+gpu,one model,786,0.025664922999567352
+gpu,one model,972,0.035390032004215755
+gpu,one model,1261,0.02619382899138145
+gpu,one model,3607,0.02891755099699367
+gpu,one model,811,0.03567093699530233
+gpu,one model,3770,0.044237946000066586
+gpu,one model,447,0.026533245996688493
+gpu,one model,4659,0.03528020599333104
+gpu,one model,36,0.026309281995054334
+gpu,one model,1988,0.024534865995519795
+gpu,one model,2533,0.02609367499826476
+gpu,one model,1774,0.025000380002893507
+gpu,one model,245,0.025939621991710737
+gpu,one model,4917,0.02498704000026919
+gpu,one model,731,0.024998540000524372
+gpu,one model,1604,0.02588171100069303
+gpu,one model,1823,0.02554303899523802
+gpu,one model,3210,0.02687186900584493
+gpu,one model,4843,0.04309342500346247
+gpu,one model,4275,0.02571155301120598
+gpu,one model,1104,0.02531389099021908
+gpu,one model,1296,0.025472955996519886
+gpu,one model,4395,0.025741518998984247
+gpu,one model,4269,0.033827457009465434
+gpu,one model,2760,0.02566382499935571
+gpu,one model,2047,0.02501461500651203
+gpu,one model,2418,0.026319333002902567
+gpu,one model,1334,0.025509056998998858
+gpu,one model,3114,0.025650067007518373
+gpu,one model,3218,0.025140466008451767
+gpu,one model,2294,0.03809807299694512
+gpu,one model,3253,0.027937512000789866
+gpu,one model,3181,0.051185808988520876
+gpu,one model,4656,0.04214753699488938
+gpu,"bag, weights swapped",2425,0.3601230630010832
+gpu,"bag, weights swapped",1897,0.3584266230027424
+gpu,"bag, weights swapped",4234,0.3586973630008288
+gpu,"bag, weights swapped",4498,0.4045201650005765
+gpu,"bag, weights swapped",689,0.3631759119889466
+gpu,"bag, weights swapped",1829,0.3711757290002424
+gpu,"bag, weights swapped",2380,0.35704636499576736
+gpu,"bag, weights swapped",1736,0.35549216299841646
+gpu,"bag, weights swapped",738,0.3595867629919667
+gpu,"bag, weights swapped",1593,0.35867328800668474
+gpu,"bag, weights swapped",1375,0.36963621400354896
+gpu,"bag, weights swapped",1340,0.3558783769985894
+gpu,"bag, weights swapped",3458,0.4787370299891336
+gpu,"bag, weights swapped",2726,0.3605329980055103
+gpu,"bag, weights swapped",4880,0.37355955100792926
+gpu,"bag, weights swapped",2717,0.38704540199250914
+gpu,"bag, weights swapped",786,0.35523498100519646
+gpu,"bag, weights swapped",972,0.40436271199723706
+gpu,"bag, weights swapped",1261,0.3568374680035049
+gpu,"bag, weights swapped",3607,0.36711419899074826
+gpu,"bag, weights swapped",811,0.40070097100397106
+gpu,"bag, weights swapped",3770,0.4415679179946892
+gpu,"bag, weights swapped",447,0.3464288749964908
+gpu,"bag, weights swapped",4659,0.40079970499209594
+gpu,"bag, weights swapped",36,0.34734389900404494
+gpu,"bag, weights swapped",1988,0.346260923994123
+gpu,"bag, weights swapped",2533,0.3484123910020571
+gpu,"bag, weights swapped",1774,0.35607313900254667
+gpu,"bag, weights swapped",245,0.3567764489998808
+gpu,"bag, weights swapped",4917,0.36206054499780294
+gpu,"bag, weights swapped",731,0.3556433749909047
+gpu,"bag, weights swapped",1604,0.3540440809883876
+gpu,"bag, weights swapped",1823,0.34704828799294773
+gpu,"bag, weights swapped",3210,0.3555089199944632
+gpu,"bag, weights swapped",4843,0.43419913300022017
+gpu,"bag, weights swapped",4275,0.35361217200988904
+gpu,"bag, weights swapped",1104,0.35777277799206786
+gpu,"bag, weights swapped",1296,0.3610804510099115
+gpu,"bag, weights swapped",4395,0.3565656639984809
+gpu,"bag, weights swapped",4269,0.39705027600575704
+gpu,"bag, weights swapped",2760,0.37276917599956505
+gpu,"bag, weights swapped",2047,0.36930722498800606
+gpu,"bag, weights swapped",2418,0.3751611199986655
+gpu,"bag, weights swapped",1334,0.36804688499250915
+gpu,"bag, weights swapped",3114,0.3739480759977596
+gpu,"bag, weights swapped",3218,0.36719288099266123
+gpu,"bag, weights swapped",2294,0.4092587850027485
+gpu,"bag, weights swapped",3253,0.36479227800737135
+gpu,"bag, weights swapped",3181,0.4757371619925834
+gpu,"bag, weights swapped",4656,0.4335300240054494
+gpu,"bag, five models resident",2425,0.09603309800149873
+gpu,"bag, five models resident",1897,0.0975704489974305
+gpu,"bag, five models resident",4234,0.09475451799517032
+gpu,"bag, five models resident",4498,0.13521549598954152
+gpu,"bag, five models resident",689,0.09972485298931133
+gpu,"bag, five models resident",1829,0.10104406099708285
+gpu,"bag, five models resident",2380,0.09418354798981454
+gpu,"bag, five models resident",1736,0.09152504499070346
+gpu,"bag, five models resident",738,0.09159502600959968
+gpu,"bag, five models resident",1593,0.11399978600093164
+gpu,"bag, five models resident",1375,0.09682717599207535
+gpu,"bag, five models resident",1340,0.0945494079933269
+gpu,"bag, five models resident",3458,0.2142289869952947
+gpu,"bag, five models resident",2726,0.09696386200084817
+gpu,"bag, five models resident",4880,0.09743082399654668
+gpu,"bag, five models resident",2717,0.09585674999107141
+gpu,"bag, five models resident",786,0.09474854300788138
+gpu,"bag, five models resident",972,0.13977064400387462
+gpu,"bag, five models resident",1261,0.11581588399712928
+gpu,"bag, five models resident",3607,0.11013158000423573
+gpu,"bag, five models resident",811,0.14620668700081296
+gpu,"bag, five models resident",3770,0.18593739699281286
+gpu,"bag, five models resident",447,0.10146592299861368
+gpu,"bag, five models resident",4659,0.14474331900419202
+gpu,"bag, five models resident",36,0.1084082729939837
+gpu,"bag, five models resident",1988,0.09152003499912098
+gpu,"bag, five models resident",2533,0.10694888400030322
+gpu,"bag, five models resident",1774,0.10388896299991757
+gpu,"bag, five models resident",245,0.10284972700173967
+gpu,"bag, five models resident",4917,0.10198624899203423
+gpu,"bag, five models resident",731,0.10846261000551749
+gpu,"bag, five models resident",1604,0.10398193899891339
+gpu,"bag, five models resident",1823,0.10232218999590259
+gpu,"bag, five models resident",3210,0.09968464900157414
+gpu,"bag, five models resident",4843,0.1810130170051707
+gpu,"bag, five models resident",4275,0.09623066600761376
+gpu,"bag, five models resident",1104,0.09684043300512712
+gpu,"bag, five models resident",1296,0.09735927599831484
+gpu,"bag, five models resident",4395,0.09698216700053308
+gpu,"bag, five models resident",4269,0.1353174090036191
+gpu,"bag, five models resident",2760,0.0967119770066347
+gpu,"bag, five models resident",2047,0.09396310300508048
+gpu,"bag, five models resident",2418,0.09423235600115731
+gpu,"bag, five models resident",1334,0.09315949100709986
+gpu,"bag, five models resident",3114,0.09469596199051011
+gpu,"bag, five models resident",3218,0.09602483599155676
+gpu,"bag, five models resident",2294,0.1482740119972732
+gpu,"bag, five models resident",3253,0.09680892700271215
+gpu,"bag, five models resident",3181,0.218123183993157
+gpu,"bag, five models resident",4656,0.17194796999683604
+cpu,one model,2425,0.889646374998847
+cpu,one model,1897,0.6705983770079911
+cpu,one model,4234,0.3186866860050941
+cpu,one model,4498,1.2942250159976538
+cpu,one model,689,0.9356394479982555
+cpu,one model,1829,0.9587517360050697
+cpu,one model,2380,0.7869035749899922
+cpu,one model,1736,0.47008580100373365
+cpu,one model,738,0.35284088300250005
+cpu,one model,1593,0.5788236959924689
+cpu,"bag, weights swapped",2425,5.0011608180066105
+cpu,"bag, weights swapped",1897,4.2737752070097486
+cpu,"bag, weights swapped",4234,2.2601107330119703
+cpu,"bag, weights swapped",4498,7.4365457620006055
+cpu,"bag, weights swapped",689,5.177164804001222
+cpu,"bag, weights swapped",1829,5.352485922994674
+cpu,"bag, weights swapped",2380,4.752345977991354
+cpu,"bag, weights swapped",1736,3.253933120999136
+cpu,"bag, weights swapped",738,2.590256673996919
+cpu,"bag, weights swapped",1593,3.2527967380010523

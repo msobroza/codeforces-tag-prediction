@@ -1,0 +1,243 @@
+{
+  "method": "modernbert_lora",
+  "recipe_sha256": "cff7fe0839b58f18e5db19031c4efe340613bee1addbb9b172dd9a2a2ad8620c",
+  "git": {
+    "commit": "4c50298fe296338e197357cf42f8a4632d3286e7",
+    "code_dirty": false
+  },
+  "environment": {
+    "python": "3.12.12",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "packages": {
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "skops": "0.16.0",
+      "mlflow": "3.16.1",
+      "peft": "0.21.2",
+      "safetensors": "0.8.0",
+      "torch": "2.14.1",
+      "transformers": "5.19.0"
+    },
+    "lock_mismatches": {},
+    "uv_lock_sha256": "a0996cea17acaf7c36dc5b1b8729b27742a1e3cb5aa6398f42c4a552f51f470b",
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "prefix": "libgomp",
+        "version": null,
+        "num_threads": 12
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.34.106.0",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.31.dev",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "prefix": "libgomp",
+        "version": null,
+        "num_threads": 6
+      }
+    ],
+    "torch": {
+      "version": "2.14.1+cu130",
+      "cuda": "13.0",
+      "devices": [
+        "NVIDIA GeForce RTX 2080 Ti"
+      ]
+    }
+  },
+  "dataset_sha256": "266d2792ebbc985570cf804a540cecc6248c6ed44b1bf298cb13bf38b937e413",
+  "split_sha256": "a6ab006cf108ecfb1b43970750371c85a08e1a26aa4a47beaf5a984dbe5029d9",
+  "verdicts_sha256": "0959222915e5a49323d8ca4803ef584a0c1c20f5accf58e4bbe77e5b403db60c",
+  "settings": {
+    "MODEL_SEED": 0,
+    "MODEL_MAX_ITER": 5000,
+    "CUE_TREE_MIN_NODES": 4,
+    "CUE_MAX_SAMPLE_LINES": 200,
+    "CUE_PLAYER_WORDS": [
+      "alice",
+      "bob",
+      "first",
+      "second",
+      "draw",
+      "petya",
+      "vasya",
+      "win",
+      "lose",
+      "winner",
+      "loser"
+    ],
+    "TEXT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec",
+      "prob_desc_notes"
+    ],
+    "STATEMENT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec"
+    ],
+    "RUSSIAN_LETTER_SHARE": 0.5,
+    "FOCUS_TAGS": [
+      "math",
+      "graphs",
+      "strings",
+      "number theory",
+      "trees",
+      "geometry",
+      "games",
+      "probabilities"
+    ]
+  },
+  "allow_dirty": false,
+  "created_at": "2026-10-07T22:25:50+00:00",
+  "prompts": [],
+  "method_entries": {
+    "settings": {
+      "name": "modernbert_lora",
+      "study_name": "modernbert-lora",
+      "model_repo": "answerdotai/ModernBERT-large",
+      "model_revision": "45bb4654a4d5aaff24dd11d4781fa46d39bf8c13",
+      "lora": true,
+      "max_length": 1024,
+      "search_space": {
+        "learning_rate": [
+          5e-05,
+          0.001
+        ],
+        "lora_rank": [
+          8,
+          16,
+          32
+        ],
+        "lora_dropout": [
+          0.0,
+          0.2
+        ],
+        "epochs": [
+          2,
+          4
+        ],
+        "batch_size": [
+          16,
+          32
+        ],
+        "warmup_ratio": [
+          0.0,
+          0.2
+        ],
+        "pos_weight_power": [
+          0.0,
+          1.0
+        ]
+      },
+      "lora_targets": [
+        "Wqkv",
+        "Wo",
+        "Wi"
+      ],
+      "trained_modules": [
+        "head",
+        "classifier"
+      ],
+      "lora_alpha_per_rank": 2,
+      "weight_decay": 0.01,
+      "code_min_tokens": 128,
+      "micro_batch": 4,
+      "score_batch": 16,
+      "pad_to_multiple_of": 8,
+      "seed": 0,
+      "tuning_fold": 0,
+      "subfolds": 5,
+      "tuning_trials": 30,
+      "startup_trials": 10,
+      "pruner_min_peers": 3,
+      "max_failed_trials": 5,
+      "collapse_ap": 0.3,
+      "collapse_sample": 800,
+      "fold_seeds": 3,
+      "device": "auto",
+      "retrain_min_correlation": 0.9,
+      "retrain_max_median_gap": 0.02,
+      "retrain_max_flips": 0.025,
+      "retrain_f1_margin": 0.03
+    },
+    "supersedes": [],
+    "dev_in_sample": false,
+    "dev_estimate": "Each dev problem is scored by the fold model that did not train on it, and predicted with thresholds cross-fitted across the dev folds. The bag scores test only, so the dev rows estimate one fold model, not the bag.",
+    "tuning": {
+      "trial": 1,
+      "tuning_macro_f1": 0.6840422457107966
+    },
+    "params": {
+      "learning_rate": 0.0005358312362730346,
+      "lora_rank": 32,
+      "lora_dropout": 0.014207211639577388,
+      "epochs": 2,
+      "batch_size": 32,
+      "warmup_ratio": 0.1556313501899701,
+      "pos_weight_power": 0.8700121482468192
+    },
+    "device": "cuda (NVIDIA GeForce RTX 2080 Ti)",
+    "dtype": "fp16-autocast",
+    "fold_models": {
+      "fold_0": {
+        "seed": 0,
+        "collapsed_seeds": [],
+        "train_macro_ap": 0.7978903393033665,
+        "minutes": 9.11725547824996,
+        "adopted_from": "experiments/modernbert_lora/adapters/fold_0"
+      },
+      "fold_1": {
+        "seed": 1,
+        "collapsed_seeds": [
+          0
+        ],
+        "train_macro_ap": 0.741127466820434,
+        "minutes": 18.591839219733327,
+        "adopted_from": "experiments/modernbert_lora/adapters/fold_1"
+      },
+      "fold_2": {
+        "seed": 0,
+        "collapsed_seeds": [],
+        "train_macro_ap": 0.8127741977831934,
+        "minutes": 9.260024028916572,
+        "adopted_from": "experiments/modernbert_lora/adapters/fold_2"
+      },
+      "fold_3": {
+        "seed": 0,
+        "collapsed_seeds": [],
+        "train_macro_ap": 0.7318108908753587,
+        "minutes": 9.223131460416699,
+        "adopted_from": "experiments/modernbert_lora/adapters/fold_3"
+      },
+      "fold_4": {
+        "seed": 0,
+        "collapsed_seeds": [],
+        "train_macro_ap": 0.7540524019571797,
+        "minutes": 9.294286142133327,
+        "adopted_from": "experiments/modernbert_lora/adapters/fold_4"
+      }
+    },
+    "outside_tuning_fold_macro_f1": 0.6623040650936807
+  }
+}

@@ -1,0 +1,26 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    R["Raw problem<br/>a row of read_samples()"] --> P["raw_to_problems<br/>the cleaning of preprocess()"]
+    P --> F["Allow-listed fields (FIELDS)<br/>Code2Tag: the solution<br/>DesCode2Tag: the description, the input and<br/>output specifications, the notes, the solution"]
+    F --> T["Template: code2tag.j2 or descode2tag.j2<br/>one user message listing the 37 tags;<br/>a missing field prints None"]
+    subgraph paid["llm run: paid, once per problem, dev first"]
+        direction TB
+        A["OpenAI Responses API, gpt-6-luna<br/>reasoning effort none, temperature 0.316,<br/>top_p 1.0, at most 512 output tokens;<br/>json: a strict schema of the 37 tags"]
+        A --> W[("Answers file, committed<br/>answers_dev.jsonl, answers_test.jsonl<br/>one line per problem, keyed by the<br/>request's hash, only appended to")]
+    end
+    T --> paid
+    subgraph offline["llm score, llm verify and this notebook: offline"]
+        direction TB
+        X["Parser<br/>text: parse_text_tags<br/>json: the schema's tags list<br/>a failed answer: no tag"]
+        X --> Y["0/1 over the 37 tags (ALL_TAGS)<br/>predictions.csv"]
+        Y --> E["evaluate()<br/>focus tags: against TF-IDF<br/>all-tag macro F1: against the paper"]
+    end
+    paid --> offline
+    classDef key fill:#dbe9f6,stroke:#1f77b4
+    classDef paidstep fill:#fff1bf,stroke:#b38600
+    classDef offlinestep fill:#e6e6f5,stroke:#5c5ca8
+    class R,P,F,T key
+    class A,W paidstep
+    class X,Y,E offlinestep
+    style paid fill:#fffaeb,stroke:#b38600
+    style offline fill:#f5f5fb,stroke:#5c5ca8

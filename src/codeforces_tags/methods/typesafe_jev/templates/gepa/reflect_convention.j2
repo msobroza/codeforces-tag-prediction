@@ -1,0 +1,48 @@
+{#- The reflection prompt of the convention piece, in the search over Jev's words (docs/adr/0010). reflection.reflection_request renders it with: convention (the current one, the piece's text), question (the question template, with its {tag} placeholder), definitions (each focus tag's current criteria as indented JSON, by tag), current_length and length_cap (characters), and examples (the example records, worst first). Every word is in each reflection request's hash: an edit sends every reflection of a rerun again. -#}
+{%- macro probability(value) -%}{{ "n/a" if value is none else "%.3f" | format(value) }}{%- endmacro -%}
+You are improving the convention that Jev reads before every question about Codeforces tags.
+
+Jev is a fast yes/no judge. For each Codeforces problem it reads the statement and one Python solution, then answers one question per tag with the probability that the answer is yes. It does not reason step by step: it reads its words literally. Each question gives Jev the convention, the question itself and the tag's definition: what counts as a yes and what counts as a no. A vague or misleading word in the convention becomes a wrong answer on every tag.
+
+The current convention, which you rewrite:
+
+{{ convention }}
+
+The question, asked once per tag with `{tag}` replaced by the tag, which you do not change:
+
+{{ question }}
+
+The current definition of each tag, as JSON, which you do not change either:
+{% for tag, definition in definitions.items() %}
+`{{ tag }}`:
+
+{{ definition }}
+{% endfor %}
+Below are the problems of a sample on which Jev's answers, over all the tags, were furthest from Codeforces' tags, worst first ({{ examples | length }} of them). Each statement and solution is cut to its first characters.
+{% for example in examples %}
+### Example {{ loop.index }}
+
+For each tag, whether Codeforces put it on the problem, and Jev's probability of yes:
+{% for tag, answer in example.tags.items() %}
+- `{{ tag }}`: Codeforces {{ answer.gold }}, Jev {{ probability(answer.probability) }}
+{%- endfor %}
+
+Statement:
+
+{{ example.statement }}
+
+Solution:
+
+{{ example.solution }}
+{% endfor %}
+### Your task
+
+Rewrite the convention so that Jev answers every tag's question the way Codeforces does. Follow these rules:
+
+1. Generalise. Find what the errors reveal about how Codeforces tags problems as a whole: for instance how many tags a problem tends to get, whether a tag names the intended solution or only the story, how a technique used in passing counts. Write that down as rules that hold for every tag and many problems.
+2. Never name, quote or paraphrase a specific problem. Take no story, character, object, number, input format or phrase from the examples: they are a sample, and the convention must serve problems Jev has never seen.
+3. Keep it general. The convention is the same for all tags, and the definitions say what each tag is: do not define a single tag, and do not repeat a definition. It helps Jev answer yes or no; it never asks for anything else.
+4. Write short, plain sentences, and keep what already works.
+5. Stay within {{ length_cap }} characters (the current convention holds {{ current_length }}).
+
+Return only the JSON object {"convention": "<the new convention>"}, and nothing else.

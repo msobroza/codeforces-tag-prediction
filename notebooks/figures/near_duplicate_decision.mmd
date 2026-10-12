@@ -1,0 +1,11 @@
+flowchart LR
+    P["A pair of problems"] --> T{"Stage 1<br/>TF-IDF similarity<br/>≥ 0.4?"}
+    T -- no --> N1["Not linked"]
+    T -- "yes: candidate" --> V{"Stage 2<br/>the judges'<br/>verdict"}
+    V -- duplicate --> L1["Linked:<br/>same group"]
+    V -- never judged --> L2["Linked:<br/>same group"]
+    V -- not duplicate --> N2["Not linked"]
+    classDef linked fill:#d8f0d8,stroke:#3c8c3c
+    classDef apart fill:#eeeeee,stroke:#888888
+    class L1,L2 linked
+    class N1,N2 apart

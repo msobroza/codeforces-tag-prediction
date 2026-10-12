@@ -1,0 +1,54 @@
+{
+  "params": {
+    "learning_rate": 9.251555894694399e-05,
+    "weight_decay": 0.0007563248269504573,
+    "classifier_dropout": 0.06931956100373414,
+    "epochs": 5,
+    "batch_size": 32,
+    "warmup_ratio": 0.1679857587093996,
+    "pos_weight_power": 0.6100885324703038
+  },
+  "trial": 18,
+  "tuning_macro_f1": 0.6646887040280021,
+  "recipe": {
+    "model_repo": "answerdotai/ModernBERT-base",
+    "model_revision": "8949b909ec900327062f0ebf497f51aef5e6f0c8",
+    "max_length": 2048,
+    "code_min_tokens": 128,
+    "micro_batch": 4,
+    "seed": 0,
+    "tuning_fold": 0,
+    "subfolds": 5,
+    "search_space": {
+      "learning_rate": [
+        1e-05,
+        0.0002
+      ],
+      "weight_decay": [
+        1e-05,
+        0.1
+      ],
+      "classifier_dropout": [
+        0.0,
+        0.2
+      ],
+      "epochs": [
+        2,
+        5
+      ],
+      "batch_size": [
+        16,
+        32
+      ],
+      "warmup_ratio": [
+        0.0,
+        0.2
+      ],
+      "pos_weight_power": [
+        0.0,
+        1.0
+      ]
+    },
+    "smoke": false
+  }
+}

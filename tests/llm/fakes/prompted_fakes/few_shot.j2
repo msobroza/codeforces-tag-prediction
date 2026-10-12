@@ -1,0 +1,7 @@
+{#- The prompt of the fake few-shot method: a problem's nearest examples, then the problem. -#}
+Examples: problems {{ examples | map(attribute="sample_id") | join(", ") }}.
+{% for example in examples -%}
+Problem {{ example.sample_id }}: {{ example.prob_desc_description }}
+{% endfor -%}
+Tag: {{ prob_desc_description }}
+Choose from: {{ all_tags | join(", ") }}

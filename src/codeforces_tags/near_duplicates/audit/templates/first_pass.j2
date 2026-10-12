@@ -1,0 +1,4 @@
+{% include "definitions.j2" %}
+
+Read the JSON file {{ batch_file }} (a list of items with pair_id, A and B; each side has description, input_spec, output_spec; long texts are truncated). Label EVERY pair in the file. Read-only task: do not write or modify any file.
+Completion criterion: one label per pair_id in the file, none skipped.

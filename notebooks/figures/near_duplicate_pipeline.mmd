@@ -1,0 +1,12 @@
+flowchart TB
+    subgraph once["Built once, offline: the audit"]
+        direction LR
+        A["Candidate pairs<br/>6 similarity signals"] --> B["Two blind LLM judges<br/>per pair"]
+        B --> C[("Frozen verdicts<br/>judgments.csv")]
+    end
+    subgraph split["At every split: near_duplicate_groups(df)"]
+        direction LR
+        S1["Stage 1, recall<br/>TF-IDF similarity ≥ 0.4<br/>keeps every candidate"] --> S2["Stage 2, precision<br/>the verdicts drop<br/>the false positives"]
+        S2 --> G["Groups of duplicates<br/>split by group"]
+    end
+    once -- "the verdicts feed stage 2" --> split

@@ -1,0 +1,76 @@
+{
+  "spec": {
+    "name": "descode2tag-text",
+    "prompt_name": "descode2tag",
+    "template_path": "templates/descode2tag.j2",
+    "schema_path": null,
+    "schema_name": null,
+    "fields": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec",
+      "prob_desc_notes",
+      "source_code"
+    ],
+    "constants": {
+      "lang_cluster": "Python"
+    },
+    "settings": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "none",
+      "temperature": 0.3157894736842105,
+      "top_p": 1.0,
+      "max_output_tokens": 512,
+      "output_format": "text"
+    },
+    "all_tags": [
+      "*special",
+      "2-sat",
+      "binary search",
+      "bitmasks",
+      "brute force",
+      "chinese remainder theorem",
+      "combinatorics",
+      "constructive algorithms",
+      "data structures",
+      "dfs and similar",
+      "divide and conquer",
+      "dp",
+      "dsu",
+      "expression parsing",
+      "fft",
+      "flows",
+      "games",
+      "geometry",
+      "graph matchings",
+      "graphs",
+      "greedy",
+      "hashing",
+      "implementation",
+      "interactive",
+      "math",
+      "matrices",
+      "meet-in-the-middle",
+      "number theory",
+      "probabilities",
+      "schedules",
+      "shortest paths",
+      "sortings",
+      "string suffix structures",
+      "strings",
+      "ternary search",
+      "trees",
+      "two pointers"
+    ],
+    "extra": {}
+  },
+  "prompt": {
+    "name": "descode2tag",
+    "version": 1,
+    "uri": "prompts:/descode2tag/1",
+    "content_sha256": "8cfc4afe6a9bfa2f3cbcbf2efc5ee4b378389e4accd61c6476fe0a9153f8d610",
+    "template": "{#- DesCode2Tag: the tags of a problem from its statement, notes and solution. Approved before the first request and never edited after it (docs/adr/0003). It is the Code2Tag prompt with four problem lines after the opening sentence: deleting lines 2 to 5 of a rendered prompt gives the Code2Tag prompt, which verify_extra checks. A missing field prints None, so the block is always four labelled lines. Same style, constants and tag list as code2tag.j2. -#}\nPredict the tags of a programming problem given a program written in {{ lang_cluster }} language to solve it.\nDescription: {{ prob_desc_description }}\nInput Specification: {{ prob_desc_input_spec }}\nOutput Specification: {{ prob_desc_output_spec }}\nNotes: {{ prob_desc_notes }}\n\nHere is the code:\n\n{{ source_code }}\n\nChoose the tags from this list: {{ all_tags | join(\", \") }}\n\nProvide the tags of the problem, separated by commas, without any description or extra tokens.\n",
+    "response_format": null
+  }
+}

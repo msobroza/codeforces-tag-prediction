@@ -1,0 +1,77 @@
+# Prompt code2tag: the xCodeEval paper's Code2Tag, which asks an LLM for a problem's tags from its
+# solution alone (docs/adr/0003). The template is Jinja2, rendered by codeforces_tags.templating;
+# its first line is a comment, never rendered. It lists the 37 tags of config.ALL_TAGS, and
+# lang_cluster is the constant LANGUAGE of settings.py.
+#
+# Version 2, the structured answer: the prompt of code2tag-json. It is version 1's template
+# (code2tag.v1.yaml) with response_format, the strict JSON schema the answer follows, sent as
+# problem_tags (SCHEMA_NAME of settings.py). The request hash covers the schema in its own key
+# order, so its keys are written in that order.
+#
+# Frozen since the first dev request: the template, the schema and the settings are in every
+# request's hash, and each method folder of assets/methods/ holds the same text. A new wording is
+# a new prompt under a new name, read by new methods; this file never changes.
+name: code2tag
+version: 2
+output_format: json
+template: |
+  {#- Code2Tag: the tags of a problem from its solution alone. Approved before the first request and never edited after it (docs/adr/0003). The text copies the style of the authors' APR and program-synthesis templates, names no focus tag and sets no prior on the number of tags. lang_cluster is the constant LANGUAGE of settings.py, not the dataset's column; all_tags is config.ALL_TAGS. -#}
+  Predict the tags of a programming problem given a program written in {{ lang_cluster }} language to solve it.
+
+  Here is the code:
+
+  {{ source_code }}
+
+  Choose the tags from this list: {{ all_tags | join(", ") }}
+
+  Provide the tags of the problem, separated by commas, without any description or extra tokens.
+response_format:
+  type: object
+  properties:
+    tags:
+      type: array
+      items:
+        type: string
+        enum:
+          - "*special"
+          - 2-sat
+          - binary search
+          - bitmasks
+          - brute force
+          - chinese remainder theorem
+          - combinatorics
+          - constructive algorithms
+          - data structures
+          - dfs and similar
+          - divide and conquer
+          - dp
+          - dsu
+          - expression parsing
+          - fft
+          - flows
+          - games
+          - geometry
+          - graph matchings
+          - graphs
+          - greedy
+          - hashing
+          - implementation
+          - interactive
+          - math
+          - matrices
+          - meet-in-the-middle
+          - number theory
+          - probabilities
+          - schedules
+          - shortest paths
+          - sortings
+          - string suffix structures
+          - strings
+          - ternary search
+          - trees
+          - two pointers
+      minItems: 0
+      maxItems: 37
+  required:
+    - tags
+  additionalProperties: false

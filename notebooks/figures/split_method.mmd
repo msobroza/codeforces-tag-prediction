@@ -1,0 +1,14 @@
+flowchart TD
+    A["4,982 problems"] --> B["Group near-duplicates<br/>(never split a group)"]
+    B --> C{"Does the group have<br/>a focus tag?"}
+    C -- yes --> F["Focus stratum<br/>balance the 8 focus tags,<br/>their frequent pairs<br/>and the release year"]
+    C -- no --> N["No-focus stratum<br/>balance the release year"]
+    F --> K["In each stratum: 5 folds of whole groups<br/>by iterative stratification"]
+    N --> K
+    K -- "fold 0" --> T["Test, 20%<br/>used once, at the end"]
+    K -- "folds 1 to 4" --> D["Dev, 80%"]
+    D --> CV["Same rule inside dev:<br/>5 cross-validation folds"]
+    classDef test fill:#fde2c8,stroke:#c46a1b
+    classDef dev fill:#d8f0d8,stroke:#3c8c3c
+    class T test
+    class D,CV dev

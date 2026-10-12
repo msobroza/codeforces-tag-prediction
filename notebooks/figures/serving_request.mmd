@@ -1,0 +1,26 @@
+sequenceDiagram
+    autonumber
+    participant C as Client<br/>serving/client.py
+    participant N as nginx<br/>port 8080
+    participant U as MLflow scoring server<br/>uvicorn, 127.0.0.1:8000
+    participant E as entry.py<br/>ServedMethodModel
+    participant M as The tagging method
+    C->>N: GET /ping
+    N->>U: GET /ping
+    U-->>C: 200 once the method has loaded (nginx answers 502 before)
+    C->>N: POST /invocations, dataframe_split JSON
+    N->>U: POST /invocations
+    Note over U: read the frame,<br/>check it against<br/>the signature
+    U->>E: predict(context, model_input)
+    activate E
+    Note over E,M: one lock: one prediction at a time,<br/>so one GPU forward pass at a time
+    E->>M: served_records, through cli.run_method
+    M-->>E: 0/1 focus tags, scores, per-tag thresholds
+    deactivate E
+    alt the method answered
+        E-->>U: one record per problem
+        U-->>C: 200, the predictions in request order
+    else a CliError, e.g. two problems for an API method
+        E-->>U: MlflowException, one line
+        U-->>C: 500, a JSON message
+    end

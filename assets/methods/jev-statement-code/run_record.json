@@ -1,0 +1,148 @@
+{
+  "method": "jev-statement-code",
+  "recipe_sha256": "5f73ca5686a4d241f12ee566991de4d8bba4f139cf025e8c1365558036d782ca",
+  "git": {
+    "commit": "96d44d4fa88fb70e1f75f1eb54bdb363d868d2f2",
+    "code_dirty": false
+  },
+  "environment": {
+    "python": "3.12.12",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "packages": {
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "skops": "0.16.0",
+      "mlflow": "3.16.1",
+      "typesafe-sdk": "0.7.2"
+    },
+    "lock_mismatches": {},
+    "uv_lock_sha256": "2ed6c9c0578afeb6bec5eb81cbdf303c21c75a01fe92d9e0bba76142e8f33f6b",
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "prefix": "libgomp",
+        "version": null,
+        "num_threads": 12
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.34.106.0",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.31.dev",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "torch": null
+  },
+  "dataset_sha256": "266d2792ebbc985570cf804a540cecc6248c6ed44b1bf298cb13bf38b937e413",
+  "split_sha256": "a6ab006cf108ecfb1b43970750371c85a08e1a26aa4a47beaf5a984dbe5029d9",
+  "verdicts_sha256": "0959222915e5a49323d8ca4803ef584a0c1c20f5accf58e4bbe77e5b403db60c",
+  "settings": {
+    "MODEL_SEED": 0,
+    "MODEL_MAX_ITER": 5000,
+    "CUE_TREE_MIN_NODES": 4,
+    "CUE_MAX_SAMPLE_LINES": 200,
+    "CUE_PLAYER_WORDS": [
+      "alice",
+      "bob",
+      "first",
+      "second",
+      "draw",
+      "petya",
+      "vasya",
+      "win",
+      "lose",
+      "winner",
+      "loser"
+    ],
+    "TEXT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec",
+      "prob_desc_notes"
+    ],
+    "STATEMENT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec"
+    ],
+    "RUSSIAN_LETTER_SHARE": 0.5,
+    "FOCUS_TAGS": [
+      "math",
+      "graphs",
+      "strings",
+      "number theory",
+      "trees",
+      "geometry",
+      "games",
+      "probabilities"
+    ]
+  },
+  "allow_dirty": false,
+  "created_at": "2026-10-08T22:10:10+00:00",
+  "prompts": [],
+  "method_entries": {
+    "settings": {
+      "model": "jev-1.13.0",
+      "state_fields": [
+        "statement",
+        "solution"
+      ],
+      "settings_sha256": "8eda74ec4c3f3f8e38c952ac82b334c8888b2e08b0fe4ad6f1df1ebae2a2c7b7"
+    },
+    "answers_sha256": {
+      "dev": "db00f0ab0b4de1b6ffa7312abb594dd6e8c68e9c78509fa062ba702cb71a9f53",
+      "test": "f303092681dc6b695bd6ab252a990291740ddda08a18be7761244d690c652c75"
+    },
+    "answers_commit": {
+      "dev": "3d6c9701c5ca9f902d49e683a0181db8c40ae2e6",
+      "test": "96d44d4fa88fb70e1f75f1eb54bdb363d868d2f2"
+    },
+    "answers": {
+      "dev": {
+        "lines": 3988,
+        "statuses": {
+          "completed": 3988
+        },
+        "failed": 0,
+        "served_models": {
+          "jev-1.13.0": 3988
+        },
+        "input_tokens": 12752655,
+        "output_tokens": 542368,
+        "cost_usd": 0.5356115100000001
+      },
+      "test": {
+        "lines": 994,
+        "statuses": {
+          "completed": 994
+        },
+        "failed": 0,
+        "served_models": {
+          "jev-1.13.0": 994
+        },
+        "input_tokens": 3139371,
+        "output_tokens": 135184,
+        "cost_usd": 0.131853582
+      }
+    },
+    "served_models": [
+      "jev-1.13.0"
+    ],
+    "dev_in_sample": false
+  }
+}

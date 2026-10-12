@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codeforces Tag Prediction</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+* { margin: 0; box-sizing: border-box; }
+body { background: #D8E0E9; }
+ul { padding-left: 36px; }
+section { position: relative; width: 1920px; height: 1080px; overflow: hidden; margin: 40px auto 0; }
+aside { display: block; width: 1920px; margin: 0 auto; padding: 24px 32px 32px; background: #FFFFFF;
+  font: 26px/1.45 'IBM Plex Sans', Arial, sans-serif; color: #3D4658; }
+aside::before { content: "Speaker notes"; display: block; font-weight: 600; color: #0F766E; margin-bottom: 8px; }
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  body { background: none; }
+  section { margin: 0; break-after: page; }
+  aside { display: none; }
+}
+</style>
+</head>
+<body>
+<section id="cover" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; justify-content:center; padding:112px 128px; background:#14213d">
+  <h1 style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:120px; font-weight:600; line-height:1.05; color:#f5f7fa">Predicting<br>Codeforces tags</h1>
+  <div style="display:flex; flex-direction:column; gap:12px; padding:0 0 0 32px; border-left:6px solid #14b8a6">
+    <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:500; line-height:1.3; color:#f5f7fa">Multi-label classification of 4,982 exercises</p>
+    <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; line-height:1.3; color:#d5dae3">13 methods · one protocol · one command line</p>
+  </div>
+  <p style="position:absolute; bottom:64px; left:128px; width:1200px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:24px; color:#d5dae3">October 2026</p>
+  <p id="12d7fee2" style="position:absolute; top:828.03px; left:225.41px; width:1626px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:500; line-height:1.3; color:#f5f7fa">Ph.D. Max Sobroza</p>
+  </section>
+<aside>The task: given a Codeforces exercise, predict which of eight focus tags it carries. I built and compared 13 tagging methods under the same protocol, from a label prior to zero-shot LLMs, and wrapped them in one command line.</aside>
+<section id="problem" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D">The task</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.3;color:#0F766E">One exercise in, any of the 8 focus tags out</p>
+</div>
+<div style="display:flex;gap:40px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Input: one Codeforces exercise</p>
+<ul style="margin:0;padding-left:36px;font-size:30px;line-height:1.3;color:#3D4658">
+<li>Statement, notes and sample tests</li>
+<li>An accepted Python solution</li>
+<li>A quarter of them in Python 2</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Output: any number of 8 tags</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">math</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">graphs</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">strings</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">number theory</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">trees</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">geometry</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">games</p>
+<p style="margin:0;font-size:30px;line-height:1.3;background:#E2E9F4;color:#14213D;padding:6px 20px;border-radius:999px">probabilities</p>
+</div>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">46% of exercises have none of the 8.</p>
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">4,982</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">exercises [1]</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">Macro F1</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">mean of 8 per-tag F1</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">&lt; 10 s</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">for one prediction</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">1 GPU</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">RTX 2080 Ti, 11 GB</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;border-top:4px solid #14213D;padding-top:20px">
+<p style="margin:0;font-size:52px;font-weight:600;line-height:1.1;color:#14213D">One CLI</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">methods, predict, evaluate</p>
+</div>
+</div>
+<p style="margin:0;font-size:24px;line-height:1.3;color:#6A7180;white-space:nowrap">[1] Khan et al., <i>XCodeEval</i>, ACL 2024 (arXiv:2303.03004). Data: CC BY-NC 4.0.</p>
+</section>
+<aside>Each exercise comes with its statement and one accepted Python solution. The task statement asks for the eight focus tags; an exercise can have several, or none (46% have none). Every tag counts equally in the macro F1, so the rare tags such as probabilities and games weigh as much as math. Goals (PROBLEM.md): per-tag metrics, a command line that predicts and evaluates, and a prediction in under ten seconds. My constraint: everything trains and runs on one consumer GPU, an RTX 2080 Ti with 11 GB of memory. It shaped the methods: ModernBERT is tuned on one fold and the large model gets LoRA, F2LLM's 0.6-billion-parameter encoder stays frozen, and on the GPU every prediction goes one problem at a time. The data and the paper's baselines come from xCodeEval, by Khan and colleagues, published at ACL 2024 (arXiv 2303.03004).</aside>
+<section id="div-data" data-transition="fade" style="background:#14213D;color:#F5F7FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-size:160px;font-weight:600;line-height:1;color:#14B8A6">01</p>
+<h2 style="font-size:96px;font-weight:600;line-height:1.1;color:#F5F7FA">The data</h2>
+<p style="font-size:36px;line-height:1.3;color:#D5DAE3">Tag frequency · tags per problem · tags together</p>
+</section>
+<aside>Section one: what the data looks like. How often each focus tag appears, how many tags a problem carries, and which tags travel together.</aside>
+<section id="data-tags" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:26px;line-height:1.3;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Data analysis</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D">How often each tag appears</h2>
+<p style="margin:4px 0 0 0;font-size:34px;font-weight:500;line-height:1.3;color:#0F766E">Every tag is a minority; 46% carry none</p>
+</div>
+<div style="display:flex;gap:56px">
+<div style="width:1020px;display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:26px;line-height:1.3;color:#6A7180">Problems carrying each focus tag, of 4,982</p>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">math</p><div style="width:375px;height:38px;background:#2F6DB5;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">1,408 · 28.3%</p></div>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">graphs</p><div style="width:145px;height:38px;background:#2F6DB5;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">542 · 10.9%</p></div>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">strings</p><div style="width:113px;height:38px;background:#2F6DB5;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">422 · 8.5%</p></div>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">number theory</p><div style="width:93px;height:38px;background:#2F6DB5;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">350 · 7.0%</p></div>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">trees</p><div style="width:86px;height:38px;background:#2F6DB5;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">324 · 6.5%</p></div>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">geometry</p><div style="width:44px;height:38px;background:#2F6DB5;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">166 · 3.3%</p></div>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">games</p><div style="width:28px;height:38px;background:#14B8A6;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">105 · 2.1% <span style="color:#0F766E">(21 in test)</span></p></div>
+<div style="display:flex;align-items:center;gap:16px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">probabilities</p><div style="width:25px;height:38px;background:#14B8A6;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">92 · 1.8% <span style="color:#0F766E">(18 in test)</span></p></div>
+<div style="display:flex;align-items:center;gap:16px;border-top:1px solid #D8E0E9;padding-top:14px"><p style="margin:0;width:200px;font-size:26px;line-height:1.3;text-align:right;color:#14213D">none of the 8</p><div style="width:614px;height:38px;background:#B4BFCC;border-radius:4px"></div><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">2,304 · 46.2%</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">15× math vs probabilities</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Macro F1 headline, per-tag scores beside it</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Thresholds matter</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Logistic regression: 0.19 at 0.5, 0.61 per-tag</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Rare tags, small test sets</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">So scores carry bootstrap intervals</p>
+</div>
+</div>
+</div>
+</section>
+<aside>37 tags exist in all, 2.8 per problem; the task statement asks for 8. math dominates with 28% of problems, probabilities has 92, so every tag weighs one eighth in the macro F1 and per-tag scores are reported. Every tag is a minority, so a 0.5 cutoff rarely fires: the first, untuned logistic regression goes from 0.19 to 0.61 macro F1 with thresholds chosen per tag on dev folds. 46% of problems have none of the 8 tags; they stay in as negatives, so a model must also learn to predict nothing. With 21 games and 18 probabilities problems in test, a few points of F1 on a rare tag are within the noise.</aside>
+<section id="data-counts" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:26px;line-height:1.3;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Data analysis</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D">Tags per problem</h2>
+<p style="margin:4px 0 0 0;font-size:34px;font-weight:500;line-height:1.3;color:#0F766E">One decision per tag; an empty answer is allowed</p>
+</div>
+<div style="display:flex;gap:64px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-size:28px;line-height:1.3;font-weight:600;color:#14213D">All 37 tags per problem <span style="font-weight:400;color:#6A7180">· mean 2.8, median 3</span></p>
+<div style="display:flex;align-items:flex-end;gap:8px;height:340px;border-bottom:2px solid #6A7180">
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">41</p><div style="width:60px;height:8px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">858</p><div style="width:60px;height:177px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">1,456</p><div style="width:60px;height:300px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">1,271</p><div style="width:60px;height:262px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">774</p><div style="width:60px;height:159px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">338</p><div style="width:60px;height:70px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">165</p><div style="width:60px;height:34px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">57</p><div style="width:60px;height:12px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">15</p><div style="width:60px;height:3px;background:#14213D"></div></div>
+<div style="width:72px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">7</p><div style="width:60px;height:2px;background:#14213D"></div></div>
+</div>
+<div style="display:flex;gap:8px">
+<p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">1</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">2</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">3</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">4</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">5</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">6</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">7</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">8</p><p style="margin:0;width:72px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">9+</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-size:28px;line-height:1.3;font-weight:600;color:#14213D">The 8 focus tags per problem <span style="font-weight:400;color:#6A7180">· mean 0.68</span></p>
+<div style="display:flex;align-items:flex-end;gap:12px;height:340px;border-bottom:2px solid #6A7180">
+<div style="width:96px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">2,304</p><div style="width:80px;height:300px;background:#B4BFCC"></div></div>
+<div style="width:96px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">2,019</p><div style="width:80px;height:263px;background:#2F6DB5"></div></div>
+<div style="width:96px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">596</p><div style="width:80px;height:78px;background:#2F6DB5"></div></div>
+<div style="width:96px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">55</p><div style="width:80px;height:7px;background:#2F6DB5"></div></div>
+<div style="width:96px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">7</p><div style="width:80px;height:2px;background:#2F6DB5"></div></div>
+<div style="width:96px;display:flex;flex-direction:column;align-items:center;gap:4px"><p style="margin:0;font-size:26px;line-height:1.2;color:#3D4658">1</p><div style="width:80px;height:2px;background:#2F6DB5"></div></div>
+</div>
+<div style="display:flex;gap:12px">
+<p style="margin:0;width:96px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0</p><p style="margin:0;width:96px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">1</p><p style="margin:0;width:96px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">2</p><p style="margin:0;width:96px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">3</p><p style="margin:0;width:96px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">4</p><p style="margin:0;width:96px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">5</p>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Mostly one focus tag</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">75% of tagged problems carry exactly one of the 8</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Focus tags come with others</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">89% also carry a non-focus tag, e.g. greedy, dp</p>
+</div>
+</div>
+</section>
+<aside>Over all 37 tags, a problem carries 2.8 tags on average, most often 2 or 3, up to 11. Over the 8 focus tags the picture changes: 2,304 problems carry none of them, 2,019 exactly one, 596 two, and only 63 three or more. So among the problems that have a focus tag, three quarters have exactly one, and the mean is 1.27. Focus tags rarely come alone: 89% of these problems also carry a non-focus tag such as greedy, implementation or dp, and the more focus tags a problem has, the more tags it has overall. The consequence for the models: each tag is a separate yes or no decision with its own threshold, there is no fixed number of tags to output, and predicting nothing is a valid and frequent answer.</aside>
+<section id="data-pairs" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Data analysis</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Which tags appear together</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">Math is the hub; strings stands alone</p>
+</div>
+<div style="display:flex;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658;padding-left:200px;white-space:nowrap"><b style="color:#14213D">Each row:</b> share of its problems that also carry the column tag</p>
+<div style="display:grid;grid-template-columns:196px repeat(8, 128px);grid-template-rows:repeat(8, 60px) auto;column-gap:4px;row-gap:4px">
+<p style="margin:0;grid-row:1;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">math</p>
+<div style="grid-row:1;grid-column:2;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<div style="grid-row:1;grid-column:3;height:60px;background:#e6f0f9;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">5%</p></div>
+<div style="grid-row:1;grid-column:4;height:60px;background:#eef5fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<div style="grid-row:1;grid-column:5;height:60px;background:#b3d3e8;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">19%</p></div>
+<div style="grid-row:1;grid-column:6;height:60px;background:#eef5fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<div style="grid-row:1;grid-column:7;height:60px;background:#e9f2fb;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">4%</p></div>
+<div style="grid-row:1;grid-column:8;height:60px;background:#f0f7fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">2%</p></div>
+<div style="grid-row:1;grid-column:9;height:60px;background:#ecf4fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<p style="margin:0;grid-row:2;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">graphs</p>
+<div style="grid-row:2;grid-column:2;height:60px;background:#cbdef1;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">13%</p></div>
+<div style="grid-row:2;grid-column:3;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<div style="grid-row:2;grid-column:4;height:60px;background:#f0f7fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">2%</p></div>
+<div style="grid-row:2;grid-column:5;height:60px;background:#e9f2fa;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">4%</p></div>
+<div style="grid-row:2;grid-column:6;height:60px;background:#9bc9e0;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#14213D">23%</p></div>
+<div style="grid-row:2;grid-column:7;height:60px;background:#f3f9fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:2;grid-column:8;height:60px;background:#f3f9fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:2;grid-column:9;height:60px;background:#f3f9fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<p style="margin:0;grid-row:3;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">strings</p>
+<div style="grid-row:3;grid-column:2;height:60px;background:#d8e7f5;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">9%</p></div>
+<div style="grid-row:3;grid-column:3;height:60px;background:#eef5fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<div style="grid-row:3;grid-column:4;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<div style="grid-row:3;grid-column:5;height:60px;background:#f1f7fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">2%</p></div>
+<div style="grid-row:3;grid-column:6;height:60px;background:#ebf3fb;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">4%</p></div>
+<div style="grid-row:3;grid-column:7;height:60px;background:#f5fafe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">0%</p></div>
+<div style="grid-row:3;grid-column:8;height:60px;background:#f2f8fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:3;grid-column:9;height:60px;background:#f7fbff;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">0%</p></div>
+<p style="margin:0;grid-row:4;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">number theory</p>
+<div style="grid-row:4;grid-column:2;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">75%</p></div>
+<div style="grid-row:4;grid-column:3;height:60px;background:#e1edf8;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">7%</p></div>
+<div style="grid-row:4;grid-column:4;height:60px;background:#f0f7fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">2%</p></div>
+<div style="grid-row:4;grid-column:5;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<div style="grid-row:4;grid-column:6;height:60px;background:#eaf2fb;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">4%</p></div>
+<div style="grid-row:4;grid-column:7;height:60px;background:#f2f8fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:4;grid-column:8;height:60px;background:#eff6fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">2%</p></div>
+<div style="grid-row:4;grid-column:9;height:60px;background:#eef6fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<p style="margin:0;grid-row:5;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">trees</p>
+<div style="grid-row:5;grid-column:2;height:60px;background:#d0e2f2;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">12%</p></div>
+<div style="grid-row:5;grid-column:3;height:60px;background:#3f8fc4;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">38%</p></div>
+<div style="grid-row:5;grid-column:4;height:60px;background:#e8f1fa;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">5%</p></div>
+<div style="grid-row:5;grid-column:5;height:60px;background:#e9f2fa;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">4%</p></div>
+<div style="grid-row:5;grid-column:6;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<div style="grid-row:5;grid-column:7;height:60px;background:#f3f8fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:5;grid-column:8;height:60px;background:#eef5fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<div style="grid-row:5;grid-column:9;height:60px;background:#eef5fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<p style="margin:0;grid-row:6;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">geometry</p>
+<div style="grid-row:6;grid-column:2;height:60px;background:#4d99ca;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">36%</p></div>
+<div style="grid-row:6;grid-column:3;height:60px;background:#ebf3fb;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">4%</p></div>
+<div style="grid-row:6;grid-column:4;height:60px;background:#f3f8fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:6;grid-column:5;height:60px;background:#edf5fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">3%</p></div>
+<div style="grid-row:6;grid-column:6;height:60px;background:#eff6fc;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">2%</p></div>
+<div style="grid-row:6;grid-column:7;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<div style="grid-row:6;grid-column:8;height:60px;background:#f3f8fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:6;grid-column:9;height:60px;background:#f7fbff;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">0%</p></div>
+<p style="margin:0;grid-row:7;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">games</p>
+<div style="grid-row:7;grid-column:2;height:60px;background:#7bb7d9;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#14213D">28%</p></div>
+<div style="grid-row:7;grid-column:3;height:60px;background:#e4eff9;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">6%</p></div>
+<div style="grid-row:7;grid-column:4;height:60px;background:#e4eff9;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">6%</p></div>
+<div style="grid-row:7;grid-column:5;height:60px;background:#deebf7;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">8%</p></div>
+<div style="grid-row:7;grid-column:6;height:60px;background:#dbe9f6;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">9%</p></div>
+<div style="grid-row:7;grid-column:7;height:60px;background:#f1f7fd;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">2%</p></div>
+<div style="grid-row:7;grid-column:8;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<div style="grid-row:7;grid-column:9;height:60px;background:#f4f9fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<p style="margin:0;grid-row:8;grid-column:1;align-self:center;justify-self:end;font-size:26px;text-align:right;color:#14213D">probabilities</p>
+<div style="grid-row:8;grid-column:2;height:60px;background:#1460a8;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">49%</p></div>
+<div style="grid-row:8;grid-column:3;height:60px;background:#e1edf8;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">7%</p></div>
+<div style="grid-row:8;grid-column:4;height:60px;background:#f7fbff;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">0%</p></div>
+<div style="grid-row:8;grid-column:5;height:60px;background:#d7e6f5;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">10%</p></div>
+<div style="grid-row:8;grid-column:6;height:60px;background:#d7e6f5;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">10%</p></div>
+<div style="grid-row:8;grid-column:7;height:60px;background:#f7fbff;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">0%</p></div>
+<div style="grid-row:8;grid-column:8;height:60px;background:#f3f9fe;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:400;color:#14213D">1%</p></div>
+<div style="grid-row:8;grid-column:9;height:60px;background:#08306b;display:flex;align-items:center;justify-content:center"><p style="margin:0;font-size:26px;font-weight:600;color:#FFFFFF">100%</p></div>
+<p style="grid-row:9;grid-column:2;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">math</p>
+<p style="grid-row:9;grid-column:3;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">graphs</p>
+<p style="grid-row:9;grid-column:4;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">strings</p>
+<p style="grid-row:9;grid-column:5;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">number theory</p>
+<p style="grid-row:9;grid-column:6;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">trees</p>
+<p style="grid-row:9;grid-column:7;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">geometry</p>
+<p style="grid-row:9;grid-column:8;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">games</p>
+<p style="grid-row:9;grid-column:9;align-self:start;justify-self:center;width:128px;padding-top:8px;margin:0;font-size:24px;line-height:1.15;text-align:center;color:#14213D">probabilities</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Not symmetric</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Only 19% of math is number theory</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Graphs and trees</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">38% of trees are also graphs</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">So</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">The split balances the 9 frequent pairs</p>
+</div>
+</div>
+</div>
+</section>
+<aside>Each row is a tag; each cell is the share of that tag's problems that also carry the column tag, so the diagonal is 100%. Read it by rows. Math is the hub: three quarters of number theory problems, half of probabilities, a third of geometry and more than a quarter of games are also tagged math. The relation is not symmetric: math is so frequent that only 19% of math problems are number theory. Graphs and trees form the second pair: 38% of trees problems are also graphs, and 23% of graphs problems are trees. Strings stands apart, sharing under 10% of its problems with any other focus tag. Because one problem often needs two tags, every tag gets its own model and threshold, and the split balances the nine pairs shared by 20 or more problems.</aside>
+<section id="div-protocol" data-transition="fade" style="background:#14213D;color:#F5F7FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-size:160px;font-weight:600;line-height:1;color:#14B8A6">02</p>
+<h2 style="font-size:96px;font-weight:600;line-height:1.1;color:#F5F7FA">The protocol</h2>
+<p style="font-size:36px;line-height:1.3;color:#D5DAE3">Duplicates · split · pipeline · reproducibility · model choice</p>
+</section>
+<aside>Section two: how the evaluation is kept honest. Near-duplicate problems stay together, the split is frozen, the pipeline is the same at training and prediction, every result is reproducible, and every choice is made on dev.</aside>
+<section id="duplicates" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Data quality</p>
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Duplicate problems</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">82 version pairs; a random split leaks about 26</p>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="width:680px;background:#E6ECF2;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:26px;line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#2F6DB5">Easy · B1 · difficulty 800</p>
+<h3 style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Wonderful Coloring 1</h3>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Paint a string's letters in two colours; print how many are red.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+<p style="margin:0;font-size:26px;line-height:1.3;background:#14213D;color:#F5F7FA;padding:4px 16px;border-radius:999px">strings</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">greedy</p>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px">
+<p style="margin:0;font-size:26px;line-height:1.3;color:#6A7180">TF-IDF cosine</p>
+<p style="margin:0;font-size:72px;font-weight:600;line-height:1;color:#0F766E">0.497</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">0.8 misses it</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">LLMs: <b style="color:#14213D">versions</b></p>
+<p style="margin:0;font-size:30px;line-height:1.3;font-weight:600;color:#14213D">→ one group</p>
+</div>
+<div style="width:680px;background:#E6ECF2;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:8px">
+<p style="margin:0;font-size:26px;line-height:1.2;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:#0F766E">Hard · B2 · difficulty 1400</p>
+<h3 style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Wonderful Coloring 2</h3>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Same rules on integers with k colours; print the colouring.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px">
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">greedy</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">binary search</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">constructive algorithms</p>
+<p style="margin:0;font-size:26px;line-height:1.3;background:#D8E0E9;color:#3D4658;padding:4px 16px;border-radius:999px">data structures</p>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:32px;align-items:stretch">
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="padding:4px 0;width:46%;text-align:left;font-weight:600;color:#14213D">Detector</th><th style="padding:4px 0;text-align:right;width:27%;font-weight:600;color:#14213D">Missed of 82</th><th style="padding:4px 0;text-align:right;width:27%;font-weight:600;color:#14213D">Largest group</th></tr>
+<tr><td style="padding:4px 0">TF-IDF cosine ≥ 0.8</td><td style="padding:4px 0;text-align:right">11</td><td style="padding:4px 0;text-align:right">2</td></tr>
+<tr><td style="padding:4px 0">TF-IDF cosine ≥ 0.4</td><td style="padding:4px 0;text-align:right">0</td><td style="padding:4px 0;text-align:right">11, chained</td></tr>
+<tr><td style="padding:4px 0;font-weight:600;color:#0F766E">0.4 + two LLM verdicts</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">0</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">2</td></tr>
+</table>
+</div>
+<div style="width:520px;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Labels disagree</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">strings only on the easy version</p>
+</div>
+</div>
+</section>
+<aside>A real pair from the data, described in my own words. Wonderful Coloring 1 and 2 are the easy and hard versions of one problem, released together in 2021: the easy one paints letters of a string with two colours and asks for a count; the hard one generalises to a sequence of integers with k colours and asks for the colouring itself. Their TF-IDF cosine is only 0.497, so a 0.8 threshold would miss them, while a 0.4 threshold catches them but chains unrelated problems into groups of up to 11. That is why candidates at 0.4 go to two independent LLM verdicts, here both "versions", and the pair becomes one group that lands whole in one dev fold. Note the tags: the easy version is tagged strings, the hard one has no focus tag at all, a reminder that labels are not fully consistent. Across the data, 82 pairs are such versions; a random split would put about 26 of them across train and test.</aside>
+<section id="split" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Train and test split</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">Test mirrors the data; no duplicate pair is split</p>
+</div>
+<div style="display:flex;align-items:stretch;gap:12px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">4,982 problems</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">one Python solution each</p>
+</div>
+<p style="margin:0;align-self:center;font-size:40px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Near-duplicates</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">203 TF-IDF pairs, 82 kept by LLMs</p>
+</div>
+<p style="margin:0;align-self:center;font-size:40px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">4,900 groups</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">82 pairs, 4,818 singletons</p>
+</div>
+<p style="margin:0;align-self:center;font-size:40px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:22px 24px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Stratify [2]</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">whole groups; 8 tags, 9 pairs, year</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex">
+<p style="margin:0;width:1332px;font-size:26px;line-height:1.3;color:#3D4658">Dev · 3,988 problems: train and tune, in 5 folds of 790 to 806</p>
+<p style="margin:0;width:332px;font-size:26px;line-height:1.3;color:#3D4658">Test · 994 (20%), once</p>
+</div>
+<div style="display:flex;height:72px">
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 1</p></div>
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 2</p></div>
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 3</p></div>
+<div style="width:266px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 4</p></div>
+<div style="width:268px;background:#2F6DB5;border-right:4px solid #F5F7FA;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Fold 5</p></div>
+<div style="width:332px;background:#0F766E;display:flex;align-items:center;justify-content:center"><p style="font-size:26px;font-weight:600;color:#F5F7FA">Test</p></div>
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="padding:4px 0;font-weight:600;color:#14213D;width:56%;text-align:left">Share of problems</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:22%;text-align:right">All</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:22%;text-align:right">Test</th></tr>
+<tr><td style="padding:4px 0">math</td><td style="padding:4px 0;text-align:right">28.3%</td><td style="padding:4px 0;text-align:right">28.3%</td></tr>
+<tr><td style="padding:4px 0">number theory (worst)</td><td style="padding:4px 0;text-align:right">7.0%</td><td style="padding:4px 0;text-align:right">7.2%</td></tr>
+<tr><td style="padding:4px 0">none of the 8</td><td style="padding:4px 0;text-align:right">46.2%</td><td style="padding:4px 0;text-align:right">46.2%</td></tr>
+</table>
+</div>
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="padding:4px 0;font-weight:600;color:#14213D;width:56%;text-align:left">Against 50 random splits</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:20%;text-align:right">Frozen</th><th style="padding:4px 0;font-weight:600;color:#14213D;width:24%;text-align:right">Random</th></tr>
+<tr><td style="padding:4px 0">Duplicate pairs split</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">0</td><td style="padding:4px 0;text-align:right">25.8</td></tr>
+<tr><td style="padding:4px 0">Worst tag share off by</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">3.1%</td><td style="padding:4px 0;text-align:right">28.1%</td></tr>
+<tr><td style="padding:4px 0">Year mix off by</td><td style="padding:4px 0;text-align:right;font-weight:600;color:#0F766E">0.6%</td><td style="padding:4px 0;text-align:right">3.7%</td></tr>
+</table>
+</div>
+</div>
+<p style="margin:0;font-size:24px;line-height:1.3;color:#6A7180;white-space:nowrap">[2] K. Sechidis, G. Tsoumakas, I. Vlahavas. <i>On the Stratification of Multi-Label Data</i>. ECML PKDD 2011.</p>
+</section>
+<aside>The first step finds problems that are versions of each other: TF-IDF on the descriptions proposes 203 pairs at cosine 0.4 or more, and two independent verdicts from Claude Opus 5.5 keep the 82 that are easy and hard versions of one problem; the verdicts agree on 484 of the 485 pairs they judged. Then iterative stratification, the method of Sechidis, Tsoumakas and Vlahavas from ECML PKDD 2011, places whole groups: it takes the rarest label first and puts each of its groups in the fold that lacks it most, balancing the 8 tags, the 9 pairs shared by 20 or more problems and the release year; problems without a focus tag are stratified apart, by year. The test fifth, 994 problems, is scored once, and mirrors the data: math is 28.3% of it as of all problems, and the worst tag, number theory, is 7.2% against 7.0%; the dev part is cut again into five folds the same way. Against 50 random splits, the frozen one leaks no pair (random by problem leaks 26 on average) and its worst tag is 3.1% off its share, against 28% for random group splits. The split is frozen in assets/split/split.csv.</aside>
+<section id="pipeline" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">The pipeline</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One pipeline for every method; one prediction in 7 ms</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Built once, for every method</p>
+<div style="display:flex;align-items:center;gap:16px">
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.3;color:#14213D;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:999px;padding:12px 24px;white-space:nowrap">Data</p>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.3;color:#14213D;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:999px;padding:12px 24px;white-space:nowrap">Frozen split</p>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.3;color:#14213D;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:999px;padding:12px 24px;white-space:nowrap">Tune on dev</p>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.3;color:#14213D;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:999px;padding:12px 24px;white-space:nowrap">Freeze, test once</p>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.3;color:#14213D;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:999px;padding:12px 24px;white-space:nowrap">Verify · MLflow · CLI</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">One prediction, with tfidf</p>
+<div style="display:flex;align-items:stretch;gap:10px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:22px 20px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Raw problem</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">statement, notes, solution</p>
+</div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:22px 20px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Preprocess</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">same as in training</p>
+</div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1.3;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:22px 20px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">TF-IDF blocks</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">statement: 43,354</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">code: 2,354, × 0.22</p>
+</div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:22px 20px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">8 linear SVMs</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">a score and threshold per tag</p>
+</div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#14213D;border-radius:14px;padding:22px 20px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#F5F7FA">Tags</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#D5DAE3">0 to 8, in 7 ms</p>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">203 Optuna trials</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Sample I/O cues dropped: −0.014 macro F1</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="margin:0;font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Code never parsed</p>
+<p style="margin:0;font-size:30px;line-height:1.3;color:#3D4658">Regex tokens read Python 2 and 3 alike</p>
+</div>
+</div>
+</section>
+<aside>Top lane: what happens once. The data is read and split, each method is tuned on dev out of fold only, then frozen: dev predictions out of fold, the test set scored once. A verify command re-derives every frozen file, MLflow mirrors it, and the CLI serves it. Bottom lane: one prediction with the TF-IDF model. The raw problem goes through the same preprocessing as in training, because it is the first step of the saved pipeline. Two TF-IDF blocks: word unigrams and bigrams of the statement with its notes, 43,354 features, and regex tokens of the code, 2,354 features weighted 0.22. One linear SVM per tag scores the problem, and each tag's score is compared with its own threshold, chosen on dev out of fold. About 7 ms once loaded. The study tried sample I/O cue features too; they lowered the out-of-fold F1, so the chosen model leaves them out.</aside>
+<section id="repro" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Reproducibility</h2>
+<div style="display:flex;gap:40px">
+<div style="flex:none;width:980px;display:flex;flex-direction:column;background:#14213D;border-radius:16px;padding:20px 32px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA"><span style="color:#8FB3E0">#&nbsp;1&nbsp;·&nbsp;One&nbsp;sklearn&nbsp;Pipeline:&nbsp;raw&nbsp;problems&nbsp;in,&nbsp;a&nbsp;score&nbsp;per&nbsp;tag&nbsp;out</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">pipeline&nbsp;=&nbsp;Pipeline([</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:#99F6E4">&quot;preprocess&quot;</span>,&nbsp;FunctionTransformer(raw_to_problems)),</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:#99F6E4">&quot;features&quot;</span>,&nbsp;feature_blocks(params)),&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;statement&nbsp;+&nbsp;code&nbsp;TF-IDF</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;(<span style="color:#99F6E4">&quot;classifier&quot;</span>,&nbsp;OneVsRestClassifier(</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LinearSVC(C=params.c,&nbsp;random_state=MODEL_SEED))),</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">])</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA"><span style="color:#8FB3E0">#&nbsp;2&nbsp;·&nbsp;Thresholds&nbsp;cross-fitted&nbsp;on&nbsp;the&nbsp;5&nbsp;frozen&nbsp;dev&nbsp;folds,&nbsp;then&nbsp;refit</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">model&nbsp;=&nbsp;CrossFittedTagThresholds(pipeline,&nbsp;refit=True)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">model.fit(dev_raw,&nbsp;dev_labels,&nbsp;groups=dev_raw[<span style="color:#99F6E4">&quot;fold&quot;</span>])</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">skops.io.dump(model,&nbsp;folder&nbsp;/&nbsp;<span style="color:#99F6E4">&quot;model.skops&quot;</span>)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA"><span style="color:#8FB3E0">#&nbsp;3&nbsp;·&nbsp;Fingerprint;&nbsp;log_method&nbsp;logs&nbsp;once&nbsp;per&nbsp;recipe,&nbsp;in&nbsp;its&nbsp;own&nbsp;run</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">record&nbsp;=&nbsp;make_run_record(<span style="color:#99F6E4">&quot;tfidf&quot;</span>,&nbsp;recipe_sha256,&nbsp;allow_dirty=False,</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_dir=data,&nbsp;split_path=split)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">mlflow.pyfunc.log_model(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;models&nbsp;from&nbsp;code</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;name=<span style="color:#99F6E4">&quot;tagging_method&quot;</span>,</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;python_model=<span style="color:#99F6E4">&quot;tracking/pyfunc_model.py&quot;</span>,</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;artifacts={<span style="color:#99F6E4">&quot;method&quot;</span>:&nbsp;str(folder)},</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;signature=raw_input_signature(tags,&nbsp;input_columns),</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;pip_requirements=method_requirements(<span style="color:#99F6E4">&quot;tfidf&quot;</span>),</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;params=flat_record(record))</p></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:32px"><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">1 · Same object everywhere</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Same code to train, verify and <span style="font-family:'JetBrains Mono', 'Courier New', monospace;white-space:nowrap">predict --method tfidf</span>.</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">2 · Honest and repeatable</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Freeze refuses to write unless it reproduces the study's F1.</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">3 · Pinned in MLflow</p><p style="font-size:30px;line-height:1.3;color:#3D4658">The run record pins commit, data, split and environment.</p></div></div>
+</div>
+</section>
+<aside>How the TF-IDF method is built, simplified from the repository. Step one: a single scikit-learn Pipeline takes raw problems: its first step is the project's preprocessing, then the two TF-IDF feature blocks, then one linear SVM per tag. Because preprocessing lives inside the pipeline, the exact same object is used to train, to verify and to predict from the command line with --method tfidf. Step two: CrossFittedTagThresholds wraps the pipeline: it clones and fits it on four dev folds at a time to score the fifth, chooses each tag's threshold on those out-of-fold scores, then refits on all of dev; the result is saved with skops. Step three: the run record fingerprints what the result came from, the git commit, the dataset and split hashes, the environment and the settings, and log_method logs it once per recipe, in its own MLflow run, through a models-from-code wrapper, with its input signature, pinned requirements and parameters, then the dev and test metrics on the logged model. The freeze command refuses to write anything unless the new fit reproduces the study's out-of-fold F1 per tag exactly, its thresholds, and the pinned test macro F1; verify refits and re-derives the predictions, scores and method folder, and checks the run record's recipe.</aside>
+<section id="strategies" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">How methods are chosen</h2>
+<p style="font-size:34px;font-weight:500;line-height:1.3;color:#0F766E;white-space:nowrap">Choose on dev out of fold; score test once</p>
+</div>
+<div style="display:flex;gap:48px;align-items:flex-start">
+<div style="flex:none;width:580px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D"><span style="color:#0F766E">1</span>&nbsp;&nbsp;Out-of-fold scores</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Fit on four folds, score the fifth</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D"><span style="color:#0F766E">2</span>&nbsp;&nbsp;Cross-fitted thresholds</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Each fold's threshold is chosen on the other folds</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D"><span style="color:#2F6DB5">3</span>&nbsp;&nbsp;The test set, once</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">994 test predictions: reported, never used to choose</p>
+</div>
+</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">How each family learns</p>
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="width:30%;text-align:left;font-weight:600;color:#14213D;padding:10px 16px 10px 0;border-bottom:2px solid #D8E0E9">Family</th><th style="width:70%;text-align:left;font-weight:600;color:#14213D;padding:10px 0;border-bottom:2px solid #D8E0E9">Training and tuning</th></tr>
+<tr><td style="padding:10px 16px 10px 0;border-bottom:1px solid #D8E0E9;vertical-align:top">Label prior</td><td style="padding:10px 0;border-bottom:1px solid #D8E0E9">the tags seen in training, for every problem</td></tr>
+<tr><td style="padding:10px 16px 10px 0;border-bottom:1px solid #D8E0E9;vertical-align:top">TF-IDF</td><td style="padding:10px 0;border-bottom:1px solid #D8E0E9">203 Optuna trials on dev out-of-fold macro F1</td></tr>
+<tr><td style="padding:10px 16px 10px 0;border-bottom:1px solid #D8E0E9;vertical-align:top">Cross-encoder classifier (ModernBERT)</td><td style="padding:10px 0;border-bottom:1px solid #D8E0E9">tuned on one dev fold, then a bag of five fold models</td></tr>
+<tr><td style="padding:10px 16px 10px 0;border-bottom:1px solid #D8E0E9;vertical-align:top">Dense embeddings (F2LLM)</td><td style="padding:10px 0;border-bottom:1px solid #D8E0E9">a grid study of heads over frozen embeddings</td></tr>
+<tr><td style="padding:10px 16px 10px 0;border-bottom:1px solid #D8E0E9;vertical-align:top">LLM-based (Code2Tag, DesCode2Tag)</td><td style="padding:10px 0;border-bottom:1px solid #D8E0E9">the xCodeEval paper's fixed prompts: nothing learned</td></tr>
+<tr><td style="padding:10px 16px 10px 0;vertical-align:top">TypeSafe Jev</td><td style="padding:10px 0">fixed questions and definitions: only the thresholds</td></tr>
+</table>
+</div>
+</div>
+</section>
+<aside>Model selection never touches the test set (ADR 0001). Every method is compared on dev out-of-fold macro F1: fitted on four folds, scored on the fifth, with per-tag thresholds chosen on the other folds. Tuning happens only on dev: TF-IDF's 200-trial study, ModernBERT tuned on one fold because a trial takes 5 to 20 minutes, F2LLM's grid studies. The zero-shot methods learn nothing, and Jev learns only its eight thresholds. Then each frozen method scores the 994 test problems once; the next slides report those test scores.</aside>
+<section id="div-results" data-transition="fade" style="background:#14213D;color:#F5F7FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-size:160px;font-weight:600;line-height:1;color:#14B8A6">03</p>
+<h2 style="font-size:96px;font-weight:600;line-height:1.1;color:#F5F7FA">Results</h2>
+<p style="font-size:36px;line-height:1.3;color:#D5DAE3">The paper · score against speed · all methods</p>
+</section>
+<aside>Section three: the results on the test set, scored once per method, beside the xCodeEval paper.</aside>
+<section id="paper" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;font-weight:600;line-height:1.3;letter-spacing:3px;text-transform:uppercase;color:#0F766E">xCodeEval, Khan et al., ACL 2024</p>
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Comparison with the paper</h2>
+</div>
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.3;color:#3D4658">
+<tr><th style="width:29%;text-align:left;font-weight:600;color:#14213D;padding:9px 16px 9px 12px;border-bottom:2px solid #D8E0E9">Setting</th><th style="width:20%;text-align:left;font-weight:600;color:#14213D;padding:9px 16px 9px 0;border-bottom:2px solid #D8E0E9">Model</th><th style="width:15%;text-align:left;font-weight:600;color:#14213D;padding:9px 16px 9px 0;border-bottom:2px solid #D8E0E9">Fine-tuned?</th><th style="width:20%;text-align:right;font-weight:600;color:#14213D;padding:9px 16px 9px 0;border-bottom:2px solid #D8E0E9">All tags, dev / test</th><th style="width:16%;text-align:right;font-weight:600;color:#14213D;padding:9px 12px 9px 0;border-bottom:2px solid #D8E0E9">8 focus tags, test</th></tr>
+<tr style="background:#E6ECF2"><td style="padding:9px 16px 9px 12px;border-bottom:1px solid #D8E0E9">Paper · LLM-based (Code2Tag)</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">gpt-3.5-turbo-0301</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">No: zero-shot</td><td style="text-align:right;padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">29.45 (its validation)</td><td style="text-align:right;padding:9px 12px 9px 0;border-bottom:1px solid #D8E0E9">not reported</td></tr>
+<tr style="background:#E6ECF2"><td style="padding:9px 16px 9px 12px;border-bottom:1px solid #D8E0E9">Paper · LLM-based (DesCode2Tag)</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">gpt-3.5-turbo-0301</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">No: zero-shot</td><td style="text-align:right;padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">33.73 (its validation)</td><td style="text-align:right;padding:9px 12px 9px 0;border-bottom:1px solid #D8E0E9">not reported</td></tr>
+<tr><td style="padding:9px 16px 9px 12px;border-bottom:1px solid #D8E0E9">Ours · code2tag-text</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">gpt-6-luna</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">No: zero-shot</td><td style="text-align:right;padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">46.8 / 47.0</td><td style="text-align:right;padding:9px 12px 9px 0;border-bottom:1px solid #D8E0E9">63.1</td></tr>
+<tr><td style="padding:9px 16px 9px 12px;border-bottom:1px solid #D8E0E9">Ours · descode2tag-text</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">gpt-6-luna</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">No: zero-shot</td><td style="text-align:right;padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">49.8 / 50.4</td><td style="text-align:right;padding:9px 12px 9px 0;border-bottom:1px solid #D8E0E9">72.1</td></tr>
+<tr><td style="padding:9px 16px 9px 12px;border-bottom:1px solid #D8E0E9">Ours · descode2tag-json</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">gpt-6-luna + schema</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">No: zero-shot</td><td style="text-align:right;padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">49.0 / 51.5</td><td style="text-align:right;padding:9px 12px 9px 0;border-bottom:1px solid #D8E0E9">74.1</td></tr>
+<tr><td style="padding:9px 16px 9px 12px;border-bottom:1px solid #D8E0E9">Untuned logistic regression</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">TF-IDF of the statement</td><td style="padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">Yes</td><td style="text-align:right;padding:9px 16px 9px 0;border-bottom:1px solid #D8E0E9">33.6 / 36.5</td><td style="text-align:right;padding:9px 12px 9px 0;border-bottom:1px solid #D8E0E9">64.7</td></tr>
+<tr style="background:#E2E9F4"><td style="padding:9px 16px 9px 12px;font-weight:600;color:#14213D">jev-statement-code (CLI default)</td><td style="padding:9px 16px 9px 0">TypeSafe jev-1.13.0</td><td style="padding:9px 16px 9px 0">No: thresholds</td><td style="text-align:right;padding:9px 16px 9px 0">8 tags only</td><td style="text-align:right;padding:9px 12px 9px 0;font-weight:600;color:#14213D">75.1</td></tr>
+</table>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Same direction</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Statement adds 4.3 points in the paper, 3.4 here</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Not like-for-like</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">31 vs 37 tags, rebuilt prompts, newer model</p>
+</div>
+</div>
+</section>
+<aside>Macro F1 in percent. The paper's only tag baseline is GPT-3.5 asked zero-shot, on Python: 29.5 from the code, 33.7 with the description, averaged over its 31 tags on its validation split. It reports no per-tag score, so no focus-8 number. We rebuilt both prompts, since the paper never shows them, and sent them to gpt-6-luna: 47 to 52 over all 37 tags, and 63 to 74 on the 8 focus tags. On test, the all-tag column counts the one tag with no test problem, schedules, as zero, for every row. Same direction as the paper: the problem statement helps, by 3.4 points on our test against 4.3 in the paper. But this is context, not a leaderboard: other tags, other problems, one solution per problem instead of many, rebuilt prompts and a model three years newer, and our problems were public before our model's cutoff, as the paper's mostly were before ChatGPT's. Even an untuned logistic regression on the statement matches the paper's GPT-3.5 out of fold. Our best focus-tag method reaches 75.1 on test.</aside>
+<section id="results" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:112px 128px; background:#f5f7fa">
+  <div style="display:flex; flex-direction:column; gap:16px">
+    <h2 style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1.1; white-space:nowrap; color:#14213d">Score against speed</h2>
+    <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:34px; font-weight:500; line-height:1.3; white-space:nowrap; color:#0f766e">All under the 10 s budget on a local RTX 2080 Ti (11 GB)</p>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:48px; align-items:start">
+    <div style="position:relative; width:1140px; height:630px; display:flex; flex-direction:column; flex:0 0 auto">
+      <svg xmlns="http://www.w3.org/2000/svg" aria-label="Scatter plot of test macro F1 against the median latency of one prediction, on a log scale from 4 milliseconds to 10 seconds, for twelve methods" viewBox="0 0 1140 620" style="position:absolute; top:0; left:0; width:1140px; height:620px">
+<rect x="120" y="20" width="990" height="520" fill="#FFFFFF" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="120" y1="124" x2="1110" y2="124" stroke="#E1E7EF" stroke-width="2"/>
+<line x1="120" y1="228" x2="1110" y2="228" stroke="#E1E7EF" stroke-width="2"/>
+<line x1="120" y1="332" x2="1110" y2="332" stroke="#E1E7EF" stroke-width="2"/>
+<line x1="120" y1="436" x2="1110" y2="436" stroke="#E1E7EF" stroke-width="2"/>
+<line x1="235.9" y1="20" x2="235.9" y2="540" stroke="#E1E7EF" stroke-width="2"/>
+<line x1="527.3" y1="20" x2="527.3" y2="540" stroke="#E1E7EF" stroke-width="2"/>
+<line x1="818.6" y1="20" x2="818.6" y2="540" stroke="#E1E7EF" stroke-width="2"/>
+<line x1="120" y1="540" x2="1110" y2="540" stroke="#8A93A6" stroke-width="2"/>
+<line x1="120" y1="20" x2="120" y2="540" stroke="#8A93A6" stroke-width="2"/>
+<line x1="1110" y1="20" x2="1110" y2="540" stroke="#0F766E" stroke-width="3" stroke-dasharray="10 8"/>
+<circle cx="190.8" cy="301.5" r="12" fill="#14213D" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="680.3" cy="278.6" r="12" fill="#2F6DB5" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="689.4" cy="249.1" r="12" fill="#2F6DB5" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="557.9" cy="118.8" r="12" fill="#8FB3E0" stroke="#2F6DB5" stroke-width="2"/>
+<circle cx="566.8" cy="158.3" r="12" fill="#8FB3E0" stroke="#2F6DB5" stroke-width="2"/>
+<circle cx="567.5" cy="97.3" r="12" fill="#8FB3E0" stroke="#2F6DB5" stroke-width="2"/>
+<circle cx="829.2" cy="500.5" r="12" fill="#99F6E4" stroke="#0F766E" stroke-width="2"/>
+<circle cx="834.9" cy="377.8" r="12" fill="#99F6E4" stroke="#0F766E" stroke-width="2"/>
+<circle cx="816.7" cy="190.2" r="12" fill="#14B8A6" stroke="#0F766E" stroke-width="2"/>
+<circle cx="843.1" cy="121.6" r="12" fill="#14B8A6" stroke="#0F766E" stroke-width="2"/>
+<circle cx="642.7" cy="135.4" r="12" fill="#115E59" stroke="#FFFFFF" stroke-width="2"/>
+<circle cx="648.2" cy="84.1" r="12" fill="#115E59" stroke="#FFFFFF" stroke-width="2"/>
+</svg>
+      <p style="position:absolute; top:1px; left:20px; width:90px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#3d4658">0.77</p>
+      <p style="position:absolute; top:105px; left:20px; width:90px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#3d4658">0.74</p>
+      <p style="position:absolute; top:209px; left:20px; width:90px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#3d4658">0.71</p>
+      <p style="position:absolute; top:313px; left:20px; width:90px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#3d4658">0.68</p>
+      <p style="position:absolute; top:417px; left:20px; width:90px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#3d4658">0.65</p>
+      <p style="position:absolute; top:521px; left:20px; width:90px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#3d4658">0.62</p>
+      <p style="position:absolute; top:554px; left:166px; width:140px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:center; color:#3d4658">10 ms</p>
+      <p style="position:absolute; top:554px; left:457px; width:140px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:center; color:#3d4658">100 ms</p>
+      <p style="position:absolute; top:554px; left:749px; width:140px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:center; color:#3d4658">1 s</p>
+      <p style="position:absolute; top:554px; left:1040px; width:140px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:center; color:#3d4658">10 s</p>
+      <p style="position:absolute; top:24px; left:132px; width:440px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; color:#3d4658">Test macro F1 (994 problems)</p>
+      <p style="position:absolute; top:594px; left:120px; width:990px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:center; color:#3d4658">Latency of one prediction: median, model loaded (log scale)</p>
+      <p style="position:absolute; top:506px; left:932px; width:170px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#0f766e">10 s budget</p>
+      <p style="position:absolute; top:281px; left:214px; width:200px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; color:#14213d"><b>TF-IDF</b></p>
+      <p style="position:absolute; top:226px; left:262px; width:400px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#14213d"><b>Cross-encoder classifier</b><br><b>(ModernBERT) ×2</b></p>
+      <p style="position:absolute; top:40px; left:668px; width:260px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; color:#14213d"><b>TypeSafe Jev ×2</b></p>
+      <p style="position:absolute; top:122px; left:868px; width:240px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; color:#14213d"><b>LLM-based</b><br><b>(DesCode2Tag) ×2</b></p>
+      <p style="position:absolute; top:94px; left:230px; width:300px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; text-align:right; color:#14213d"><b>Dense embeddings</b><br><b>(F2LLM) ×3</b></p>
+      <p style="position:absolute; top:404px; left:857px; width:240px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; color:#14213d"><b>LLM-based</b><br><b>(Code2Tag) ×2</b></p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px; flex:1; padding:26px 30px; background:#e6ecf2; border-radius:14px">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1.2; white-space:nowrap; color:#14213d">Cost per 1k predictions</p>
+      <table style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; color:#3d4658">
+        <tr><th style="padding:6px 12px; font-weight:600; width:70%; color:#14213d">Family</th><th style="padding:6px 12px; font-weight:600; width:30%; color:#14213d">Cost</th></tr>
+        <tr><td style="padding:6px 12px">TF-IDF, prior</td><td style="padding:6px 12px">free, CPU</td></tr>
+        <tr><td style="padding:6px 12px">Cross-encoder classifier (ModernBERT)</td><td style="padding:6px 12px">free, GPU</td></tr>
+        <tr><td style="padding:6px 12px">Dense embeddings (F2LLM)</td><td style="padding:6px 12px">free, GPU</td></tr>
+        <tr><td style="padding:6px 12px">LLM-based (Code2Tag)</td><td style="padding:6px 12px">$0.06–0.08</td></tr>
+        <tr><td style="padding:6px 12px">LLM-based (DesCode2Tag)</td><td style="padding:6px 12px">$0.11–0.13</td></tr>
+        <tr><td style="padding:6px 12px">TypeSafe Jev</td><td style="padding:6px 12px">$0.12–0.13</td></tr>
+      </table>
+    </div>
+  </div>
+  </section>
+<aside>Up and left is better: higher test macro F1, faster prediction. Two LLM-based families lead: TypeSafe Jev (0.737 and 0.751) answers in a quarter of a second; the dense-embedding methods (F2LLM, 0.730 to 0.748) answer in 0.13 to 0.14 seconds on the GPU, for free, against three to four seconds on a CPU, though their dev scores (0.70 to 0.71) are below Jev's (0.73). LLM-based DesCode2Tag, OpenAI gpt-6-luna reading the whole problem, reaches 0.741 in about a second. The fine-tuned cross-encoder classifiers (ModernBERT) and TF-IDF sit near 0.69 to 0.70; LLM-based Code2Tag, which reads only the solution, is lowest. Every method is under the ten-second budget once loaded, on the one GPU I had: an RTX 2080 Ti with 11 GB. The local methods were timed on it, one problem per call; TF-IDF and the prior run on the CPU, and the API methods run on their providers' servers. Costs: the local methods are free (ModernBERT and F2LLM were timed on an RTX 2080 Ti GPU); the API methods cost about ten cents per thousand problems. The test scores are reported here; the choice itself was made on dev.</aside>
+<section id="table" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">All methods</h2>
+<table style="width:100%;border-collapse:collapse;font-size:28px;line-height:1.25;color:#3D4658;white-space:nowrap">
+<tr><th style="width:18%;text-align:left;font-weight:600;color:#14213D;padding:5px 16px 5px 12px;border-bottom:2px solid #D8E0E9;white-space:nowrap">Method</th><th style="width:32%;text-align:left;font-weight:600;color:#14213D;padding:5px 16px 5px 0;border-bottom:2px solid #D8E0E9;white-space:nowrap">How it works</th><th style="width:13%;text-align:left;font-weight:600;color:#14213D;padding:5px 16px 5px 0;border-bottom:2px solid #D8E0E9;white-space:nowrap">Fine-tuned?</th><th style="width:6%;text-align:right;font-weight:600;color:#14213D;padding:5px 16px 5px 0;border-bottom:2px solid #D8E0E9;white-space:nowrap">Params</th><th style="width:7.5%;text-align:right;font-weight:600;color:#14213D;padding:5px 16px 5px 0;border-bottom:2px solid #D8E0E9;white-space:nowrap">Test F1</th><th style="width:7.5%;text-align:right;font-weight:600;color:#14213D;padding:5px 16px 5px 0;border-bottom:2px solid #D8E0E9;white-space:nowrap">Dev F1</th><th style="width:8%;text-align:right;font-weight:600;color:#14213D;padding:5px 16px 5px 0;border-bottom:2px solid #D8E0E9;white-space:nowrap">Latency</th><th style="width:8%;text-align:right;font-weight:600;color:#14213D;padding:5px 12px 5px 0;border-bottom:2px solid #D8E0E9;white-space:nowrap">Cost / 1k</th></tr>
+<tr style="background:#E2E9F4"><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap;font-weight:600;color:#14213D">jev-statement-code ★</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">Jev P(yes) per tag + thresholds</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (thresholds)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">n/d</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap;font-weight:600;color:#14213D">0.7515</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7293</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.26 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">$0.13</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">f2llm_late_fusion</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">dense emb. ridge + TF-IDF, blended</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (frozen)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">596M</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7477</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7057</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.14 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">free, GPU</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">f2llm_probe</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">dense embedding + ridge classifier</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (frozen)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">596M</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7415</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7087</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.13 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">free, GPU</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">descode2tag-json †</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">gpt-6-luna: statement + code → JSON</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (zero-shot)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">n/d</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7407</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7319</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">1.21 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">$0.13</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">jev-statement</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">Jev P(yes) per tag + thresholds</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (thresholds)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">n/d</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7367</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7289</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.25 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">$0.12</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">f2llm_early_fusion</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">dense embedding + TF-IDF + linear SVM</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (frozen)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">596M</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7301</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7022</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.14 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">free, GPU</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">descode2tag-text</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">gpt-6-luna: statement + code → text</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (zero-shot)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">n/d</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7209</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7061</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.99 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">$0.11</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">modernbert_base_full</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">cross-encoder classifier, 5 folds</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">Yes (full)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">150M</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.7039</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6530</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.36 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">free, GPU</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">modernbert_lora</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">LoRA cross-encoder classifier, 5 folds</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">Yes (LoRA)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">396M</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6954</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6611</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.33 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">free, GPU</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">tfidf</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">TF-IDF words + code + linear SVM</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">From scratch</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">366K</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6888</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6629</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.007 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">free, CPU</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">code2tag-json</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">gpt-6-luna: code only → JSON</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (zero-shot)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">n/d</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6668</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6514</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">1.14 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">$0.08</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">code2tag-text</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">gpt-6-luna: code only → text</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No (zero-shot)</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">n/d</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6314</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.6421</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">1.09 s</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">$0.06</td></tr>
+<tr><td style="text-align:left;padding:5px 16px 5px 12px;border-bottom:1px solid #D8E0E9;white-space:nowrap">label_prior</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">constant: predicts all 8 tags</td><td style="text-align:left;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">No model</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">—</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.1487</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">0.1485</td><td style="text-align:right;padding:5px 16px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">&lt; 1 ms</td><td style="text-align:right;padding:5px 12px 5px 0;border-bottom:1px solid #D8E0E9;white-space:nowrap">free, CPU</td></tr>
+</table>
+<p style="font-size:24px;line-height:1.3;color:#6A7180;white-space:nowrap">★ CLI default · † best dev F1 · Dev F1: out of fold · n/d: size not disclosed by the provider</p>
+</section>
+<aside>Test F1 is the test macro F1, scored once per method; Dev F1 is the dev out-of-fold macro F1, the score every choice is made on. The fine-tuned column asks whether training changes the weights of a pretrained network. Only the two ModernBERT methods are fine-tuned: all weights of ModernBERT-base, or a rank-32 LoRA adapter on ModernBERT-large. F2LLM keeps its encoder frozen and trains a linear head. The API methods learn nothing, except Jev's eight per-tag thresholds. TF-IDF is trained from scratch, with no pretrained model. Latency is the median of one prediction with the method loaded: ModernBERT and F2LLM on an RTX 2080 Ti GPU; on a CPU, F2LLM takes three to four seconds. The CLI default, jev-statement-code, has the best test score; descode2tag-json has the best dev score, 0.003 above it, but is 4.7 times slower, so the default stays Jev (ADR 0008).</aside>
+<section id="div-methods" data-transition="fade" style="background:#14213D;color:#F5F7FA;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;justify-content:center;gap:28px">
+<p style="font-size:160px;font-weight:600;line-height:1;color:#14B8A6">04</p>
+<h2 style="font-size:96px;font-weight:600;line-height:1.1;color:#F5F7FA">Methods and code</h2>
+<p style="font-size:36px;line-height:1.3;color:#D5DAE3">Six families · score by tag · Jev · code · MLflow · command line · serving</p>
+</section>
+<aside>Section four: how each method works, how the code is organised, how to run it, and how to serve it.</aside>
+<section id="methods" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">The six method families</h2><p style="font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">Test F1 climbs from the 0.15 floor to 0.75</p></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Label prior</h3><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">label_prior</p><p style="font-size:30px;line-height:1.3;color:#3D4658">No model: predicts all 8 tags, reads no text.</p><p style="margin-top:auto;font-size:30px;font-weight:600;line-height:1.3;color:#0F766E;white-space:nowrap">0.15 · free</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">TF-IDF</h3><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">tfidf</p><p style="font-size:30px;line-height:1.3;color:#3D4658">366K linear weights over word and code-token TF-IDF.</p><p style="margin-top:auto;font-size:30px;font-weight:600;line-height:1.3;color:#0F766E;white-space:nowrap">0.69 · CPU, 7 ms</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Cross-encoder classifier (ModernBERT)</h3><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">modernbert_lora, _base_full</p><p style="font-size:30px;line-height:1.3;color:#3D4658">base 150M or large 396M; a bag of 5 fold models.</p><p style="margin-top:auto;font-size:30px;font-weight:600;line-height:1.3;color:#0F766E;white-space:nowrap">0.70 · GPU</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Dense embeddings (F2LLM)</h3><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">f2llm_probe, _early, _late</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Frozen 596M encoder; ridge probe or fused with TF-IDF.</p><p style="margin-top:auto;font-size:30px;font-weight:600;line-height:1.3;color:#0F766E;white-space:nowrap">0.73–0.75 · GPU, 0.13–0.14 s</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">LLM-based (Code2Tag, DesCode2Tag)</h3><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">code2tag-*, descode2tag-*</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Zero-shot gpt-6-luna, xCodeEval prompts; size not disclosed.</p><p style="margin-top:auto;font-size:30px;font-weight:600;line-height:1.3;color:#0F766E;white-space:nowrap">0.63–0.74 · $0.06–0.13 / 1k</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">TypeSafe Jev</h3><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">jev-statement, -code</p><p style="font-size:30px;line-height:1.3;color:#3D4658">One yes/no question per tag; size not disclosed.</p><p style="margin-top:auto;font-size:30px;font-weight:600;line-height:1.3;color:#0F766E;white-space:nowrap">0.74–0.75 · $0.12–0.13 / 1k</p></div>
+</div>
+</section>
+<aside>From the simplest to the most recent. The label prior is the floor. TF-IDF is the tuned classical baseline, trained from scratch: 203 Optuna trials over statement and code features, ending on linear SVMs. ModernBERT is fine-tuned end to end, either with LoRA on the large model or fully on the base model, and bagged over the five folds. F2LLM keeps a 0.6-billion-parameter embedding model frozen and learns only a linear head, alone or fused with TF-IDF. The zero-shot methods send the xCodeEval paper's Code2Tag and DesCode2Tag prompts to OpenAI's gpt-6-luna, with no reasoning and temperature 0.32, close to the paper's 0.325, in free-text and JSON output. TypeSafe Jev is asked one yes/no question per tag, with a written definition of the tag, and its probabilities go through the same cross-fitted thresholds as every score method.</aside>
+<section id="pertag" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Score by tag</h2>
+<div style="display:flex;gap:32px;align-items:flex-start">
+<div style="position:relative;flex:none;margin-left:16px;width:1180px;height:714px">
+<div style="position:absolute;left:10px;top:0;width:1170px;display:flex;flex-wrap:wrap;gap:6px 24px"><div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:50%;background:#115E59"></div><p style="font-size:26px;line-height:1.2;color:#3D4658">Jev statement + code (CLI default)</p></div><div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:50%;background:#14B8A6"></div><p style="font-size:26px;line-height:1.2;color:#3D4658">LLM-based (DesCode2Tag JSON), best dev</p></div><div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:50%;background:#2F6DB5"></div><p style="font-size:26px;line-height:1.2;color:#3D4658">Dense embeddings (F2LLM late fusion)</p></div><div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:50%;background:#14213D"></div><p style="font-size:26px;line-height:1.2;color:#3D4658">TF-IDF</p></div></div>
+<svg aria-label="Test F1 by focus tag with 95% group-bootstrap intervals for four methods" viewBox="0 0 1180 714" width="1180" height="714" style="position:absolute;left:0;top:0;width:1180px;height:714px">
+<rect x="10" y="76.0" width="1130" height="66" fill="#E2E9F4"/>
+<line x1="240.0" y1="76.0" x2="240.0" y2="670.0" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="390.0" y1="76.0" x2="390.0" y2="670.0" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="540.0" y1="76.0" x2="540.0" y2="670.0" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="690.0" y1="76.0" x2="690.0" y2="670.0" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="840.0" y1="76.0" x2="840.0" y2="670.0" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="990.0" y1="76.0" x2="990.0" y2="670.0" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="1140.0" y1="76.0" x2="1140.0" y2="670.0" stroke="#D8E0E9" stroke-width="2"/>
+<line x1="10" y1="142.0" x2="1140" y2="142.0" stroke="#8A93A6" stroke-width="2"/>
+<line x1="240" y1="670.0" x2="1140" y2="670.0" stroke="#8A93A6" stroke-width="2"/>
+<line x1="720.4" y1="91.0" x2="805.4" y2="91.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="767.2" cy="91.0" r="6" fill="#115E59"/>
+<line x1="699.4" y1="103.0" x2="794.4" y2="103.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="751.0" cy="103.0" r="6" fill="#14B8A6"/>
+<line x1="712.5" y1="115.0" x2="802.4" y2="115.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="761.5" cy="115.0" r="6" fill="#2F6DB5"/>
+<line x1="614.1" y1="127.0" x2="722.0" y2="127.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="673.1" cy="127.0" r="6" fill="#14213D"/>
+<line x1="562.7" y1="157.0" x2="691.5" y2="157.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="629.0" cy="157.0" r="6" fill="#115E59"/>
+<line x1="527.9" y1="169.0" x2="665.5" y2="169.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="597.7" cy="169.0" r="6" fill="#14B8A6"/>
+<line x1="599.0" y1="181.0" x2="728.3" y2="181.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="663.8" cy="181.0" r="6" fill="#2F6DB5"/>
+<line x1="501.4" y1="193.0" x2="633.0" y2="193.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="569.0" cy="193.0" r="6" fill="#14213D"/>
+<line x1="611.7" y1="223.0" x2="797.5" y2="223.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="709.7" cy="223.0" r="6" fill="#115E59"/>
+<line x1="613.0" y1="235.0" x2="816.7" y2="235.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="722.2" cy="235.0" r="6" fill="#14B8A6"/>
+<line x1="527.9" y1="247.0" x2="740.0" y2="247.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="635.6" cy="247.0" r="6" fill="#2F6DB5"/>
+<line x1="351.3" y1="259.0" x2="590.9" y2="259.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="475.6" cy="259.0" r="6" fill="#14213D"/>
+<line x1="514.3" y1="289.0" x2="745.9" y2="289.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="635.0" cy="289.0" r="6" fill="#115E59"/>
+<line x1="458.2" y1="301.0" x2="678.5" y2="301.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="572.4" cy="301.0" r="6" fill="#14B8A6"/>
+<line x1="526.0" y1="313.0" x2="756.3" y2="313.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="645.0" cy="313.0" r="6" fill="#2F6DB5"/>
+<line x1="501.2" y1="325.0" x2="743.7" y2="325.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="629.7" cy="325.0" r="6" fill="#14213D"/>
+<line x1="499.9" y1="355.0" x2="744.4" y2="355.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="628.8" cy="355.0" r="6" fill="#115E59"/>
+<line x1="538.0" y1="367.0" x2="805.6" y2="367.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="682.6" cy="367.0" r="6" fill="#14B8A6"/>
+<line x1="507.2" y1="379.0" x2="765.0" y2="379.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="646.3" cy="379.0" r="6" fill="#2F6DB5"/>
+<line x1="248.7" y1="391.0" x2="573.3" y2="391.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="417.0" cy="391.0" r="6" fill="#14213D"/>
+<line x1="649.3" y1="421.0" x2="906.7" y2="421.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="790.0" cy="421.0" r="6" fill="#115E59"/>
+<line x1="703.0" y1="433.0" x2="938.8" y2="433.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="830.5" cy="433.0" r="6" fill="#14B8A6"/>
+<line x1="683.5" y1="445.0" x2="931.7" y2="445.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="820.3" cy="445.0" r="6" fill="#2F6DB5"/>
+<line x1="650.5" y1="457.0" x2="915.6" y2="457.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="797.9" cy="457.0" r="6" fill="#14213D"/>
+<line x1="622.7" y1="487.0" x2="969.1" y2="487.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="811.9" cy="487.0" r="6" fill="#115E59"/>
+<line x1="594.4" y1="499.0" x2="925.7" y2="499.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="780.8" cy="499.0" r="6" fill="#14B8A6"/>
+<line x1="534.7" y1="511.0" x2="912.7" y2="511.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="747.7" cy="511.0" r="6" fill="#2F6DB5"/>
+<line x1="503.6" y1="523.0" x2="865.4" y2="523.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="698.8" cy="523.0" r="6" fill="#14213D"/>
+<line x1="883.9" y1="553.0" x2="1140.0" y2="553.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="1030.2" cy="553.0" r="6" fill="#115E59"/>
+<line x1="782.9" y1="565.0" x2="1101.5" y2="565.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="965.6" cy="565.0" r="6" fill="#14B8A6"/>
+<line x1="883.9" y1="577.0" x2="1140.0" y2="577.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="1030.2" cy="577.0" r="6" fill="#2F6DB5"/>
+<line x1="773.1" y1="589.0" x2="1099.5" y2="589.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="957.1" cy="589.0" r="6" fill="#14213D"/>
+<line x1="674.5" y1="619.0" x2="1065.1" y2="619.0" stroke="#115E59" stroke-width="3"/>
+<circle cx="903.2" cy="619.0" r="6" fill="#115E59"/>
+<line x1="600.0" y1="631.0" x2="1040.0" y2="631.0" stroke="#14B8A6" stroke-width="3"/>
+<circle cx="856.2" cy="631.0" r="6" fill="#14B8A6"/>
+<line x1="674.5" y1="643.0" x2="1065.1" y2="643.0" stroke="#2F6DB5" stroke-width="3"/>
+<circle cx="903.2" cy="643.0" r="6" fill="#2F6DB5"/>
+<line x1="582.7" y1="655.0" x2="1015.0" y2="655.0" stroke="#14213D" stroke-width="3"/>
+<circle cx="840.0" cy="655.0" r="6" fill="#14213D"/>
+</svg>
+<p style="position:absolute;left:-16px;top:91px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D"><b>Macro F1</b></p>
+<p style="position:absolute;left:-16px;top:157px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">math <span style="color:#6A7180">· 281</span></p>
+<p style="position:absolute;left:-16px;top:223px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">graphs <span style="color:#6A7180">· 108</span></p>
+<p style="position:absolute;left:-16px;top:289px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">strings <span style="color:#6A7180">· 85</span></p>
+<p style="position:absolute;left:-16px;top:355px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">number theory <span style="color:#6A7180">· 72</span></p>
+<p style="position:absolute;left:-16px;top:421px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">trees <span style="color:#6A7180">· 63</span></p>
+<p style="position:absolute;left:-16px;top:487px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">geometry <span style="color:#6A7180">· 33</span></p>
+<p style="position:absolute;left:-16px;top:553px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">games <span style="color:#6A7180">· 21</span></p>
+<p style="position:absolute;left:-16px;top:619px;width:242px;font-size:26px;line-height:1.3;text-align:right;white-space:nowrap;color:#14213D">probabilities <span style="color:#6A7180">· 18</span></p>
+<p style="position:absolute;left:200px;top:677px;width:80px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0.4</p>
+<p style="position:absolute;left:350px;top:677px;width:80px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0.5</p>
+<p style="position:absolute;left:500px;top:677px;width:80px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0.6</p>
+<p style="position:absolute;left:650px;top:677px;width:80px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0.7</p>
+<p style="position:absolute;left:800px;top:677px;width:80px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0.8</p>
+<p style="position:absolute;left:950px;top:677px;width:80px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">0.9</p>
+<p style="position:absolute;left:1100px;top:677px;width:80px;font-size:26px;line-height:1.3;text-align:center;color:#3D4658">1.0</p>
+</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:32px;padding-top:40px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Where LLMs gain</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Jev over TF-IDF: graphs +0.16, number theory +0.14</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">No clear winner</p><p style="font-size:30px;line-height:1.3;color:#3D4658">strings, trees, geometry: every interval overlaps</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Rare tags, noisy</p><p style="font-size:30px;line-height:1.3;color:#3D4658">probabilities: 18 test problems, ±0.13 to 0.15</p></div>
+</div>
+</div>
+</section>
+<aside>Each dot is a method's F1 on the 994 test problems, each line its 95% interval from a group bootstrap: 2,000 resamples of the near-duplicate groups, so a pair of versions moves together. The top row is the macro F1, the mean of the eight tags; the number after each tag is how many test problems carry it. Intervals widen, broadly, as tags get rarer: plus or minus 0.04 to 0.05 for math with 281 problems, 0.13 to 0.15 for probabilities with 18; games stays narrower than geometry because its F1 is close to 1. That is why a few points of F1 on a rare tag are noise. Where the methods truly differ: on graphs and number theory, the three LLM-based methods beat TF-IDF by 0.11 to 0.18, and every paired difference excludes zero. On strings, trees and geometry every interval overlaps. On macro F1, the three LLM-based methods lie within about 0.01 of each other, all clearly above TF-IDF. These are test scores, reported once; the choice was made on dev.</aside>
+<section id="jev" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px"><h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">How Jev works</h2><p style="font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One call, 8 tag questions; only thresholds are learned</p></div>
+<div style="display:flex;gap:40px;align-items:flex-start">
+<div style="flex:none;width:1060px;display:flex;flex-direction:column;background:#14213D;border-radius:16px;padding:20px 32px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">import&nbsp;typesafe_sdk</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA"><span style="color:#8FB3E0">#&nbsp;CONVENTION,&nbsp;QUESTION,&nbsp;TAG_DEFINITIONS:&nbsp;typesafe_jev/settings.py</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">def&nbsp;noul(tag):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;one&nbsp;yes/no&nbsp;question&nbsp;per&nbsp;focus&nbsp;tag</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;{<span style="color:#99F6E4">&quot;type&quot;</span>:&nbsp;<span style="color:#99F6E4">&quot;noul&quot;</span>,</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#99F6E4">&quot;instructions&quot;</span>:&nbsp;{<span style="color:#99F6E4">&quot;tag&quot;</span>:&nbsp;tag,</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#99F6E4">&quot;convention&quot;</span>:&nbsp;CONVENTION,</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#99F6E4">&quot;question&quot;</span>:&nbsp;QUESTION.format(tag=tag)},</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#99F6E4">&quot;criteria&quot;</span>:&nbsp;TAG_DEFINITIONS[tag]}&nbsp;&nbsp;&nbsp;#&nbsp;<span style="color:#99F6E4">&quot;true&quot;</span>&nbsp;/&nbsp;<span style="color:#99F6E4">&quot;false&quot;</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">questions&nbsp;=&nbsp;{tag.replace(<span style="color:#99F6E4">&quot;&nbsp;&quot;</span>,&nbsp;<span style="color:#99F6E4">&quot;_&quot;</span>):&nbsp;noul(tag)&nbsp;for&nbsp;tag&nbsp;in&nbsp;FOCUS_TAGS}</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">async&nbsp;with&nbsp;typesafe_sdk.AsyncTypeSafeClient(model=<span style="color:#99F6E4">&quot;jev-1.13.0&quot;</span>)&nbsp;as&nbsp;client:</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;response&nbsp;=&nbsp;await&nbsp;client.system_one(</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state={<span style="color:#99F6E4">&quot;statement&quot;</span>:&nbsp;statement,&nbsp;<span style="color:#99F6E4">&quot;solution&quot;</span>:&nbsp;source_code},</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;model=<span style="color:#99F6E4">&quot;jev-1.13.0&quot;</span>,</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;questions=questions)</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">p&nbsp;=&nbsp;{tag:&nbsp;response.nouls[tag.replace(<span style="color:#99F6E4">&quot;&nbsp;&quot;</span>,&nbsp;<span style="color:#99F6E4">&quot;_&quot;</span>)].noul&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;P(yes)</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;tag&nbsp;in&nbsp;FOCUS_TAGS}</p></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:32px"><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">The question, for number theory</p><p style="font-size:30px;line-height:1.3;color:#14213D;font-style:italic">Would Codeforces put the tag `number theory` on this problem?</p><p style="font-size:30px;line-height:1.3;color:#3D4658"><b style="color:#0F766E">Yes:</b> The intended solution relies on properties of integers.</p><p style="font-size:30px;line-height:1.3;color:#3D4658"><b style="color:#0F766E">No:</b> Integers are only quantities to add, compare or count.</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">Adding the solution</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Dev macro F1: 0.729 both. Test: 0.737 without, 0.751 with.</p></div></div>
+</div>
+</section>
+<aside>Jev is TypeSafe's model, pinned at version 1.13.0. It does not write text: it reads a state, here the problem's statement and, for jev-statement-code, its solution, and answers each question it is given with a probability. Each request asks eight Noul questions, one per focus tag, in one call. Every question carries the same convention, that Codeforces tags name the ideas of the intended solution and that a problem often has several, the same question, would Codeforces put this tag on this problem, and the tag's own criteria: a definition of what counts as yes with examples it includes, and of what counts as no with examples it excludes. Shown here is number theory: properties of integers count; an answer printed modulo a large prime only to keep it small does not. The definitions were written from Codeforces conventions, without reading a dev problem or answer, and frozen. Nothing else is learned. The answer is a probability by name only: the per-tag thresholds, chosen on dev out-of-fold scores and ranging from 0.335 to 0.895 for jev-statement-code, decide, not 0.5. On dev, adding the solution changes nothing measurable: 0.729 macro F1 either way, against 0.732 for descode2tag-json, the best on dev. On test, jev-statement scores 0.737 and jev-statement-code 0.751, reported and not used to choose. jev-statement-code is the CLI default because it is about five times faster than descode2tag-json, 0.26 s against 1.21 s, for about thirteen cents per thousand problems. The frozen scores come from the committed answers; a new call is a new sample, so live scores can drift slightly.</aside>
+<section id="code" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Code structure</h2><p style="font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One package shared by notebooks, methods and CLI</p></div>
+<div style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;align-items:stretch;gap:16px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">1 · Data</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">data/<br>preprocessing/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Clean text; read Python 2 and 3.</p>
+</div>
+<p style="align-self:center;font-size:44px;color:#6A7180">→</p>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">2 · Split</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">near_duplicates/<br>splitting.py</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Freeze dev, test, 5 folds.</p>
+</div>
+<p style="align-self:center;font-size:44px;color:#6A7180">→</p>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">3 · Methods</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">methods/  model/<br>llm/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">14 registered, 13 frozen.</p>
+</div>
+<p style="align-self:center;font-size:44px;color:#6A7180">→</p>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-radius:14px;padding:26px 30px">
+<p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">4 · Report</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.3;color:#2F6DB5">evaluation/<br>cli.py</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658">Per-tag F1, bootstrap intervals.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">tuning/ tracking/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">Optuna and MLflow</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">assets/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">The committed record</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">notebooks/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">01–09, frozen files</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;background:#E6ECF2;border-radius:14px;padding:20px 26px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;font-weight:600;line-height:1.3;color:#14213D">tests/ docs/adr/</p>
+<p style="font-size:30px;line-height:1.3;color:#3D4658;white-space:nowrap">110 test files, 8 ADRs</p>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">One contract</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Every method predicts, saves, freezes and verifies alike.</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Light prediction path</p><p style="font-size:30px;line-height:1.3;color:#3D4658">MLflow, Optuna and SDKs imported only where needed.</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.2;color:#14213D">Verifiable</p><p style="font-size:30px;line-height:1.3;color:#3D4658">verify re-derives every frozen number offline.</p></div>
+</div>
+</section>
+<aside>The package flows left to right. Data reads the raw samples and cleans them; the split groups near-duplicate problems and freezes dev, test and the folds once. Every method plugs into one contract, a TaggingMethod with predict and save, registered in one table: fourteen are registered, thirteen are frozen. Evaluation and the CLI turn predictions into per-tag scores. Around it: tuning and tracking run the Optuna studies and mirror everything to MLflow; assets is the committed record, so nothing needs a paid call to be checked again; notebooks read only frozen files; the tests and eight ADRs pin the rules. Three rules hold everywhere: one contract for every method, heavy libraries off the prediction path, and a verify command that re-derives every frozen number.</aside>
+<section id="contract" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">One interface for all methods</h2>
+<div style="display:flex;gap:40px">
+<div style="flex:none;width:1060px;display:flex;flex-direction:column;background:#14213D;border-radius:16px;padding:20px 32px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">@runtime_checkable</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">class&nbsp;TaggingMethod(Protocol):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;every&nbsp;method,&nbsp;any&nbsp;kind</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;@property</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;name(self)&nbsp;-&gt;&nbsp;str:&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;its&nbsp;key&nbsp;in&nbsp;METHODS</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;@property</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;tags(self)&nbsp;-&gt;&nbsp;tuple[str,&nbsp;...]:&nbsp;...&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;its&nbsp;output&nbsp;columns</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;predict(self,&nbsp;raw_problems:&nbsp;pd.DataFrame)&nbsp;-&gt;&nbsp;pd.DataFrame:&nbsp;...</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;save(self,&nbsp;folder:&nbsp;Path)&nbsp;-&gt;&nbsp;None:&nbsp;...&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;data&nbsp;files&nbsp;only</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">@runtime_checkable</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">class&nbsp;ScoreMethod(TaggingMethod,&nbsp;Protocol):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;kind&nbsp;&quot;score&quot;</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;scores(self,&nbsp;raw_problems:&nbsp;pd.DataFrame)&nbsp;-&gt;&nbsp;pd.DataFrame:&nbsp;...</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">METHODS&nbsp;=&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;one&nbsp;line&nbsp;per&nbsp;method</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#99F6E4">&quot;tfidf&quot;</span>:&nbsp;MethodSpec(<span style="color:#99F6E4">&quot;codeforces_tags.model.tag_model&quot;</span>,&nbsp;<span style="color:#99F6E4">&quot;score&quot;</span>,&nbsp;(...)),</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#99F6E4">&quot;jev-statement-code&quot;</span>:&nbsp;MethodSpec(</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#99F6E4">&quot;codeforces_tags.methods.typesafe_jev.method&quot;</span>,&nbsp;<span style="color:#99F6E4">&quot;score&quot;</span>,&nbsp;(...),</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;groups=(<span style="color:#99F6E4">&quot;llm-typesafe&quot;</span>,),&nbsp;calls_api=True),</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">}</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:0.6;white-space:pre;color:#F5F7FA">&nbsp;</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">save_method(method,&nbsp;folder)&nbsp;&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;method.json,&nbsp;then&nbsp;method.save(folder)</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">method&nbsp;=&nbsp;load_method(folder)&nbsp;&nbsp;<span style="color:#8FB3E0">#&nbsp;the&nbsp;registry&#x27;s&nbsp;module.load(folder)</span></p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;white-space:pre;color:#F5F7FA">check_tagging_method(method,&nbsp;raw_problems,&nbsp;tmp_path&nbsp;/&nbsp;<span style="color:#99F6E4">&quot;model&quot;</span>)</p></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:32px"><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">Raw in, 0/1 tags out</p><p style="font-size:30px;line-height:1.3;color:#3D4658">TF-IDF, fine-tuned bags, API models: same predict and save.</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">A registry, not paths</p><p style="font-size:30px;line-height:1.3;color:#3D4658">load_method imports the module the registry names.</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">An executable contract</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Every method's tests call check_tagging_method.</p></div></div>
+</div>
+</section>
+<aside>The contract every tagging method follows, simplified from methods/__init__.py. Both protocols are runtime-checkable, so the tests can check a method with isinstance. A TaggingMethod has a read-only name, its key in the registry, the tags it outputs, a predict that turns raw problems into 0/1 tags, and a save that writes its own data files. A score method, such as TF-IDF, the ModernBERT bags, F2LLM or Jev, also exposes the scores its per-tag thresholds are applied to. Each method is one line of the METHODS registry: the module that loads it, its kind, the packages and dependency groups it needs, and whether it calls a paid API. save_method writes method.json and the method's files; load_method reads method.json and imports the module the registry names, which is how the CLI and the MLflow wrapper load a method. And the contract is executable: every method's tests call check_tagging_method, which checks the output shapes, types and tag vocabulary, that the labels or extra columns change nothing, that one problem at a time gives the same as a batch, that saving and reloading gives the same output, exactly or within the score tolerance the method declares, that the folder holds only data, and that loading and predicting in a fresh interpreter imports neither MLflow, Optuna nor an LLM provider's SDK.</aside>
+<section id="traces" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:row;gap:48px;height:856px">
+<img src="images/trace_drawer.png" alt="MLflow trace drawer for descode2tag-json on dev problem 0: the inputs, the predicted tags, and one assessment per focus tag" style="height:824px;width:706px;object-fit:contain;border:1px solid #D8E0E9;border-radius:12px;background:#FFFFFF">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:32px;justify-content:center"><div style="display:flex;flex-direction:column;gap:12px"><p style="font-size:26px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#0F766E">MLflow</p><h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Predictions in MLflow</h2><p style="font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">descode2tag-json misses math on dev problem 0</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">Graded per tag</p><p style="font-size:30px;line-height:1.3;color:#3D4658">One filter, correct_math = false: 798 dev problems.</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">Cost and tokens per call</p><p style="font-size:30px;line-height:1.3;color:#3D4658">Here gpt-6-luna, 971 tokens, $0.000105.</p></div><div style="display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:26px 30px"><p style="font-size:36px;font-weight:600;line-height:1.1;color:#14213D">Rebuilt for free</p><p style="font-size:30px;line-height:1.3;color:#3D4658">From committed files: an empty store needs no paid call.</p></div></div>
+</div>
+</section>
+<aside>This is MLflow's trace drawer for one dev problem and one method, written by tracking evaluate. The middle column is the problem, its statement, samples and solution, the same seven fields for every method, and what the method answered: here descode2tag-json, the zero-shot gpt-6-luna method, answered constructive algorithms and greedy. The right column grades it: one True or False per focus tag, the focus F1 and exact match, and the true tags stored as expectations. So math is marked wrong, and a single filter, correct_math equals false, lists every dev problem where a method gets math wrong, missed or added: 798 for this method; two methods' runs can also be compared trace by trace. Each API call carries its model, tokens and cost. Everything is rebuilt from the committed predictions and per-problem call records, so a fresh store costs nothing, and the screenshots show dev problems only, since the test set is scored once and kept aside.</aside>
+<section id="cli" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Command line</h2><p style="font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One entry point, codeforces-tags, for every method</p></div>
+<div style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;gap:32px;align-items:flex-start">
+<p style="width:220px;flex:none;font-size:36px;font-weight:600;line-height:1.2;color:#0F766E">List</p>
+<div style="width:820px;flex:none;display:flex;flex-direction:column;gap:4px;background:#14213D;border-radius:12px;padding:18px 20px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F5F7FA;white-space:nowrap">codeforces-tags methods</p>
+</div>
+<p style="flex:1;min-width:0;font-size:30px;line-height:1.3;color:#3D4658">Every method, its dev and test F1, its needs.</p>
+</div>
+<div style="display:flex;gap:32px;align-items:flex-start">
+<p style="width:220px;flex:none;font-size:36px;font-weight:600;line-height:1.2;color:#0F766E">Predict</p>
+<div style="width:820px;flex:none;display:flex;flex-direction:column;gap:4px;background:#14213D;border-radius:12px;padding:18px 20px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F5F7FA;white-space:nowrap">codeforces-tags predict sample_42.json</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F5F7FA;white-space:nowrap">codeforces-tags predict problems/ --method tfidf</p>
+</div>
+<p style="flex:1;min-width:0;font-size:30px;line-height:1.3;color:#3D4658">Default jev-statement-code; tfidf runs offline.</p>
+</div>
+<div style="display:flex;gap:32px;align-items:flex-start">
+<p style="width:220px;flex:none;font-size:36px;font-weight:600;line-height:1.2;color:#0F766E">Evaluate</p>
+<div style="width:820px;flex:none;display:flex;flex-direction:column;gap:4px;background:#14213D;border-radius:12px;padding:18px 20px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F5F7FA;white-space:nowrap">codeforces-tags evaluate --method tfidf --out report/</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#8FB3E0;white-space:nowrap">codeforces-tags evaluate my_labelled_problems/</p>
+</div>
+<p style="flex:1;min-width:0;font-size:30px;line-height:1.3;color:#3D4658">Per-tag precision, recall, F1. Test part by default.</p>
+</div>
+<div style="display:flex;gap:32px;align-items:flex-start">
+<p style="width:220px;flex:none;font-size:36px;font-weight:600;line-height:1.2;color:#0F766E">Train and freeze</p>
+<div style="width:820px;flex:none;display:flex;flex-direction:column;gap:4px;background:#14213D;border-radius:12px;padding:18px 20px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F5F7FA;white-space:nowrap">python -m codeforces_tags.tuning run --trials 200</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#F5F7FA;white-space:nowrap">python -m codeforces_tags.tuning freeze</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#8FB3E0;white-space:nowrap">python -m codeforces_tags.methods.&lt;package&gt; freeze</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;line-height:1.4;color:#8FB3E0;white-space:nowrap">python -m codeforces_tags.methods.&lt;package&gt; verify</p>
+</div>
+<p style="flex:1;min-width:0;font-size:30px;line-height:1.3;color:#3D4658">Tune on dev, freeze once; verify re-derives it.</p>
+</div>
+</div>
+<p style="font-size:24px;line-height:1.3;color:#6A7180;white-space:nowrap">Prefix each command with <span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#2F6DB5">uv run</span>; an API method also needs its group, its key and <span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#2F6DB5">--max-cost-usd</span>.</p>
+</section>
+<aside>The CLI is one entry point, codeforces-tags, also reachable as python -m codeforces_tags. methods lists what is frozen and what each method needs. predict takes one sample file or a folder of them and prints one JSON line of focus tags per problem; the default is jev-statement-code, the method chosen on dev, and tfidf is the free offline fallback. evaluate scores a method on the test part of the frozen split by default, or on any folder of labelled samples, and writes report.json and CSV tables. Training is per method: the TF-IDF tuning study, then freeze, which scores dev out of fold and test once; every other method has the same freeze and verify commands in its own package.</aside>
+<section id="serving" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Serving a method</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One frozen method, one Docker image, three targets</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Built from the committed files</p>
+<div style="display:flex;align-items:stretch;gap:10px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Frozen method</p><p style="margin:0;font-size:28px;line-height:1.3;color:#3D4658">the folder in assets/methods</p></div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1.15;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">MLflow model</p><p style="margin:0;font-size:28px;line-height:1.3;color:#3D4658">pinned requirements, hashed weights</p></div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1.15;display:flex;flex-direction:column;gap:6px;background:#E2E9F4;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap">Docker image</p><p style="margin:0;font-size:28px;line-height:1.3;color:#3D4658">MLflow's server behind nginx, CPU or GPU</p></div>
+<p style="margin:0;align-self:center;font-size:36px;line-height:1;color:#6A7180">→</p>
+<div style="flex:1.1;display:flex;flex-direction:column;gap:6px;background:#14213D;border-radius:14px;padding:20px 22px"><p style="margin:0;font-size:34px;font-weight:600;line-height:1.2;color:#F5F7FA;white-space:nowrap">POST /invocations</p><p style="margin:0;font-size:28px;line-height:1.3;color:#D5DAE3">tags, scores and thresholds</p></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<p style="margin:0;font-size:26px;line-height:1.2;letter-spacing:3px;text-transform:uppercase;color:#0F766E;font-weight:600">Runs on</p>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:20px 24px"><p style="margin:0;font-size:32px;font-weight:600;line-height:1.2;color:#14213D">Docker Compose</p><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">on localhost only; a CPU and a GPU profile</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:20px 24px"><p style="margin:0;font-size:32px;font-weight:600;line-height:1.2;color:#14213D">Kubernetes</p><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">kustomize, CPU and GPU overlays, ClusterIP</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:#FFFFFF;border:1px solid #D8E0E9;border-left:6px solid #0F766E;border-radius:14px;padding:20px 24px"><p style="margin:0;font-size:32px;font-weight:600;line-height:1.2;color:#14213D">SageMaker</p><p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">aws CLI scripts, behind IAM</p></div>
+</div>
+</div>
+<div style="display:flex;gap:24px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:20px 24px">
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.2;color:#14213D">Clients</p>
+<p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">a Streamlit app · smoke: 20 test problems against the frozen predictions · links to the run and prompts in MLflow</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E2E9F4;border-left:6px solid #2F6DB5;border-radius:14px;padding:20px 24px">
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.2;color:#14213D">Run so far</p>
+<p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">tfidf (906 MB image): Docker and a kind cluster, CPU<br>f2llm_late_fusion (7.89 GB): Docker, CPU and GPU<br>median 3.40 s on the CPU, 0.148 s on the GPU</p>
+</div>
+</div>
+</section>
+<aside>A frozen method also runs as a model server: MLflow's own, in one Docker image per method (ADR 0012). The image is built from the committed method folder only, never from the MLflow store: an MLflow model saved from code, the requirements pinned from uv.lock and installed with hashes, and the weights copied and hashed again. Inside, nginx answers on port 8080 in front of MLflow's server, one prediction at a time, offline, with pickle loading off; one environment variable picks the CPU or the GPU at deploy time, so the same image runs on both. The same image runs on Docker Compose, published on localhost only; on Kubernetes, with kustomize overlays for CPU and GPU behind a ClusterIP service; and on SageMaker through aws CLI scripts. There is no authentication or TLS inside the image: localhost, the cluster or IAM keep it private. Clients all share one small client: a Streamlit app, a smoke test that checks 20 test problems against the frozen predictions, and links from the app to the method's run and prompt versions in the MLflow UI. What has really run so far: tfidf, a 906 MB image, under Docker and on a local kind cluster, on the CPU; and f2llm_late_fusion, a 7.89 GB image, under Docker, on the CPU, 3.40 seconds at the median over 20 test problems, and under the GPU profile, 0.148 seconds at the median, holding 2.4 GB of GPU memory. A GPU Kubernetes node, SageMaker and the API methods are written and tested offline but not yet run.</aside>
+<section id="serving-run" data-transition="fade" style="background:#F5F7FA;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:30px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font-size:72px;font-weight:600;line-height:1.1;color:#14213D;white-space:nowrap">Serving in practice</h2>
+<p style="margin:0;font-size:34px;font-weight:500;line-height:1.2;color:#0F766E;white-space:nowrap">One command to try a method, four to check it step by step</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<p style="margin:0;font-size:30px;font-weight:600;line-height:1.2;color:#14213D;white-space:nowrap"><span style="color:#0F766E">Try it</span>&nbsp;&nbsp;model server, MLflow UI and Streamlit app in one terminal, all stopped on Ctrl-C</p>
+<div style="background:#14213D;border-radius:12px;padding:14px 18px"><p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.4;color:#F5F7FA;white-space:nowrap">uv run --group app python -m codeforces_tags.serving up --method f2llm_late_fusion</p></div>
+<p style="margin:0;font-size:24px;line-height:1.3;color:#3D4658;white-space:nowrap">Checks everything first and says what is missing&nbsp;&nbsp;·&nbsp;&nbsp;<span style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;color:#2F6DB5">--build</span> builds the image&nbsp;&nbsp;·&nbsp;&nbsp;<span style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;color:#2F6DB5">--local</span> without Docker&nbsp;&nbsp;·&nbsp;&nbsp;<span style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;color:#2F6DB5">--device gpu</span> on the GPU</p>
+</div>
+<div style="display:flex;gap:40px;align-items:flex-start">
+<div style="flex:none;width:1010px;display:flex;flex-direction:column;gap:12px">
+<p style="margin:0 0 4px;font-size:30px;font-weight:600;line-height:1.2;color:#14213D">Step by step, with tfidf</p>
+<div style="display:flex;gap:14px;align-items:center"><p style="margin:0;flex:none;width:92px;font-size:26px;font-weight:600;line-height:1.2;color:#0F766E">Build</p><div style="flex:1;min-width:0;background:#14213D;border-radius:12px;padding:12px 16px"><p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:18px;line-height:1.4;color:#F5F7FA;white-space:nowrap">uv run python -m codeforces_tags.serving build --method tfidf</p></div></div>
+<div style="display:flex;gap:14px;align-items:center"><p style="margin:0;flex:none;width:92px;font-size:26px;font-weight:600;line-height:1.2;color:#0F766E">Run</p><div style="flex:1;min-width:0;background:#14213D;border-radius:12px;padding:12px 16px"><p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:18px;line-height:1.4;color:#F5F7FA;white-space:nowrap">METHOD=tfidf docker compose -f deploy/docker-compose.yml --profile cpu up --wait</p></div></div>
+<div style="display:flex;gap:14px;align-items:center"><p style="margin:0;flex:none;width:92px;font-size:26px;font-weight:600;line-height:1.2;color:#0F766E">Check</p><div style="flex:1;min-width:0;background:#14213D;border-radius:12px;padding:12px 16px"><p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:18px;line-height:1.4;color:#F5F7FA;white-space:nowrap">uv run python -m codeforces_tags.serving smoke --method tfidf</p></div></div>
+<div style="display:flex;gap:14px;align-items:center"><p style="margin:0;flex:none;width:92px;font-size:26px;font-weight:600;line-height:1.2;color:#0F766E">Ask</p><div style="flex:1;min-width:0;background:#14213D;border-radius:12px;padding:12px 16px"><p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:18px;line-height:1.4;color:#F5F7FA;white-space:nowrap">uv run --group app streamlit run apps/streamlit_app.py</p></div></div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+<p style="margin:0;font-size:26px;line-height:1.3;color:#3D4658">POST /invocations answers, for a tree problem with tfidf:</p>
+<div style="background:#FFFFFF;border:1px solid #D8E0E9;border-radius:12px;padding:14px 18px"><p style="margin:0;font-family:'JetBrains Mono', 'Courier New', monospace;font-size:20px;line-height:1.4;color:#14213D;white-space:nowrap">{&quot;math&quot;: 1, &quot;trees&quot;: 1, &quot;score: trees&quot;: 0.333, &quot;threshold: trees&quot;: -0.357, ...}</p></div>
+</div>
+</div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
+<img src="images/serving_app.png" alt="The Streamlit app: a typed totient problem, predicted math and number theory by f2llm_late_fusion, with each tag's score against its threshold" style="width:100%;border:1px solid #D8E0E9;border-radius:12px">
+<p style="margin:0;font-size:22px;line-height:1.3;color:#6A7180">The Streamlit app asking f2llm_late_fusion, served <b style="color:#14213D">on the CPU</b>: a typed problem, 1.31 s round trip</p>
+</div>
+</div>
+</section>
+<aside>One command tries a method: serving up starts its model server, the MLflow UI and the Streamlit app in one terminal, opens the app in a browser, and stops all three on Ctrl-C. It checks everything before it starts anything and says what is missing; --build builds the method's image first, --local serves it without Docker, and --device gpu runs it on the GPU. Step by step, four commands serve tfidf on a laptop. build packages the frozen method and builds its image, tagged with the git commit; it refuses uncommitted inputs. docker compose starts it on localhost, CPU profile. smoke sends 20 test problems, one per request, and checks the answers against the frozen predictions. The Streamlit app predicts a test problem or one you type, shows each tag's score against its threshold, and links to the method's run and prompt versions in the MLflow UI, which another command serves. The response holds each focus tag as 0 or 1 and, for a score method, its score and threshold. The screenshot is the app on f2llm_late_fusion, the dense-embedding method: a typed Euler totient problem, predicted math and number theory, in 1.31 s round trip on the CPU. Under compose's GPU profile, the same method answered the 20 test problems at 0.148 s at the median and 0.262 s at the slowest, against 3.40 s and 8.21 s on the CPU. Kubernetes and SageMaker commands are in the repository's docs; SageMaker is written and tested offline, not yet run.</aside>
+<section id="conclusion" data-transition="fade" style="display:flex; flex-direction:column; gap:44px; padding:112px 128px; background:#14213d">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1.1; white-space:nowrap; color:#f5f7fa">Conclusion</h2>
+    <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:500; line-height:1.3; white-space:nowrap; color:#14b8a6">What we learned</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr">
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">The statement carries the signal</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Code alone 0.63–0.67; with the statement 0.72–0.74.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">Full fine-tuning was not needed</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Frozen dense embeddings (0.73–0.75) beat the fine‑tuned cross‑encoder (0.70).</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">Thresholds matter as much as models</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Same model: 0.19 at one 0.5 cutoff, 0.61 per tag.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">LLMs gain on two tags</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">graphs and number theory: +0.11 to +0.18 over TF‑IDF.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">A local GPU nearly matches Jev</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Dense embeddings: 0.748 vs 0.751, 2× faster, free.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">Prompt search did not help</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">GEPA on Jev's definitions: +0.006, within the noise.</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:40px; padding:20px 0 0; border-top:1px solid #3a4766">
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:baseline; flex:1">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1.2; white-space:nowrap; color:#14b8a6">0.75</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; white-space:nowrap; color:#b4bfcc">best test macro F1 (Jev)</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:baseline; flex:1">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1.2; white-space:nowrap; color:#14b8a6">0.26 s</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; white-space:nowrap; color:#b4bfcc">CLI default, $0.13 per 1k</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:baseline; flex:1">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1.2; white-space:nowrap; color:#14b8a6">Dev decides</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; white-space:nowrap; color:#b4bfcc">test scored once</p>
+    </div>
+  </div>
+  <p id="9d620db2" style="position:absolute; top:50%; left:50%; width:800px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:30px; line-height:1.3; transform:translate(-50%, -50%)"></p>
+  </section>
+<aside>What we learned matters more than the scores. The statement carries most of the signal: the paper's prompts that see only the solution score 0.63 to 0.67 on test, against 0.72 to 0.74 with the statement. Full fine-tuning was not needed: frozen F2LLM embeddings under a linear head beat fine-tuned ModernBERT. Thresholds matter as much as models: the same untuned logistic regression goes from 0.19 macro F1 at a single 0.5 cutoff to 0.61 with per-tag thresholds, out of fold on dev. On the local RTX 2080 Ti, the dense-embedding methods (F2LLM) come close to Jev: late fusion scores 0.748 on test against Jev's 0.751, at 0.13 to 0.14 seconds a prediction against 0.26, about twice as fast, and for free; on dev they trail more, 0.706 against 0.729, which is why the choice made on dev stays Jev. The LLM-based methods gain mostly on graphs and number theory, by 0.11 to 0.18 over TF-IDF with intervals above zero, and not clearly elsewhere. Searching Jev's words did not help: GEPA rewrote the convention and the tag definitions on dev folds 1 to 3, chose on fold 4, and lowered the balanced Brier score it searched on, but the held-out fold shows no detectable gain in macro F1, 0.732 against 0.725, a paired +0.006 with an interval from -0.006 to +0.022; on the test set, a reference, it scores 0.727 against 0.751, mostly through probabilities, for $10.65 of requests. Better probabilities did not make better tags. Rare tags are noisy: probabilities has 18 test problems and an interval of about plus or minus 0.14. And asking for structured output helps: the same DesCode2Tag prompt scores 0.741 with a JSON schema against 0.721 as free text, and also leads on dev. In numbers: The best test macro F1 is 0.75, from TypeSafe Jev reading the statement and the solution; the methods that read the statement through an LLM all land between 0.72 and 0.75, ahead of fine-tuned ModernBERT and TF-IDF. The CLI default answers in a quarter of a second for about thirteen cents per thousand problems, and TF-IDF stays the free offline fallback. And the protocol: every choice was made on dev, out of fold; the test set was scored once per method.</aside>
+</body>
+</html>

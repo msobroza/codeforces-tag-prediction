@@ -1,0 +1,19 @@
+{
+ "type": "object",
+ "properties": {
+  "labels": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "properties": {
+     "pair_id": {"type": "integer"},
+     "label": {"type": "string", "enum": ["same_problem", "versions", "related", "different"]},
+     "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+     "reason": {"type": "string", "description": "one short sentence"}
+    },
+    "required": ["pair_id", "label", "confidence", "reason"]
+   }
+  }
+ },
+ "required": ["labels"]
+}

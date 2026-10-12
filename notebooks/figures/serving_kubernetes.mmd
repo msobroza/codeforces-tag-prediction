@@ -1,0 +1,26 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    subgraph kustomize["deploy/k8s: kustomize"]
+        direction TB
+        BA["base: Deployment model-server, one replica, port 8080,<br/>probes on /ping (start up to 300 s),<br/>envFrom the optional Secret codeforces-tags-env;<br/>ClusterIP Service model-server on 8080"]
+        BA --> OC["overlays/cpu<br/>CODEFORCES_DEVICE=cpu"]
+        BA --> OG["overlays/gpu<br/>CODEFORCES_DEVICE=cuda, nvidia.com/gpu: 1,<br/>a NoSchedule toleration"]
+    end
+    OC -- "serving manifests --device cpu" --> MO["build/k8s/tfidf-cpu/kustomization.yaml<br/>namePrefix tfidf-, the instance label<br/>on pods and selectors, the image tag"]
+    OG -. "serving manifests --device gpu" .-> MG["build/k8s/tfidf-gpu<br/>server-side dry run only"]
+    IM["Image codeforces-tags/tfidf, its sha tag"] -- "kind load docker-image" --> cluster
+    MO -- "kubectl apply -k" --> cluster
+    subgraph cluster["kind cluster codeforces-tags"]
+        direction TB
+        SV["Service tfidf-model-server, port 8080"] --> POD["Pod of the Deployment tfidf-model-server<br/>imagePullPolicy IfNotPresent"]
+    end
+    SM["serving smoke --url http://127.0.0.1:18080"] --> PF["kubectl port-forward<br/>local port 18080"]
+    PF --> SV
+    classDef key fill:#dbe9f6,stroke:#1f77b4
+    classDef server fill:#d8f0d8,stroke:#3c8c3c
+    classDef dry fill:#eeeeee,stroke:#888888,stroke-dasharray: 5 5,color:#666666
+    class BA,OC,OG,MO,IM key
+    class SV,POD server
+    class MG dry
+    style kustomize fill:#f4f8fc,stroke:#1f77b4
+    style cluster fill:#f4faf4,stroke:#3c8c3c

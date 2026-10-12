@@ -1,0 +1,48 @@
+<section id="conclusion" data-transition="fade" style="display:flex; flex-direction:column; gap:44px; padding:112px 128px; background:#14213d">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:72px; font-weight:600; line-height:1.1; white-space:nowrap; color:#f5f7fa">Conclusion</h2>
+    <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:500; line-height:1.3; white-space:nowrap; color:#14b8a6">What we learned</p>
+  </div>
+  <div style="display:grid; grid-template-columns:1fr 1fr">
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">The statement carries the signal</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Code alone 0.63–0.67; with the statement 0.72–0.74.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">Full fine-tuning was not needed</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Frozen dense embeddings (0.73–0.75) beat the fine‑tuned cross‑encoder (0.70).</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">Thresholds matter as much as models</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Same model: 0.19 at one 0.5 cutoff, 0.61 per tag.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">LLMs gain on two tags</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">graphs and number theory: +0.11 to +0.18 over TF‑IDF.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">A local GPU nearly matches Jev</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">Dense embeddings: 0.748 vs 0.751, 2× faster, free.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px; padding:0 0 0 28px; border-left:6px solid #14b8a6">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:40px; font-weight:600; line-height:1.2; color:#f5f7fa">Prompt search did not help</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#c9d1dd">GEPA on Jev's definitions: +0.006, within the noise.</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:40px; padding:20px 0 0; border-top:1px solid #3a4766">
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:baseline; flex:1">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1.2; white-space:nowrap; color:#14b8a6">0.75</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; white-space:nowrap; color:#b4bfcc">best test macro F1 (Jev)</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:baseline; flex:1">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1.2; white-space:nowrap; color:#14b8a6">0.26 s</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; white-space:nowrap; color:#b4bfcc">CLI default, $0.13 per 1k</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:16px; align-items:baseline; flex:1">
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:36px; font-weight:600; line-height:1.2; white-space:nowrap; color:#14b8a6">Dev decides</p>
+      <p style="font-family:'IBM Plex Sans', Arial, sans-serif; font-size:26px; line-height:1.3; white-space:nowrap; color:#b4bfcc">test scored once</p>
+    </div>
+  </div>
+  <p id="9d620db2" style="position:absolute; top:50%; left:50%; width:800px; font-family:'IBM Plex Sans', Arial, sans-serif; font-size:30px; line-height:1.3; transform:translate(-50%, -50%)"></p>
+  <aside>What we learned matters more than the scores. The statement carries most of the signal: the paper's prompts that see only the solution score 0.63 to 0.67 on test, against 0.72 to 0.74 with the statement. Full fine-tuning was not needed: frozen F2LLM embeddings under a linear head beat fine-tuned ModernBERT. Thresholds matter as much as models: the same untuned logistic regression goes from 0.19 macro F1 at a single 0.5 cutoff to 0.61 with per-tag thresholds, out of fold on dev. On the local RTX 2080 Ti, the dense-embedding methods (F2LLM) come close to Jev: late fusion scores 0.748 on test against Jev's 0.751, at 0.13 to 0.14 seconds a prediction against 0.26, about twice as fast, and for free; on dev they trail more, 0.706 against 0.729, which is why the choice made on dev stays Jev. The LLM-based methods gain mostly on graphs and number theory, by 0.11 to 0.18 over TF-IDF with intervals above zero, and not clearly elsewhere. Searching Jev's words did not help: GEPA rewrote the convention and the tag definitions on dev folds 1 to 3, chose on fold 4, and lowered the balanced Brier score it searched on, but the held-out fold shows no detectable gain in macro F1, 0.732 against 0.725, a paired +0.006 with an interval from -0.006 to +0.022; on the test set, a reference, it scores 0.727 against 0.751, mostly through probabilities, for $10.65 of requests. Better probabilities did not make better tags. Rare tags are noisy: probabilities has 18 test problems and an interval of about plus or minus 0.14. And asking for structured output helps: the same DesCode2Tag prompt scores 0.741 with a JSON schema against 0.721 as free text, and also leads on dev. In numbers: The best test macro F1 is 0.75, from TypeSafe Jev reading the statement and the solution; the methods that read the statement through an LLM all land between 0.72 and 0.75, ahead of fine-tuned ModernBERT and TF-IDF. The CLI default answers in a quarter of a second for about thirteen cents per thousand problems, and TF-IDF stays the free offline fallback. And the protocol: every choice was made on dev, out of fold; the test set was scored once per method.</aside>
+</section>

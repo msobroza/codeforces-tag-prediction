@@ -1,0 +1,25 @@
+{
+  "method": "jev-statement-code",
+  "model": "jev-1.13.0",
+  "settings_sha256": "8eda74ec4c3f3f8e38c952ac82b334c8888b2e08b0fe4ad6f1df1ebae2a2c7b7",
+  "tags": [
+    "math",
+    "graphs",
+    "strings",
+    "number theory",
+    "trees",
+    "geometry",
+    "games",
+    "probabilities"
+  ],
+  "thresholds": [
+    0.335,
+    0.745,
+    0.895,
+    0.695,
+    0.645,
+    0.615,
+    0.8200000000000001,
+    0.87
+  ]
+}

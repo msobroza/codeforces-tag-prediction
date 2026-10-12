@@ -1,0 +1,16 @@
+%%{init: {"flowchart": {"wrappingWidth": 420}}}%%
+flowchart TD
+    S["Frozen split<br/>assets/split/split.csv"] -- "part = dev, 80%" --> F["Dev set: 5 folds<br/>whole near-duplicate groups"]
+    S -- "part = test, 20%" --> T["Test set<br/>not scored until the end"]
+    F --> Q["One trial: LoRA trained on folds 1-4<br/>fold 0 scored after each epoch,<br/>thresholds cross-fitted on 5 sub-folds"]
+    Q -- "next trial: TPE" --> Q
+    Q -- "30 trials finished" --> C["Selection<br/>the trial with the best macro F1<br/>on fold 0"]
+    C --> A["5 fold models, one shot<br/>LoRA of model k trained on the other 4 folds"]
+    A --> O["Out-of-fold scores<br/>fold k scored by model k:<br/>macro F1, against TF-IDF and the label prior"]
+    O --> X["Final thresholds<br/>chosen on all out-of-fold scores"]
+    X --> E["Score the test set, once:<br/>the bag (mean of the 5 fold models)<br/>each fold model, TF-IDF and the label prior as references"]
+    T --> E
+    classDef test fill:#fde2c8,stroke:#c46a1b
+    classDef dev fill:#d8f0d8,stroke:#3c8c3c
+    class T,E test
+    class F,Q,C,A,O,X dev

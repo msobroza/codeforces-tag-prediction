@@ -1,0 +1,9 @@
+# Streamlit's settings for apps/streamlit_app.py, read when `streamlit run` starts from the
+# repository root (docs/adr/0012). The app runs on the user's machine only: it sends Streamlit no
+# usage statistics, and listens on 127.0.0.1, as the model server and the MLflow UI it calls do.
+
+[browser]
+gatherUsageStats = false
+
+[server]
+address = "127.0.0.1"

@@ -1,0 +1,2 @@
+candidate_pairs,quantile,cut_cosine,flagged_pairs,known_pairs,known_min_cosine,known_median_cosine,reach_known_min,reach_known_median
+10325659,0.9999,0.8614126437089812,1033,82,0.7306353507886704,0.9918200287982779,156728,0

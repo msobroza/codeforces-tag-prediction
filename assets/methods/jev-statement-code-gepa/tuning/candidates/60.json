@@ -1,0 +1,178 @@
+{
+  "convention": "Codeforces tags name the ideas and techniques of a problem's intended solution, as the problem's setters chose them. A problem often has several tags.",
+  "question": "Would Codeforces put the tag `{tag}` on this problem?",
+  "tag_definitions": {
+    "math": {
+      "true": {
+        "definition": "The intended solution needs a mathematical idea beyond routine arithmetic. Math is the broadest tag and often comes with number theory, geometry, probabilities or games.",
+        "includes": [
+          "deriving a formula or closed form for the answer",
+          "parity, invariants or bounds proved with arithmetic",
+          "combinatorial counting, binomial coefficients, inclusion-exclusion",
+          "sums, sequences and inequalities that reduce the search",
+          "modular arithmetic used to compute a large count"
+        ]
+      },
+      "false": {
+        "definition": "The work is implementation, simulation, a data structure, a graph or string algorithm, or a greedy choice, with only routine arithmetic.",
+        "excludes": [
+          "simulating a described process step by step",
+          "sorting, searching or a data structure doing the main work",
+          "sums, averages or comparisons of the input"
+        ]
+      }
+    },
+    "graphs": {
+      "true": {
+        "definition": "Use `graphs` when the intended solution materially relies on a network of entities and links—explicit, implicit, or inferred—or on its tree or flow structure; links need not be listed in the input.",
+        "includes": [
+          "reachability and nontrivial components",
+          "shortest paths and path optimization",
+          "cycles, topological order, SCCs, coloring",
+          "parent/depth constraints in rooted hierarchies",
+          "tree structure used by the algorithm",
+          "flows, edge operations, network balances",
+          "DP or optimization over graph transitions"
+        ]
+      },
+      "false": {
+        "definition": "Do not use `graphs` just because a story or data can be drawn as vertices and edges; the graph structure must be a substantive part of the intended technique.",
+        "excludes": [
+          "shared-attribute groups reducible to simple counting",
+          "ordered board or line transitions solved by direct DP",
+          "oracle-guided interactive path or tree discovery",
+          "tree-shaped data structures used only as tools",
+          "sequences, numbers, or strings without relational structure"
+        ]
+      }
+    },
+    "strings": {
+      "true": {
+        "definition": "The intended solution uses the order or structural properties of a character sequence as a string, or performs string-specific operations on it.",
+        "includes": [
+          "substrings, subsequences, prefixes and suffixes",
+          "palindromes, periods and borders",
+          "pattern matching and string algorithms",
+          "lexicographic comparisons and string construction or editing",
+          "runs, repetitions and string transformations",
+          "binary strings or brackets when sequence structure matters"
+        ]
+      },
+      "false": {
+        "definition": "The tag is absent when characters merely encode values for another task and the solution does not use string structure or string-specific operations.",
+        "excludes": [
+          "symbol counts used only for arithmetic or game reasoning",
+          "digits treated only as numeric values",
+          "bracket balance reduced to numeric counting or combinatorics",
+          "character grids used as maps",
+          "text used only for input or output"
+        ]
+      }
+    },
+    "number theory": {
+      "true": {
+        "definition": "The intended solution centrally uses structural properties of integers, not merely arithmetic on integer-valued data.",
+        "includes": [
+          "divisibility, gcd and lcm",
+          "prime numbers, sieves and factorisation",
+          "congruences and modular arithmetic used to solve the problem",
+          "modular inverses and number-theoretic theorems",
+          "Diophantine equations and integer solutions",
+          "divisor functions and counting divisors"
+        ]
+      },
+      "false": {
+        "definition": "The intended solution uses ordinary arithmetic or digit handling without relying on a number-theoretic property; a modular output format alone does not qualify.",
+        "excludes": [
+          "ordinary integer arithmetic, ratios or floor operations alone",
+          "formulaic counting without number-theoretic structure",
+          "digit-by-digit or numeral-representation processing alone",
+          "modular output used only to bound the answer"
+        ]
+      }
+    },
+    "trees": {
+      "true": {
+        "definition": "A tree is central to the problem or its intended solution: the algorithm relies on tree structure or operations, whether the tree is given or built. This includes tree-shaped data structures when their structure is the main method.",
+        "includes": [
+          "n vertices and n−1 edges, or parent arrays",
+          "subtrees, depths, ancestors, lowest common ancestors",
+          "DFS, subtree DP, rerooting",
+          "diameters, centroids, tree paths",
+          "binary trees and described tree-shaped processes",
+          "tries central to prefix relationships or operations"
+        ]
+      },
+      "false": {
+        "definition": "No tree structure or tree-specific reasoning is central to the intended solution; an incidental tree-shaped data structure does not earn the tag.",
+        "excludes": [
+          "segment trees, Fenwick trees, heaps used as tools",
+          "auxiliary tries for string matching or lookup",
+          "implicit recursion or game trees",
+          "general graphs with cycles"
+        ]
+      }
+    },
+    "geometry": {
+      "true": {
+        "definition": "The intended solution reasons about points, lines or shapes in the plane or in space.",
+        "includes": [
+          "distances, angles, areas, perimeters",
+          "segments, lines and their intersections",
+          "polygons, circles, convex hulls",
+          "vectors, cross products, rotations, real-valued coordinates"
+        ]
+      },
+      "false": {
+        "definition": "Coordinates appear only as cells of a grid or as positions on a line, with no Euclidean reasoning.",
+        "excludes": [
+          "moving between cells of a grid",
+          "intervals on a number line",
+          "a matrix of numbers"
+        ]
+      }
+    },
+    "games": {
+      "true": {
+        "definition": "The intended solution analyzes strategic player choices in a game, determining outcomes or winning strategies under optimal play, usually against an opponent.",
+        "includes": [
+          "who wins under optimal play",
+          "winning, losing, or drawing positions",
+          "Nim, Grundy values, the Sprague-Grundy theorem",
+          "minimax and adversarial choices",
+          "strategies and moves in turn-based games"
+        ]
+      },
+      "false": {
+        "definition": "The intended solution does not analyze competing strategic play; a game-like story or interactive format alone is insufficient.",
+        "excludes": [
+          "cooperative play without an opponent",
+          "interactive query or coordination protocols",
+          "random processes without strategic choices",
+          "single-player puzzles or operation sequences",
+          "score optimization without an opponent",
+          "simulated processes without player choice",
+          "characters named as players only"
+        ]
+      }
+    },
+    "probabilities": {
+      "true": {
+        "definition": "The answer is a probability or an expected value, or the solution reasons about a random process.",
+        "includes": [
+          "the probability that an event happens",
+          "the expected number of steps, value or cost",
+          "random choices the statement describes (coins, dice, uniform picks)",
+          "a probability or expectation printed as p·q^-1 modulo a prime, or as a real number with a tolerance"
+        ]
+      },
+      "false": {
+        "definition": "Nothing in the problem is random, and no probability or expectation is asked.",
+        "excludes": [
+          "counting arrangements without probabilities (combinatorics, math)",
+          "a randomized algorithm or hashing used only as a technique"
+        ]
+      }
+    }
+  }
+}

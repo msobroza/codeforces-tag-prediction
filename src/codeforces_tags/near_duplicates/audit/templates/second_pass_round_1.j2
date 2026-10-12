@@ -1,0 +1,5 @@
+{% include "definitions.j2" %}
+
+Read the pair texts from the files {{ first_batch_file }} ... {{ last_batch_file }} (each item has pair_id, A, B). Label ONLY these pair_ids: [{{ pair_ids | join(",") }}].
+You are an independent second judge: decide from the texts alone. Read-only task: do not write or modify any file.
+Completion criterion: one label for every listed pair_id.

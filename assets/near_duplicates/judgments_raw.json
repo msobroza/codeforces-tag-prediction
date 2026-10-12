@@ -1,0 +1,6317 @@
+{
+ "first": [
+  {
+   "pair_id": 0,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Car race lead counting vs anonymous letter from newspaper heading."
+  },
+  {
+   "pair_id": 1,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-numbers series, but probability over intervals vs sorting with lucky swaps."
+  },
+  {
+   "pair_id": 2,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest k-good segment vs grid connected components per obstacle cell."
+  },
+  {
+   "pair_id": 3,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same RGB garland setting, but 'nice' (period 3) vs 'diverse' (adjacent distinct) are different tasks."
+  },
+  {
+   "pair_id": 4,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both set in Kremland but odd/even stage sum vs connected-components sum on a path tree."
+  },
+  {
+   "pair_id": 5,
+   "label": "related",
+   "confidence": "high",
+   "reason": "IT City series; counting group compositions vs computing star area."
+  },
+  {
+   "pair_id": 6,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Odd-length XOR operations to zero queries vs max sum-minus-xor subsegment."
+  },
+  {
+   "pair_id": 7,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Coin split minimizing difference vs equidistant vertex subsets in a tree."
+  },
+  {
+   "pair_id": 8,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Share bishop-attack setting but locating a bishop vs maximizing attacked-cell sum."
+  },
+  {
+   "pair_id": 9,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard versions differing only in constraints on a,b,c,d."
+  },
+  {
+   "pair_id": 10,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Circular letter encryption prototype vs adjacent swaps to make s lexicographically smaller."
+  },
+  {
+   "pair_id": 11,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Platform level modification vs street repainting with window k."
+  },
+  {
+   "pair_id": 12,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation avoiding abc subsequence vs beautiful string with counts divisible by k."
+  },
+  {
+   "pair_id": 13,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum beautiful array size for sum vs robot frog jump reachability queries."
+  },
+  {
+   "pair_id": 14,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only RBS boilerplate shared; unique question-mark recovery vs rearranging strings for max RBS prefixes."
+  },
+  {
+   "pair_id": 15,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard versions of Problem F on promising substrings, differing only in constraints."
+  },
+  {
+   "pair_id": 16,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Permutation with k distinct adjacent differences vs Simon's 2n permutation equation."
+  },
+  {
+   "pair_id": 17,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive permutation guessing via mod queries vs minimum-weight permutation construction."
+  },
+  {
+   "pair_id": 18,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Table row/column swap queries vs reducing fractions given as products."
+  },
+  {
+   "pair_id": 19,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single flips making RBS vs finding RBS subsequence of length k."
+  },
+  {
+   "pair_id": 20,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum vertical path cover of a tree vs counting balanced black/white subtrees."
+  },
+  {
+   "pair_id": 21,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard versions of the floor-division cost problem differing in constraints."
+  },
+  {
+   "pair_id": 22,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single flips making RBS vs uniqueness of question-mark replacement."
+  },
+  {
+   "pair_id": 23,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Typing time on a keyboard vs minimum extraction maximizing array minimum."
+  },
+  {
+   "pair_id": 24,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both feature Omkar but landslide simulation vs repeated d - a_i operations are different tasks."
+  },
+  {
+   "pair_id": 25,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only RBS boilerplate shared; rearranging strings for max RBS prefixes vs ABC-to-bracket mapping."
+  },
+  {
+   "pair_id": 26,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard versions of alternating-sum partition, hard adds zeros."
+  },
+  {
+   "pair_id": 27,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Fillomino board partition vs tent removal with parallelogram constraint."
+  },
+  {
+   "pair_id": 28,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "E1/E2 of the same Vlad maze game, differing only in the question asked."
+  },
+  {
+   "pair_id": 29,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard versions of the robot-cat simple RBS counting, hard adds removal queries."
+  },
+  {
+   "pair_id": 30,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Sasha (likely same round) but palindromic matrix vs digit-removal price sum."
+  },
+  {
+   "pair_id": 31,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy (q=1) and hard (q=n) versions of the max sum-minus-xor subsegment problem."
+  },
+  {
+   "pair_id": 32,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same wire-intersection counting problem with smaller vs larger constraints."
+  },
+  {
+   "pair_id": 33,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Printing digit rhombus vs maximum seven-segment number."
+  },
+  {
+   "pair_id": 34,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both use prefix reversals but even-prefix binary string matching vs odd-prefix permutation sorting are distinct tasks."
+  },
+  {
+   "pair_id": 35,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard versions of Kirk's binary string problem differing only in string length."
+  },
+  {
+   "pair_id": 36,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Heidi/zombie series but contamination rectangle check vs counting wall segments."
+  },
+  {
+   "pair_id": 37,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard versions of binary table flipping differing in allowed operation count."
+  },
+  {
+   "pair_id": 38,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Equal candy bag distribution vs counting pennant placements."
+  },
+  {
+   "pair_id": 39,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Circular letter encryption prototype vs beautiful string with counts divisible by k."
+  },
+  {
+   "pair_id": 40,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Substrings divisible by 4 vs string at exact letter distance k."
+  },
+  {
+   "pair_id": 41,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Tokitsukaze easy/hard versions, hard additionally asks minimum number of subsegments."
+  },
+  {
+   "pair_id": 42,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Roulette question sector selection vs gluing spider trees for max length."
+  },
+  {
+   "pair_id": 43,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Delete/duplicate lexicographically smallest string vs permutation avoiding abc subsequence."
+  },
+  {
+   "pair_id": 44,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Little Elephant series but inversion-count pairs vs x-occurs-x-times range queries."
+  },
+  {
+   "pair_id": 45,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Kevin Sun from the same round, but score computation vs Lieges of Legendre game."
+  },
+  {
+   "pair_id": 46,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Substring with most '[' in correct bracket sequence vs unique RBS recovery from question marks."
+  },
+  {
+   "pair_id": 47,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Bracket flip counting vs sum of k powers of two."
+  },
+  {
+   "pair_id": 48,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Restoring array from absolute differences vs minimizing tree height by re-rooting edges."
+  },
+  {
+   "pair_id": 49,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard pair of the same gift-offer problem, differing only in k (k=2 vs 2<=k<=n)."
+  },
+  {
+   "pair_id": 50,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Ashish from the same round, but one is a min-cost subsequence and the other an interactive hidden-pair tree problem."
+  },
+  {
+   "pair_id": 51,
+   "label": "different",
+   "confidence": "high",
+   "reason": "News spreading over friend groups (connected components) versus counting (l,r) erasures that leave the array sorted."
+  },
+  {
+   "pair_id": 52,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive permutation guessing with mod queries versus moving one rook on a chessboard."
+  },
+  {
+   "pair_id": 53,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rearranging unlocked positions to minimise the last negative prefix sum versus building nonzero b with zero dot product."
+  },
+  {
+   "pair_id": 54,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Medal distribution for contest standings versus counting bracket-sequence depth with '?' characters."
+  },
+  {
+   "pair_id": 55,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Exam scheduling with early dates versus adding marks to a ruler; only the character names are similar."
+  },
+  {
+   "pair_id": 56,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Packmen eating asterisks on a strip versus making a load sequence strictly unimodal."
+  },
+  {
+   "pair_id": 57,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Good and bad keys opening chests versus counting index pairs with a_i < i < a_j < j."
+  },
+  {
+   "pair_id": 58,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only bracket-sequence boilerplate: counting regular concatenation pairs versus the substring with the most '['."
+  },
+  {
+   "pair_id": 59,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same MEX-cut setting from one round, but one maximises MEX over a two-row table and the other minimises it over a binary string."
+  },
+  {
+   "pair_id": 60,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same reading-books story and task; the hard version adds the exactly-m-books constraint and asks for the chosen set."
+  },
+  {
+   "pair_id": 61,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only fast-IO boilerplate: longest k-good segment versus splitting pearls into the most good segments."
+  },
+  {
+   "pair_id": 62,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Explicit B1/B2 Wonderful Coloring pair: same story and rules, generalised from 2 colours on a string to k colours on a sequence."
+  },
+  {
+   "pair_id": 63,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Different problems that share only easy/hard boilerplate: sum-minus-xor segment queries versus k-mex set queries."
+  },
+  {
+   "pair_id": 64,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Party invitations with richer/poorer limits versus deleting elements to avoid terrible subsequences."
+  },
+  {
+   "pair_id": 65,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only lexicographic-order boilerplate: odd-sum swaps versus at most k plus/minus-one transfers."
+  },
+  {
+   "pair_id": 66,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only the 'easy and hard versions' boilerplate: permutation cycle lengths versus removing segments to cap coverage."
+  },
+  {
+   "pair_id": 67,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same balanced-removal 3D points problem, differing only in the bound on n (2000 vs 50000)."
+  },
+  {
+   "pair_id": 68,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Flipping and rearranging binary arrays versus whether a gcd-chain array b exists."
+  },
+  {
+   "pair_id": 69,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard pair counting good subarrays; the hard version adds point-update queries."
+  },
+  {
+   "pair_id": 70,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Volume arrangement minimising divisors versus an interactive search for the fixed element after pair swaps."
+  },
+  {
+   "pair_id": 71,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical Homer painting setup; one asks for the minimal number of segments and the other for the maximal."
+  },
+  {
+   "pair_id": 72,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same Shiro ribbon-streak problem, differing only in the colour bound (10 vs 1e5)."
+  },
+  {
+   "pair_id": 73,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are in the Petya lucky-numbers series, but one finds the minimum lucky number with digit sum n and the other the least super lucky number >= n."
+  },
+  {
+   "pair_id": 74,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting Z-patterns in a grid versus counting substrings divisible by 4."
+  },
+  {
+   "pair_id": 75,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only permutation boilerplate: a minimum-weight permutation versus counting permutations with gcd(i*p_i) > 1."
+  },
+  {
+   "pair_id": 76,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shooting monsters in a corridor versus counting 'damn rhombi' in a graph."
+  },
+  {
+   "pair_id": 77,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "LIS of an array concatenated n times versus the shortest subsequence whose product is a perfect square."
+  },
+  {
+   "pair_id": 78,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are Petya lucky-number problems, but one uses a digit-sum condition and the other substring-count conditions (cnt of 4, 7, 47, 74)."
+  },
+  {
+   "pair_id": 79,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Creature spells maximising damage versus building a graph with a given degree set."
+  },
+  {
+   "pair_id": 80,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Shortest substring where 'a' dominates versus counting PalindORme-rearrangeable arrays."
+  },
+  {
+   "pair_id": 81,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Constructing a permutation for a recursive sort versus counting upward triangle plants."
+  },
+  {
+   "pair_id": 82,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only interactive boilerplate: guessing a permutation of 6 special numbers versus deciphering a swap-encoded string."
+  },
+  {
+   "pair_id": 83,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Bracket cyclic-shift beauty after one swap versus selecting a cat-contest jury from a friendship graph."
+  },
+  {
+   "pair_id": 84,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only fast-IO boilerplate: comparing two long integers versus the longest k-good segment."
+  },
+  {
+   "pair_id": 85,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only bracket boilerplate: counting regular concatenation pairs versus a regular subsequence of length k."
+  },
+  {
+   "pair_id": 86,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Removing DAG edges for a maximal cute set versus the minimum onager shots to break two wall sections."
+  },
+  {
+   "pair_id": 87,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same character Nastia from one round, but one constructs good/nearly-good integers and the other is an interactive permutation guess."
+  },
+  {
+   "pair_id": 88,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Printing Hulk's hate/love phrase versus the minimum half-queens to cover a board."
+  },
+  {
+   "pair_id": 89,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Share only a generic coronavirus theme: reverse/prefix-sum array transforms versus counting park lanterns."
+  },
+  {
+   "pair_id": 90,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum equal price for goods versus the longest distinct-character substring after one reversal."
+  },
+  {
+   "pair_id": 91,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Both are from a New Year-themed round, but one is Santa's present stack and the other the k-th good permutation."
+  },
+  {
+   "pair_id": 92,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A string-taking game versus choosing pepper packages per shop to maximise tastiness."
+  },
+  {
+   "pair_id": 93,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same character Ela at DTL from one round, but one counts luxurious numbers and the other is a cricket chess-variant reachability problem."
+  },
+  {
+   "pair_id": 94,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Identical permutation-definition intro (likely the same round), but one asks for a permutation with a given number of descents and the other the minimum moves to make a permutation."
+  },
+  {
+   "pair_id": 95,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same characters A and B preparing for contests, but one finds removed compilation errors and the other counts interesting substrings."
+  },
+  {
+   "pair_id": 96,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share only bracket boilerplate: constructing n distinct regular sequences versus ordering strings to maximise regular prefixes."
+  },
+  {
+   "pair_id": 97,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rotating a subsegment to maximise a_n - a_1 versus colouring edges to minimise the component count."
+  },
+  {
+   "pair_id": 98,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard versions of the same interactive substring-guessing problem; only the limit on total returned substrings differs."
+  },
+  {
+   "pair_id": 99,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are from the Petya lucky-numbers series, but one asks for the minimum lucky number with a given digit sum and the other asks for an interval probability."
+  },
+  {
+   "pair_id": 100,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting by LIS XOR and a rook-move check are unrelated tasks."
+  },
+  {
+   "pair_id": 101,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Assigning cinema seats and covering a rooted tree with vertical paths are unrelated tasks."
+  },
+  {
+   "pair_id": 102,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A maximum-sum alternating subsequence and finding x in a geometric-series sum are unrelated tasks."
+  },
+  {
+   "pair_id": 103,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimizing the longest break between chocolate bars and grouping people for ride tickets are unrelated tasks."
+  },
+  {
+   "pair_id": 104,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the definition of lexicographic order is shared; adjacent swaps to make s<t and a beautiful-string construction are different tasks."
+  },
+  {
+   "pair_id": 105,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pairing bouquets by odd sums and counting days with a negative balance are unrelated tasks."
+  },
+  {
+   "pair_id": 106,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximizing your own exam score and the expected strength of an army with updates are unrelated tasks."
+  },
+  {
+   "pair_id": 107,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Building a string from two subsequences and splitting power-of-two boxes to fill a bag are unrelated tasks."
+  },
+  {
+   "pair_id": 108,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the lexicographic-order boilerplate is shared; delete/duplicate operations and adjacent swaps to beat t are different tasks."
+  },
+  {
+   "pair_id": 109,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the RBS definition is shared; counting pairs whose concatenation is regular and reordering strings to maximize RBS prefixes are different tasks."
+  },
+  {
+   "pair_id": 110,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the permutation-definition footnote is shared; the range-decrement optimality check and the perfect-square permutation construction are different tasks."
+  },
+  {
+   "pair_id": 111,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting claws in a Rooted Dead Bush and a rook-move check are unrelated tasks."
+  },
+  {
+   "pair_id": 112,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are Robot-on-the-Board problems from the same series, but one runs a command string and the other follows arrows written on the cells."
+  },
+  {
+   "pair_id": 113,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both deal with perfect-square products, but finding the shortest square-product subsequence and checking for any non-square product are different tasks from different rounds."
+  },
+  {
+   "pair_id": 114,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting stewards strictly between the min and max and splitting candies of weight 1 or 2 are unrelated tasks."
+  },
+  {
+   "pair_id": 115,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are Ayush lock-password interactive problems, but one recovers maxima over subset complements and the other recovers the OR of all elements except one."
+  },
+  {
+   "pair_id": 116,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting digit blocks and painting a cube are unrelated tasks."
+  },
+  {
+   "pair_id": 117,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Yaroslav and an array, but making neighbours distinct by swaps and maximizing a sum by sign flips are different tasks."
+  },
+  {
+   "pair_id": 118,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Both feature Ivan and look like the same round, but a matrix scoring game and a mergesort-call-count construction are different tasks."
+  },
+  {
+   "pair_id": 119,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Jumping over dirty stairs and minimizing insertion-sort swaps are unrelated tasks; the generic name Petya is all they share."
+  },
+  {
+   "pair_id": 120,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Placing book volumes to minimize divisors and building a string with no length-3 palindromes are unrelated tasks."
+  },
+  {
+   "pair_id": 121,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Colouring jewelry by prime divisors and building a triangle-free graph with the most edges are unrelated tasks."
+  },
+  {
+   "pair_id": 122,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are Burenka/Buryat problems from the same round, but a semi-Fibonacci string check and a chip game are different tasks."
+  },
+  {
+   "pair_id": 123,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the permutation definition is shared; a minimum-weight permutation and counting inversion-graph components are different tasks."
+  },
+  {
+   "pair_id": 124,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Summing exlog over primes and answering Wu-value queries on 01-strings are unrelated tasks."
+  },
+  {
+   "pair_id": 125,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Lining up sheep and a shortest path through portals on a grid are unrelated tasks."
+  },
+  {
+   "pair_id": 126,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Equalizing candy bags by operations and scheduling football results so all scores are equal are different tasks."
+  },
+  {
+   "pair_id": 127,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Sorting by moving all equal values to one end and ordering tickets to reach an ecological contribution are unrelated tasks."
+  },
+  {
+   "pair_id": 128,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are from the Petya lucky-numbers series, but an interval probability and building the minimal lucky string are different tasks."
+  },
+  {
+   "pair_id": 129,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both mention graph diameter, but a maximum-diameter graph under degree limits and a minimum-diameter tree built from a forest are different tasks."
+  },
+  {
+   "pair_id": 130,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum TV-show subscriptions over a window and counting pairs whose product is a k-th power are unrelated tasks."
+  },
+  {
+   "pair_id": 131,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding a degenerate triangle triple and counting maximum finished sets for each x are unrelated tasks."
+  },
+  {
+   "pair_id": 132,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both use regular bracket sequences, but the longest RBS subsequence after deletions and the longest RBS substring with its count are different tasks."
+  },
+  {
+   "pair_id": 133,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the same Yuzu candies/permutation problem; only the limits on n and a_i differ."
+  },
+  {
+   "pair_id": 134,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the same k-mex query problem; the hard version adds remove queries."
+  },
+  {
+   "pair_id": 135,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are from the Petya lucky-numbers series, but a minimum lucky number by digit sum and the fewest operations to turn one lucky string into another are different tasks."
+  },
+  {
+   "pair_id": 136,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Making an array arithmetic with the fewest changes and selecting elements under a subsegment-average constraint are different tasks."
+  },
+  {
+   "pair_id": 137,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single-bracket flips that make a sequence regular and finding the substring with the most '[' are different tasks."
+  },
+  {
+   "pair_id": 138,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting the maximum distinct tuples of an LCG generator and counting good subarrays under bit swaps are unrelated tasks."
+  },
+  {
+   "pair_id": 139,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the permutation definition is shared; the minimum moves to reach a permutation and constructing a permutation for an equation are different tasks."
+  },
+  {
+   "pair_id": 140,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy (k=3) and hard (general k) versions of the same LCM-sum construction problem."
+  },
+  {
+   "pair_id": 141,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Killing monsters with Phoenix Rod shots and processing jump queries on an array are unrelated tasks."
+  },
+  {
+   "pair_id": 142,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the permutation definition is shared; a minimum-weight permutation and the lexicographically smallest permutation after one reversal are different tasks."
+  },
+  {
+   "pair_id": 143,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Toy Train candy delivery and counting Morse-code sequences are unrelated tasks."
+  },
+  {
+   "pair_id": 144,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both continue the same Heidi/Doctor Star Wars story, but per-ship gold via sorting/prefix sums and a graph matching cost minimization are different tasks."
+  },
+  {
+   "pair_id": 145,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard (n<=300) and easy (n=1) versions of the same cinema seating inconvenience problem."
+  },
+  {
+   "pair_id": 146,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are set in Berland, but the longest dynasty-name chain and counting fools' paths per tree edge are unrelated tasks."
+  },
+  {
+   "pair_id": 147,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the regular-bracket definition is shared; A counts concatenated pairs, B assigns brackets to the letters A/B/C."
+  },
+  {
+   "pair_id": 148,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A removes local maximums from an array; B answers range queries for the minimum weighted distance between points."
+  },
+  {
+   "pair_id": 149,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A builds a string whose substrings all occur an odd number of times; B finds the maximum substring cost in a binary string."
+  },
+  {
+   "pair_id": 150,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A asks for a palindrome made of a prefix plus a suffix; B builds a number not divisible by its own digits."
+  },
+  {
+   "pair_id": 151,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the maximum pairwise gcd up to n; B compresses an array so the gcd of its sums exceeds 1."
+  },
+  {
+   "pair_id": 152,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same terminal-wire crossing problem; the two differ only in the bound on n."
+  },
+  {
+   "pair_id": 153,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A makes numbers equal with x+y and |x-y| operations; B finds a minimum-distance derangement of cats."
+  },
+  {
+   "pair_id": 154,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy and hard versions of the move-to-front/end sorting problem."
+  },
+  {
+   "pair_id": 155,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Same Little Petya xor setup, but A wants the maximum xor segment and B a split of the set into two parts."
+  },
+  {
+   "pair_id": 156,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit hard and easy versions of the gcd-prefix-sum problem; only the maximum a_i differs."
+  },
+  {
+   "pair_id": 157,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts Pokemon evolution permutations; B assigns xor values on a tree."
+  },
+  {
+   "pair_id": 158,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the shortest common subsequence; B inserts elements to make a beautiful array."
+  },
+  {
+   "pair_id": 159,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the fast-I/O note is shared; A compares big integers, B splits pearls into good segments."
+  },
+  {
+   "pair_id": 160,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easier and harder versions of the chocolate-box problem."
+  },
+  {
+   "pair_id": 161,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A sorts through a middle-insertion process; B finds the minimum onager shots."
+  },
+  {
+   "pair_id": 162,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the empty-line input format is shared; A merges edit sequences, B finds a grid shortest path around an obstacle."
+  },
+  {
+   "pair_id": 163,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both build spanning trees, but A maximises the maximum degree and B bounds the degrees of s and t; neither shares a story."
+  },
+  {
+   "pair_id": 164,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A balances jam jars; B checks whether a segment graph is a tree."
+  },
+  {
+   "pair_id": 165,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A asks for a remainder of a binary-digit number; B schedules microtransaction purchases."
+  },
+  {
+   "pair_id": 166,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy (q=1) and hard (q up to 1e5) versions of the same process problem."
+  },
+  {
+   "pair_id": 167,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A sets the evacuation order of a ship; B divides an island between parties."
+  },
+  {
+   "pair_id": 168,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A removes elements to form 4-8-15-16-23-42 subsequences; B maximises the elements divisible by 3."
+  },
+  {
+   "pair_id": 169,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Kevin and cow setting from one round, but A is an alternating-subsequence task and B a Nim-like game."
+  },
+  {
+   "pair_id": 170,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A gets from n to 1 by multiply-by-2 and divide-by-6 moves; B makes array elements divisible by k with x increments."
+  },
+  {
+   "pair_id": 171,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Petya lucky-numbers series, but A finds the minimum lucky number with a given digit sum and B sorts with lucky swaps."
+  },
+  {
+   "pair_id": 172,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "A is the robot-cleaner problem that B references, with probability added to give an expected time."
+  },
+  {
+   "pair_id": 173,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A sorts two arrays with paired swaps; B finds shortest paths in a layered labyrinth."
+  },
+  {
+   "pair_id": 174,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A splits reports into folders; B simulates Joe falling through floors."
+  },
+  {
+   "pair_id": 175,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the 'easy version' boilerplate is shared; A is a k-mex set query, B maximises sum minus xor on a segment."
+  },
+  {
+   "pair_id": 176,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A splits a string into the lex-min subsequence and the rest; B finds the lex-smallest permutation avoiding the subsequence T."
+  },
+  {
+   "pair_id": 177,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A asks for the lex-smallest mirrored prefix; B asks for the lex-smallest beautiful string that is at least s."
+  },
+  {
+   "pair_id": 178,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A arranges items on shelves; B is an interactive search for a hidden zero."
+  },
+  {
+   "pair_id": 179,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same chef and taster story, but A minimises dish variety and B minimises the fish-meat balance."
+  },
+  {
+   "pair_id": 180,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Same split-into-k-subarrays setup, but the costs differ (sum of max minus min vs a_i times subarray index)."
+  },
+  {
+   "pair_id": 181,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same increasing/decreasing story, but A's input is shuffled (counting) and B's keeps its order (a merge-order split)."
+  },
+  {
+   "pair_id": 182,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A builds pairs for an arbitrary function f; B arranges 1..2n on a circle with balanced window sums."
+  },
+  {
+   "pair_id": 183,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts rectangles with a given sum in a digit-product matrix; B finds the longest Fibonacci-like segment."
+  },
+  {
+   "pair_id": 184,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same Heidi contamination-grid lair recovery; A is the rectangle yes/no special case of B's convex-polygon reconstruction."
+  },
+  {
+   "pair_id": 185,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy and hard versions of the beautiful-subsequence problem; only the bound on a_i differs."
+  },
+  {
+   "pair_id": 186,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A asks for the MST weight of a gcd graph; B counts balanced permutations under transfer costs."
+  },
+  {
+   "pair_id": 187,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the bracket boilerplate is shared; A finds the longest regular substring, B fills '?' at minimum cost."
+  },
+  {
+   "pair_id": 188,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A builds pairs for a function f; B finds the maximum triangle-free graph."
+  },
+  {
+   "pair_id": 189,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts sausage pieces on a pizza crust; B finds maximum gcd beauty in a tree."
+  },
+  {
+   "pair_id": 190,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy (complete all) and hard (maximum subset) versions of Polycarp's projects."
+  },
+  {
+   "pair_id": 191,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Levko series from one round, but A builds a table with fixed row and column sums and B a permutation with k good elements."
+  },
+  {
+   "pair_id": 192,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A uses delete and duplicate to reach the lex-smallest string; B asks for the lex-smallest beautiful string that is at least s."
+  },
+  {
+   "pair_id": 193,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Petya lucky-numbers series, but A is an interval probability and B counts lucky paths in a tree."
+  },
+  {
+   "pair_id": 194,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A reverses prefixes of magnets; B counts the common subarrays of permutations."
+  },
+  {
+   "pair_id": 195,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A rearranges a string to avoid ugly pairs; B counts special subsegments of a permutation."
+  },
+  {
+   "pair_id": 196,
+   "label": "different",
+   "confidence": "high",
+   "reason": "PIN code uniqueness vs. cutting wires in two trees; unrelated tasks."
+  },
+  {
+   "pair_id": 197,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share the RBS definition, but constructing n bracket sequences is a different task from mapping A/B/C letters to brackets."
+  },
+  {
+   "pair_id": 198,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum cost to reach GCD 1 vs. counting GCD insertions; different tasks."
+  },
+  {
+   "pair_id": 199,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-numbers series, but a lucky string construction differs from sorting with lucky swaps."
+  },
+  {
+   "pair_id": 200,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share segment boilerplate, but removing one segment to maximize the intersection differs from counting points by coverage."
+  },
+  {
+   "pair_id": 201,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the same binary-string flip-cost problem; only the constraints on n, x and y differ."
+  },
+  {
+   "pair_id": 202,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share the permutation definition, but a minimum-weight permutation differs from minimizing swaps for the prefix sum."
+  },
+  {
+   "pair_id": 203,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Boxer weights team vs. freelancer project ordering; unrelated tasks."
+  },
+  {
+   "pair_id": 204,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest number with divisors spaced at least d apart vs. removing array pairs by sum; unrelated."
+  },
+  {
+   "pair_id": 205,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are hard versions but of different problems: LCM sum split vs. square-free segment division."
+  },
+  {
+   "pair_id": 206,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same Singer House dome color bot; B adds message edit operations and larger limits."
+  },
+  {
+   "pair_id": 207,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same interactive hidden-nodes tree problem; only the query limit differs (14 vs. 11)."
+  },
+  {
+   "pair_id": 208,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum size of a beautiful array vs. counting excellent arrays; different tasks."
+  },
+  {
+   "pair_id": 209,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both say easy/hard versions, but substring removal keeping a subsequence is unrelated to the freelancer projects."
+  },
+  {
+   "pair_id": 210,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation records removal vs. string beauty replacements; unrelated."
+  },
+  {
+   "pair_id": 211,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share the RBS definition, but checking for a unique '?' replacement differs from the ABC letter-to-bracket mapping."
+  },
+  {
+   "pair_id": 212,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "F1/F2 of the same k-beautiful number problem, differing only in the bound on k."
+  },
+  {
+   "pair_id": 213,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard Mocha and Diana forest problem, differing only in n."
+  },
+  {
+   "pair_id": 214,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Petya lucky-numbers series; minimal lucky number by digit sum differs from counting lucky-edge triples in a tree."
+  },
+  {
+   "pair_id": 215,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive permutation guessing via mod queries vs. maximum a mod b in a range; different tasks."
+  },
+  {
+   "pair_id": 216,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Share characters (Ayush/Ashish round), but an interactive tree hidden-node search differs from GCD array compression."
+  },
+  {
+   "pair_id": 217,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share the substring footnote, but max binary substring cost differs from summing bracket balancing costs."
+  },
+  {
+   "pair_id": 218,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Mirror lexicographically smallest string vs. adjacent swaps to beat string t; different tasks."
+  },
+  {
+   "pair_id": 219,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Jump queries on an array vs. counting rhombi in a directed graph; unrelated."
+  },
+  {
+   "pair_id": 220,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Erase-and-duplicate smallest string differs from the mirror smallest string; only the lex boilerplate is shared."
+  },
+  {
+   "pair_id": 221,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Erasing elements not divisible by i+1 vs. inserting elements so a_i <= i; different tasks."
+  },
+  {
+   "pair_id": 222,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Grid picture construction vs. 4xn domino tiling; unrelated."
+  },
+  {
+   "pair_id": 223,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Erase-and-duplicate smallest string vs. adjacent swaps to be smaller than t; different tasks."
+  },
+  {
+   "pair_id": 224,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Not-so-rainy day vs. matching or independent set in a graph; unrelated."
+  },
+  {
+   "pair_id": 225,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character Sam (likely the same round), but power-up team strengths differ from the great-sequence additions."
+  },
+  {
+   "pair_id": 226,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Candy gift problem D and its extended version G, which adds the f_i preference."
+  },
+  {
+   "pair_id": 227,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Vowel compression formatting vs. amusement park group pricing; unrelated."
+  },
+  {
+   "pair_id": 228,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Hard erase-and-duplicate smallest string vs. mirror smallest string; different tasks."
+  },
+  {
+   "pair_id": 229,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character William (same round series), but parity swaps differ from counting RBS subsegments of a compressed sequence."
+  },
+  {
+   "pair_id": 230,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Binary string flips avoiding 010/101 vs. tree digit shuffling cost; different tasks and characters."
+  },
+  {
+   "pair_id": 231,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Changing characters to reach k distinct letters vs. splitting a sequence into sortable subsequences; unrelated."
+  },
+  {
+   "pair_id": 232,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share the median definition, but the max sum of medians over k arrays differs from the max median for a given sum."
+  },
+  {
+   "pair_id": 233,
+   "label": "different",
+   "confidence": "high",
+   "reason": "x-th BA-string vs. adjacent swaps to beat t lexicographically; only boilerplate is shared."
+  },
+  {
+   "pair_id": 234,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Share interactive boilerplate, but XOR guessing with 2 queries differs from restoring a swap cipher with 3 queries."
+  },
+  {
+   "pair_id": 235,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Petya lucky series; transforming a lucky string with min operations differs from building a lucky number with substring counts."
+  },
+  {
+   "pair_id": 236,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Divisible triple adjustment vs. sum of min distances between moving points; unrelated."
+  },
+  {
+   "pair_id": 237,
+   "label": "different",
+   "confidence": "high",
+   "reason": "LIS XOR split vs. max a mod b; unrelated."
+  },
+  {
+   "pair_id": 238,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Depot delivery distance vs. flower growth simulation; unrelated."
+  },
+  {
+   "pair_id": 239,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Triangle plant counting vs. polynomial Euclid construction; unrelated."
+  },
+  {
+   "pair_id": 240,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Ujan string swap problem: the easy version allows exactly one swap, the hard version up to 2n swaps."
+  },
+  {
+   "pair_id": 241,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Little Dormi falling sand puzzle easy/hard versions, differing only in the constraint on a_i."
+  },
+  {
+   "pair_id": 242,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Value appearing three times vs. max a mod b; unrelated."
+  },
+  {
+   "pair_id": 243,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same impostors interactive problem; only the question limit differs (2n vs. n+6)."
+  },
+  {
+   "pair_id": 244,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Great Vova Wall versions 1 and 2: the same story and task, with vertical bricks allowed only in version 1."
+  },
+  {
+   "pair_id": 245,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both count good subarrays but under unrelated definitions (each value exactly thrice vs sum equals length)."
+  },
+  {
+   "pair_id": 246,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard versions of the potions problem; only the bound on n differs."
+  },
+  {
+   "pair_id": 247,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Official first and second subtasks of Add on a Tree: same tree and leaf-path operation, real vs integer x, decision vs construction."
+  },
+  {
+   "pair_id": 248,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Resistance/Heidi planet-tree series, but counting leaves differs from max controlled planets per K."
+  },
+  {
+   "pair_id": 249,
+   "label": "different",
+   "confidence": "high",
+   "reason": "They share only rooted-tree boilerplate: edge-halving to bound leaf path sums vs building a binary tree with a given depth sum."
+  },
+  {
+   "pair_id": 250,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Max a mod b over a range vs moving one rook on a chessboard."
+  },
+  {
+   "pair_id": 251,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Min moves adding k in [1,10] vs min increments to bound the digit sum."
+  },
+  {
+   "pair_id": 252,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Max-sum longest alternating subsequence vs candy gift with distinct counts."
+  },
+  {
+   "pair_id": 253,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Bitwise median word under Hamming distance vs counting simple RBS substrings."
+  },
+  {
+   "pair_id": 254,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Divan round characters, but GCD-prefix reordering differs from buying chocolate within a budget."
+  },
+  {
+   "pair_id": 255,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation with k descents vs permutation with k distinct adjacent differences."
+  },
+  {
+   "pair_id": 256,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shortest original title not a substring vs lexicographically smallest string with k distinct letters."
+  },
+  {
+   "pair_id": 257,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Construct a Hungry sequence vs cover a complete graph with 3- and 4-cycles."
+  },
+  {
+   "pair_id": 258,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "E1/E2 edge-halving tree problems; the hard version adds edge costs of 1 or 2."
+  },
+  {
+   "pair_id": 259,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation for a recursive sort function vs counting digit blocks modulo prime."
+  },
+  {
+   "pair_id": 260,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Wabbit/zoo round, but box-pulling time differs from the interactive rotary laser lock."
+  },
+  {
+   "pair_id": 261,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "D1/D2 of the same problem: all elements equal vs at least half equal after subtracting k."
+  },
+  {
+   "pair_id": 262,
+   "label": "different",
+   "confidence": "high",
+   "reason": "They share only rooted-tree boilerplate: costed edge halving vs constructing a binary tree with a depth sum."
+  },
+  {
+   "pair_id": 263,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-numbers series, but min operations between strings differs from least super lucky number at least n."
+  },
+  {
+   "pair_id": 264,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pair operations under arbitrary f vs robbers and searchlights min moves."
+  },
+  {
+   "pair_id": 265,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both have 'easy version' boilerplate but differ: square-free segment division vs k-LCM construction."
+  },
+  {
+   "pair_id": 266,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both have 'hard version' boilerplate but differ: k-mex set queries vs sum-minus-xor segment queries."
+  },
+  {
+   "pair_id": 267,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Zebra subsequence partition vs Dima's array-compaction position queries."
+  },
+  {
+   "pair_id": 268,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Largest number from seven-segment budget vs pony chess-coloring turns."
+  },
+  {
+   "pair_id": 269,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both define regular bracket sequences but differ: RBS subsequence of length k vs A/B/C bracket assignment."
+  },
+  {
+   "pair_id": 270,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting diamond tilings of a belt vs nested rubber bands in a tree."
+  },
+  {
+   "pair_id": 271,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same Bulls and Cows interactive problem, only the query limit differs (7 vs 50)."
+  },
+  {
+   "pair_id": 272,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Derangement construction vs permutation minimizing indices where i divides p_i; distinct tasks despite similar answers."
+  },
+  {
+   "pair_id": 273,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Spanning tree with degree of vertex 1 exactly D vs degree bounds on two vertices s and t; different tasks."
+  },
+  {
+   "pair_id": 274,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting triplets with lcm at least sum vs permutation maximizing sum of lcm(i, p_i)."
+  },
+  {
+   "pair_id": 275,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same erase-equal-block operation on a binary string, but arbitrary a_x scores (interval DP) vs a*l+b scoring (greedy) are different tasks."
+  },
+  {
+   "pair_id": 276,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Likely the same Baby Ehab round, about subsequence products, but non-square product existence differs from longest product-1-mod-n subsequence."
+  },
+  {
+   "pair_id": 277,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Forming ICPC teams vs lexicographically minimal square tiling coloring."
+  },
+  {
+   "pair_id": 278,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Grid fill with 1/4 and multiples of 5 vs counting non-decreasing subarrays with updates."
+  },
+  {
+   "pair_id": 279,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Garden watering taps vs connected components of a complement graph."
+  },
+  {
+   "pair_id": 280,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Packing objects into boxes vs minimum heaters to warm the house."
+  },
+  {
+   "pair_id": 281,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard interactive password guessing; k=2 vs 2<=k<=100."
+  },
+  {
+   "pair_id": 282,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Subtasks of the same painting-strip counting problem F, differing only in m constraint."
+  },
+  {
+   "pair_id": 283,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Carousel coloring vs rotating rectangles for non-ascending heights."
+  },
+  {
+   "pair_id": 284,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Construct a p-interesting graph vs max-weight subgraph; only the subgraph definition is shared."
+  },
+  {
+   "pair_id": 285,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Fair Nut prefix count vs min adjacent swaps to make s lex smaller; only the lex-order definition is shared."
+  },
+  {
+   "pair_id": 286,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard bracket depth sum problem; only the n limit differs."
+  },
+  {
+   "pair_id": 287,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Fair Nut prefix count vs smallest beautiful string; only the lex-order definition is shared."
+  },
+  {
+   "pair_id": 288,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Square-free division easy (k=0) vs hard (k<=20)."
+  },
+  {
+   "pair_id": 289,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Both from the IT City/company combinatorics series, but counting groups of 5-7 vs placing pennants are different tasks."
+  },
+  {
+   "pair_id": 290,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same playoff tournament setting, but counting possible winners under queries vs restoring placings from a hash."
+  },
+  {
+   "pair_id": 291,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting gcd-beautiful permutations vs validating cyclic-shift power array; only the permutation definition is shared."
+  },
+  {
+   "pair_id": 292,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Painter pipeline scheduling vs choosing a film genre to skip to minimize stresses."
+  },
+  {
+   "pair_id": 293,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shared bracket-sequence boilerplate, but one finds a length-k regular subsequence and the other constructs n distinct sequences."
+  },
+  {
+   "pair_id": 294,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A coin-payment minimum versus counting promising +/- substrings."
+  },
+  {
+   "pair_id": 295,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Distinct-character range queries with updates versus maximizing a distinct substring after one reversal."
+  },
+  {
+   "pair_id": 296,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Picture-reposting DP versus a TV rental cost minimization."
+  },
+  {
+   "pair_id": 297,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Roundest price multiple versus a humanoid absorbing astronauts."
+  },
+  {
+   "pair_id": 298,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Powers-of-3 good numbers versus permutation cycle lengths; only the easy/hard boilerplate is shared."
+  },
+  {
+   "pair_id": 299,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Adjacent swaps to make s lexicographically smaller than t versus the minimal xoration."
+  },
+  {
+   "pair_id": 300,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Team-split practice scheduling versus a string with no length-3 palindromes."
+  },
+  {
+   "pair_id": 301,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Ezzat from the same round, but maximizing a sum of averages differs from removing grid rows."
+  },
+  {
+   "pair_id": 302,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximum product of tree component sizes versus a party-leaving puzzle."
+  },
+  {
+   "pair_id": 303,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-numbers series, but string conversion operations differ from counting lucky subsequences."
+  },
+  {
+   "pair_id": 304,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding a good pair by absolute values versus equal-LCM subsets."
+  },
+  {
+   "pair_id": 305,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-numbers series, but the minimal lucky number with a digit sum differs from the minimal lucky string."
+  },
+  {
+   "pair_id": 306,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both are Sherlock-themed from the same round, but prime-divisor coloring differs from counting power-of-k segment sums."
+  },
+  {
+   "pair_id": 307,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest regular subsequence length versus constructing n distinct regular sequences."
+  },
+  {
+   "pair_id": 308,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Weakened common divisor versus the plasticine zebra."
+  },
+  {
+   "pair_id": 309,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Theofanis from the same round, but farm distribution differs from imposter/crewmate graph coloring."
+  },
+  {
+   "pair_id": 310,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Prefix-suffix palindrome versus the bombs-in-permutation cost queries."
+  },
+  {
+   "pair_id": 311,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shared interactive boilerplate, but guessing a permutation of special numbers differs from an XOR-guessing task."
+  },
+  {
+   "pair_id": 312,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same concatenated-permutations setup, but counting distinct subarrays differs from counting length-n subarrays with a given sum."
+  },
+  {
+   "pair_id": 313,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Jewelry coloring by prime divisors versus constructing a maze with T paths."
+  },
+  {
+   "pair_id": 314,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Seven-segment maximum number versus a long recurrent binary sequence."
+  },
+  {
+   "pair_id": 315,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Volume arrangement minimizing divisors versus the seven-segment maximum number."
+  },
+  {
+   "pair_id": 316,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Constructing n regular bracket sequences versus checking whether a question-mark replacement is unique."
+  },
+  {
+   "pair_id": 317,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting pairs with a_j - a_i = j - i versus pairs with a_i * a_j = i + j; the conditions and solutions differ."
+  },
+  {
+   "pair_id": 318,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Suspicious task-order check versus a grid shortest path with portals."
+  },
+  {
+   "pair_id": 319,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rearranging letters to avoid ugly pairs versus matching points at a minimum distance."
+  },
+  {
+   "pair_id": 320,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Burger profit versus gas pipeline cost DP."
+  },
+  {
+   "pair_id": 321,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting digit blocks versus constructing polynomials for Euclid's algorithm steps."
+  },
+  {
+   "pair_id": 322,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same oolimry max-sadness problem (F1/F2): one constructs a max-sadness permutation, the other checks one."
+  },
+  {
+   "pair_id": 323,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Max times min over subarrays versus maximizing i*j - k*(a_i|a_j)."
+  },
+  {
+   "pair_id": 324,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical Burenka XOR problem; it states it is the hard/easy versions differing only in constraints."
+  },
+  {
+   "pair_id": 325,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Knight duel coloring versus the make-the-fence-great DP."
+  },
+  {
+   "pair_id": 326,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Dr. Dolittle queue simulation versus a lexicographically minimal shortest path with at most k cell types."
+  },
+  {
+   "pair_id": 327,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shared interactive boilerplate, but XOR guessing differs from restoring a string with distinct-count queries."
+  },
+  {
+   "pair_id": 328,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Shared lucky-numbers (4/7) setting, but the minimal lucky number by digit sum differs from counting numbers with at most k lucky digits."
+  },
+  {
+   "pair_id": 329,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Sorting a binary string by subsequence reversals versus the divisor-multiple increment operations queries."
+  },
+  {
+   "pair_id": 330,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Lonely numbers via GCD triangles versus the year with the most people alive."
+  },
+  {
+   "pair_id": 331,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Only a generic Polycarp/New Year theme is shared: domino tiling of a 2xn strip versus cutting paper into n pieces."
+  },
+  {
+   "pair_id": 332,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest beautiful string >= s versus the minimal xoration; only the lexicographic definition is shared."
+  },
+  {
+   "pair_id": 333,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Constructing a perfect array versus counting XOR-equals-sum subarrays."
+  },
+  {
+   "pair_id": 334,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single-flip positions that make a regular sequence versus rearranging strings to maximize RBS prefixes."
+  },
+  {
+   "pair_id": 335,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Dynamic scoring cheater accounts versus the prairie partition count."
+  },
+  {
+   "pair_id": 336,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both involve LCM with song epigraphs, but a max lcm-sum permutation differs from counting triplets with lcm >= sum."
+  },
+  {
+   "pair_id": 337,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Multiplying to form an arithmetic progression versus an interactive guessing game with floor division."
+  },
+  {
+   "pair_id": 338,
+   "label": "different",
+   "confidence": "high",
+   "reason": "k-for-the-price-of-one shopping versus recovering the cake-cutting order."
+  },
+  {
+   "pair_id": 339,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation hiking game versus the Garden of the Sun grid construction."
+  },
+  {
+   "pair_id": 340,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Correct substring with the most '[' versus rearranging strings to maximize RBS prefixes."
+  },
+  {
+   "pair_id": 341,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest unused test index vs printing problem sets on two sheet types."
+  },
+  {
+   "pair_id": 342,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest regular subsequence by deletion vs counting regular subsegments of a compressed sequence."
+  },
+  {
+   "pair_id": 343,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Arithmetic progression with buns vs finding the smallest number that grows x times under a digit rotation; they share only a teacher theme."
+  },
+  {
+   "pair_id": 344,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Monster HP rounds vs restoring a permutation from adjacent differences."
+  },
+  {
+   "pair_id": 345,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting teams sharing the k-th place vs checking whether one polygon lies inside another."
+  },
+  {
+   "pair_id": 346,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Valeric/Euro Championship setting, but different tasks: balls into baskets vs counting polyline angles."
+  },
+  {
+   "pair_id": 347,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both use easy/hard boilerplate, but optimal-subsequence queries vs counting shifted answer suits are unrelated."
+  },
+  {
+   "pair_id": 348,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum number of balls from pass counts vs counting rearrangements lexicographically smaller than t."
+  },
+  {
+   "pair_id": 349,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Zero-sum subset under index constraints vs an interesting subarray with max-min at least its length."
+  },
+  {
+   "pair_id": 350,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are easy versions of different problems: column shifts for max row sums vs sequence difficulty."
+  },
+  {
+   "pair_id": 351,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Palindrome game easy/hard: identical game, the easy one guarantees the string starts as a palindrome."
+  },
+  {
+   "pair_id": 352,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same interactive second-max query problem, only the query limit differs (40 vs 20)."
+  },
+  {
+   "pair_id": 353,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Cutting a carrot into equal areas vs collecting banknotes between guards; no shared story in the text."
+  },
+  {
+   "pair_id": 354,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are interactive string restorations, but undoing hidden swaps vs guessing a string with distinct-count queries are different tasks."
+  },
+  {
+   "pair_id": 355,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding a and b with x*b^a=y vs minimum onager shots to break two wall sections."
+  },
+  {
+   "pair_id": 356,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same spanning-tree setup (F1/F2 pair), but maximizing max degree vs fixing vertex 1's degree to D are different objectives."
+  },
+  {
+   "pair_id": 357,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Largest window avoiding a dead pixel vs minimum olympiad cutoff score."
+  },
+  {
+   "pair_id": 358,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Ehab independent-set-or-cycle framing with different parameters and conditions (ceil(k/2) and cycle at most k vs sqrt(n) and cycle at least sqrt(n))."
+  },
+  {
+   "pair_id": 359,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Cheapest replacement of ? into a regular sequence vs counting regular subsegments of a compressed sequence."
+  },
+  {
+   "pair_id": 360,
+   "label": "different",
+   "confidence": "high",
+   "reason": "They share graph boilerplate, but a spanning tree with a fixed degree vs a dominating set of at most n/2 are different tasks."
+  },
+  {
+   "pair_id": 361,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Ice spheres hard/easy: the same task, the easy one has distinct prices."
+  },
+  {
+   "pair_id": 362,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting pairs whose concatenation is regular vs uniqueness of restoring ? into an RBS."
+  },
+  {
+   "pair_id": 363,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character Vanya (same round), but lantern radius vs minimum essays are different tasks."
+  },
+  {
+   "pair_id": 364,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum-weight permutation by divisibility vs mod operations to form a permutation."
+  },
+  {
+   "pair_id": 365,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Summing d(ai,aj) over pairs vs a Modcrab battle strategy."
+  },
+  {
+   "pair_id": 366,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest permutation avoiding the abc subsequence vs adjacent swaps to make s smaller than t."
+  },
+  {
+   "pair_id": 367,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same joking interactive problem, only the question limit differs (82 vs 53)."
+  },
+  {
+   "pair_id": 368,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Passable vertex sets in a tree, easy/hard: the query count differs (5 vs 1e5)."
+  },
+  {
+   "pair_id": 369,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Petya lucky-numbers series, but a lucky string construction vs counting tree triples are different tasks."
+  },
+  {
+   "pair_id": 370,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Bitland setting, but egg-painting distribution vs xor/or string transformation are different tasks."
+  },
+  {
+   "pair_id": 371,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Co-growing xor sequence vs classifying path counts in a directed graph."
+  },
+  {
+   "pair_id": 372,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "LCS of k permutations vs gcd queries on a tree path; no shared story in the text."
+  },
+  {
+   "pair_id": 373,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting a string into a lexicographically minimal subsequence vs adjacent swaps to make s smaller than t."
+  },
+  {
+   "pair_id": 374,
+   "label": "different",
+   "confidence": "high",
+   "reason": "MEX of n xor 0..m vs minimizing DIFF-MEX with k changes."
+  },
+  {
+   "pair_id": 375,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest permutation after one reversal vs counting components of the inversion graph."
+  },
+  {
+   "pair_id": 376,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Prefix-suffix palindrome easy/hard, differing only in constraints."
+  },
+  {
+   "pair_id": 377,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same William homework story, but avoiding abc as a substring vs as a subsequence needs a different algorithm."
+  },
+  {
+   "pair_id": 378,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting good subsequences of consecutive-integer sums vs a pinned-tree edge-removal game."
+  },
+  {
+   "pair_id": 379,
+   "label": "different",
+   "confidence": "high",
+   "reason": "They share fast-IO boilerplate, but comparing big integers vs grid component sizes are unrelated."
+  },
+  {
+   "pair_id": 380,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rahul/Tina seat distances vs the maximum number of gcd insertions."
+  },
+  {
+   "pair_id": 381,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Tree metric-dimension D1/D2, differing only in the bound on n."
+  },
+  {
+   "pair_id": 382,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same tree f(x) problem, only the constraint on n differs (3e5 vs 3000)."
+  },
+  {
+   "pair_id": 383,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive xor comparison guessing vs swapping letters to beat a competitor's name."
+  },
+  {
+   "pair_id": 384,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Flipping one bracket to get a regular sequence vs counting pairs whose concatenation is regular."
+  },
+  {
+   "pair_id": 385,
+   "label": "different",
+   "confidence": "high",
+   "reason": "They share permutation boilerplate, but a permutation with decreasing coefficient k vs Simon's 2n permutation equation are different tasks."
+  },
+  {
+   "pair_id": 386,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Petya appears in both with linked framing (schoolboy, then grown up), but distinct substrings vs maximum compatible team are different tasks."
+  },
+  {
+   "pair_id": 387,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are easy versions of different problems: prefix-suffix palindrome vs wise-men permutation strings."
+  },
+  {
+   "pair_id": 388,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive permutation guessing with mod queries vs the pirates coin-splitting game."
+  },
+  {
+   "pair_id": 389,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Word compression via prefix/suffix merge vs. a directed graph traveler simulation; different tasks and characters."
+  },
+  {
+   "pair_id": 390,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Simultaneous substring reversals on two strings vs. lexicographically minimal permutation with adjacent swaps."
+  },
+  {
+   "pair_id": 391,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Pokemon army easy (q=0) and hard (with swaps) versions of the same problem."
+  },
+  {
+   "pair_id": 392,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Erase-and-duplicate smallest string vs. smallest permutation avoiding abc subsequence."
+  },
+  {
+   "pair_id": 393,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same Bob paper stripe story; cutting into two vs. three equal-sum pieces, a small extension of one task."
+  },
+  {
+   "pair_id": 394,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shared RBS boilerplate, but one finds a length-k RBS subsequence and the other reorders strings to maximize RBS prefixes."
+  },
+  {
+   "pair_id": 395,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Cookies with magic powder vs. a bracket-sequence editor simulation."
+  },
+  {
+   "pair_id": 396,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting players into practice teams vs. printing a digit rhombus."
+  },
+  {
+   "pair_id": 397,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting binary-string shuffles vs. a permutation maximizing test surprise."
+  },
+  {
+   "pair_id": 398,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest k-good segment vs. constructing a string at given distance; they share only the fast-I/O boilerplate."
+  },
+  {
+   "pair_id": 399,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting flip positions that make the sequence regular vs. constructing n distinct RBS."
+  },
+  {
+   "pair_id": 400,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Toy Train full and simplified versions; same statement, differing only in constraints."
+  },
+  {
+   "pair_id": 401,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Good subsequence queries on a binary string vs. the year with the most people alive."
+  },
+  {
+   "pair_id": 402,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both from the Petya lucky-numbers series, but tree triple counting vs. sorting with lucky swaps."
+  },
+  {
+   "pair_id": 403,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting pairs with a_i<i<a_j<j vs. pairs with a_i*a_j=i+j."
+  },
+  {
+   "pair_id": 404,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Graph with prime degrees and prime edge count vs. an XOR magic grid construction."
+  },
+  {
+   "pair_id": 405,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same balanced-team story; one team vs. up to k teams is a generalization of the same task."
+  },
+  {
+   "pair_id": 406,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximum a mod b over a range vs. an interactive fixed-point search."
+  },
+  {
+   "pair_id": 407,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Stitch rods easy/hard versions; the hard one also outputs the removed rods."
+  },
+  {
+   "pair_id": 408,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Square-free segment division vs. k-LCM construction; the easy/hard boilerplate refers to different problems."
+  },
+  {
+   "pair_id": 409,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Correct substring with most '[' vs. constructing n distinct RBS."
+  },
+  {
+   "pair_id": 410,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting subtraction operations on pairs vs. arranging dominoes (Euler path)."
+  },
+  {
+   "pair_id": 411,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting pairs whose concatenation is an RBS vs. constructing n distinct RBS."
+  },
+  {
+   "pair_id": 412,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Numbers with pairwise non-coprime but overall GCD 1 vs. constructing a maze with T paths."
+  },
+  {
+   "pair_id": 413,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Optimal subsequences hard and easy versions; same task, different n,m limits."
+  },
+  {
+   "pair_id": 414,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Skyscrapers easy/hard versions differing only in n."
+  },
+  {
+   "pair_id": 415,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Median-on-segments counting for a general sequence vs. a permutation; same task with a restricted input."
+  },
+  {
+   "pair_id": 416,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Divisibility-beautiful array removal vs. binary matrix row/column XOR reachability."
+  },
+  {
+   "pair_id": 417,
+   "label": "different",
+   "confidence": "high",
+   "reason": "String permutation cycle order vs. carriage trains with speed updates."
+  },
+  {
+   "pair_id": 418,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Two vertex-disjoint paths in a digraph vs. counting fancy block stacks."
+  },
+  {
+   "pair_id": 419,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "LCM triplet counting versions differing only in the constraint on t."
+  },
+  {
+   "pair_id": 420,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum moves to make a permutation vs. a permutation with k distinct adjacent differences."
+  },
+  {
+   "pair_id": 421,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum OR spanning tree vs. a palindrome coloring of a string."
+  },
+  {
+   "pair_id": 422,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shifted answer suits counting vs. optimal subsequence queries; they share only easy-version boilerplate."
+  },
+  {
+   "pair_id": 423,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Jury scores initial-value counting vs. bamboo cutting with a maximal d."
+  },
+  {
+   "pair_id": 424,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Equal sums after removing one element vs. umbrellas in rain DP."
+  },
+  {
+   "pair_id": 425,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Petya lucky-numbers setting, but constructing a lucky number from substring counts vs. counting lucky subsequences."
+  },
+  {
+   "pair_id": 426,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Lily depth geometry vs. finding the earliest not-so-rainy day."
+  },
+  {
+   "pair_id": 427,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting Z-patterns in a grid vs. constructing a string at given distance; they share only the fast-I/O boilerplate."
+  },
+  {
+   "pair_id": 428,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation maximizing the LCM sum vs. minimum swaps to minimize a prefix sum."
+  },
+  {
+   "pair_id": 429,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum reversals to balance brackets vs. constructing two RBS matching a binary mask."
+  },
+  {
+   "pair_id": 430,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "A is the robots snowball k-th identifier problem; B's I/O shows it is the magic powder cookies hard version."
+  },
+  {
+   "pair_id": 431,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive k-itwise XOR password guessing vs. longest subarray with AND > XOR."
+  },
+  {
+   "pair_id": 432,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Polygon-in-square C1/C2 with an identical statement, differing only in n parity."
+  },
+  {
+   "pair_id": 433,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Good numbers as sums of powers of 3 vs. removing segments to limit coverage; they share only easy/hard boilerplate."
+  },
+  {
+   "pair_id": 434,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting staircases under cell flips vs. locating adjacent numbers summing to x in a string."
+  },
+  {
+   "pair_id": 435,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Inna character series, but alarm clock segment covering vs. candy box queries are different tasks."
+  },
+  {
+   "pair_id": 436,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Erase-and-duplicate smallest string vs. smallest beautiful string with letter counts divisible by k."
+  },
+  {
+   "pair_id": 437,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "D1/D2 of the digit-alternation sum problem; only the equal-length constraint differs."
+  },
+  {
+   "pair_id": 438,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Prefix-suffix palindrome versus counting wise-men permutation strings."
+  },
+  {
+   "pair_id": 439,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation with k descents versus a perfect involution permutation."
+  },
+  {
+   "pair_id": 440,
+   "label": "different",
+   "confidence": "high",
+   "reason": "RBS subsequence of length k versus uniqueness of filling question marks."
+  },
+  {
+   "pair_id": 441,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard prefix flip; only n and the operation limit (3n vs 2n) differ."
+  },
+  {
+   "pair_id": 442,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard interactive k-th zero; t and the query limit differ."
+  },
+  {
+   "pair_id": 443,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Removing the longest substring while keeping a subsequence versus ordering freelancer projects."
+  },
+  {
+   "pair_id": 444,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Decoding a letter code versus an interactive hidden-cycle size guess."
+  },
+  {
+   "pair_id": 445,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Knight-duel board coloring versus enumerating toy pile partitions."
+  },
+  {
+   "pair_id": 446,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard XOR of increasing subsequences; only n and a_i bounds differ."
+  },
+  {
+   "pair_id": 447,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "C1/C2 of the left/right increasing sequence; only value distinctness differs."
+  },
+  {
+   "pair_id": 448,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Merging elements to maximize multiples of 3 versus placing chess pieces on a minimal board."
+  },
+  {
+   "pair_id": 449,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Printing a digit rhombus versus finding a long linear recurrent binary sequence."
+  },
+  {
+   "pair_id": 450,
+   "label": "different",
+   "confidence": "high",
+   "reason": "k=3 numbers with an LCM bound versus square-free segment division; unrelated despite version headers."
+  },
+  {
+   "pair_id": 451,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Matrix with fourth-power differences versus counting hybrid arrays."
+  },
+  {
+   "pair_id": 452,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Perfect involution permutation versus minimum moves to build a permutation."
+  },
+  {
+   "pair_id": 453,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same ISO-flag series, but checking a striped flag differs from minimally repainting under different rules."
+  },
+  {
+   "pair_id": 454,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shared interactive boilerplate; guessing a 6-number array versus restoring a hidden string."
+  },
+  {
+   "pair_id": 455,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Koa the Koala round; XOR game versus a tide-swimming feasibility problem."
+  },
+  {
+   "pair_id": 456,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Increment to divisibility versus increment until the digit sum is at most s."
+  },
+  {
+   "pair_id": 457,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting domino colorings versus a permutation with a given count of local extrema."
+  },
+  {
+   "pair_id": 458,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Passable vertex sets in a tree versus days to write a string with 3 letters per day."
+  },
+  {
+   "pair_id": 459,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both use floor division but count special pairs versus minimizing operations to reach zero."
+  },
+  {
+   "pair_id": 460,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard interactive AND/OR/XOR guessing; only the query limit (n+1 vs n+2) differs."
+  },
+  {
+   "pair_id": 461,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same grid-flip task with different operation costs; the statement calls them versions."
+  },
+  {
+   "pair_id": 462,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard XOR secret recovery; only l=0 versus general l differs."
+  },
+  {
+   "pair_id": 463,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Drawing a beautiful grid picture versus a max-beauty XOR permutation."
+  },
+  {
+   "pair_id": 464,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are trees with vertex values, but max path with gcd>1 differs from summing max-min over paths."
+  },
+  {
+   "pair_id": 465,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard delete-or-duplicate lexicographic string; only n and k bounds differ."
+  },
+  {
+   "pair_id": 466,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Array decrements feasibility versus pairing goods to maximize package price."
+  },
+  {
+   "pair_id": 467,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Wet Shark series; attacking bishop pairs versus maximum even sum."
+  },
+  {
+   "pair_id": 468,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting removal index sequences versus painting a street in minimum days."
+  },
+  {
+   "pair_id": 469,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pair list for any function f versus constructing a maze with exactly T paths."
+  },
+  {
+   "pair_id": 470,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest regular subsequence length versus repeatedly removing good prefixes."
+  },
+  {
+   "pair_id": 471,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Different stone game rules: no repeating the previous pile versus taking only from the first non-empty pile."
+  },
+  {
+   "pair_id": 472,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Tree f(x) with an added edge versus minimizing operations to make a equal b with OR."
+  },
+  {
+   "pair_id": 473,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same Creatnx mirrors expected-days task; B generalizes A with toggled checkpoints and queries."
+  },
+  {
+   "pair_id": 474,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum sweets from min/max constraints versus a winding non-self-intersecting polyline."
+  },
+  {
+   "pair_id": 475,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard/easy Alice-Bob score game; only the n, m, t constraints differ."
+  },
+  {
+   "pair_id": 476,
+   "label": "different",
+   "confidence": "high",
+   "reason": "k-mex set queries with removals versus a sum-minus-xor subsegment; different problems despite version headers."
+  },
+  {
+   "pair_id": 477,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Book chapters dependency reading versus triple-XOR operations to zero a binary array."
+  },
+  {
+   "pair_id": 478,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Substring with the most square brackets versus a length-k RBS subsequence."
+  },
+  {
+   "pair_id": 479,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximizing floor plus mod over a range versus reconstructing cyclic prefix shifts."
+  },
+  {
+   "pair_id": 480,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pairwise non-coprime numbers with gcd 1 versus a maximum triangle-free graph."
+  },
+  {
+   "pair_id": 481,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single bracket flips that give an RBS versus mapping A/B/C letters to brackets."
+  },
+  {
+   "pair_id": 482,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shared graph boilerplate; dominating set of at most n/2 versus spanning tree with maximum degree."
+  },
+  {
+   "pair_id": 483,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Toastman/Appleman parity condition; checking a full board versus counting completions modulo a prime."
+  },
+  {
+   "pair_id": 484,
+   "label": "related",
+   "confidence": "high",
+   "reason": "E1/E2 share the deque setup but the statement says they are separate problems (lex smallest vs min inversions)."
+  }
+ ],
+ "second": [
+  {
+   "pair_id": 8,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both reuse the bishop-attack wording, but A finds a hidden bishop on an 8x8 board and B maximises the diagonal sum on a weighted grid."
+  },
+  {
+   "pair_id": 28,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "These are E1/E2 of the same tree game; one asks whether Vlad can win and the other asks for the minimum number of friends needed."
+  },
+  {
+   "pair_id": 62,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "These are Wonderful Coloring B1/B2; B2 generalises from two colours on a string to k colours on a sequence."
+  },
+  {
+   "pair_id": 69,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "The statements are explicitly the easy and hard versions of counting good subarrays; the hard one adds point-update queries."
+  },
+  {
+   "pair_id": 91,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Both appear to be from the same New Year round, but one is a stack-of-presents timing task and the other asks for the k-th good permutation."
+  },
+  {
+   "pair_id": 94,
+   "label": "different",
+   "confidence": "high",
+   "reason": "They share only the permutation-definition boilerplate; one builds a permutation with k descents and the other minimises moves to form a permutation."
+  },
+  {
+   "pair_id": 118,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Ivan appears in both, but one is a matrix column-scoring game and the other builds a permutation with a given number of mergesort calls."
+  },
+  {
+   "pair_id": 155,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both are Little Petya xor problems, but one asks for the maximum xor of a segment and the other splits a set to maximise x1+x2 (a linear basis task)."
+  },
+  {
+   "pair_id": 172,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same robot-cleaner story and statement; B says it extends problem A with a cleaning probability, giving an expected time."
+  },
+  {
+   "pair_id": 180,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both split an array into k consecutive parts, but the cost functions and the techniques needed are different."
+  },
+  {
+   "pair_id": 184,
+   "label": "versions",
+   "confidence": "low",
+   "reason": "Same zombie-contamination story; the first checks whether the grid fits a rectangle and the second rebuilds a convex polygon (an easy/medium series)."
+  },
+  {
+   "pair_id": 226,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "The statements say D is a subproblem of G; G adds the f_i keep-flags and a second objective to the same candy-gift task."
+  },
+  {
+   "pair_id": 240,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "These are the explicit easy and hard versions of Ujan's string swaps: exactly one swap versus at most 2n swaps with output."
+  },
+  {
+   "pair_id": 247,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "These are the first and second of two similar tree leaf-path addition problems; the second uses integer x and asks for a construction."
+  },
+  {
+   "pair_id": 276,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "One asks whether some subsequence has a non-square product, the other asks for the longest subsequence of 1..n-1 with product 1 mod n."
+  },
+  {
+   "pair_id": 289,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both are IT company combinatorics counts from the same series, but they count different things (group compositions versus pennant placements)."
+  },
+  {
+   "pair_id": 312,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same permutation-concatenation setup, but one counts distinct subarrays and the other counts length-n subarrays with a given sum."
+  },
+  {
+   "pair_id": 377,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "The statements are almost identical except substring versus subsequence 'abc', which makes these genuinely different tasks (counting versus segment-tree DP)."
+  },
+  {
+   "pair_id": 386,
+   "label": "different",
+   "confidence": "high",
+   "reason": "One counts distinct substrings with a given start and end, the other finds a maximum independent team of up to 16 people; only the name Petya is shared."
+  },
+  {
+   "pair_id": 405,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same balanced-team story; B generalises one team to at most k teams with smaller n."
+  },
+  {
+   "pair_id": 415,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Median on segments with the same statement; one is restricted to permutations and the other allows a general sequence (E1/E2)."
+  },
+  {
+   "pair_id": 442,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "These are the explicit easy and hard versions of the interactive k-th zero problem, differing in t and the query limit."
+  }
+ ],
+ "sent_to_second": [
+  8,
+  28,
+  62,
+  69,
+  91,
+  94,
+  118,
+  155,
+  172,
+  180,
+  184,
+  226,
+  240,
+  247,
+  276,
+  289,
+  312,
+  377,
+  386,
+  405,
+  415,
+  442
+ ],
+ "second_round_2": [
+  {
+   "pair_id": 0,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A car race lead-counting problem and a letter-cutting anagram check are unrelated."
+  },
+  {
+   "pair_id": 1,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both use Petya's lucky numbers, but one asks for an interval probability and the other for sorting with swaps."
+  },
+  {
+   "pair_id": 2,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A longest k-good segment and grid component sizes share only fast-IO boilerplate."
+  },
+  {
+   "pair_id": 3,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both recolor the same RGB garland, but the target conditions differ (distance mod 3 versus adjacent colors distinct)."
+  },
+  {
+   "pair_id": 4,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both are set in the Kingdom of Kremland, but one sums a number sequence and the other counts components in a path tree."
+  },
+  {
+   "pair_id": 5,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both are IT City stories, but one counts group compositions and the other computes a star's area."
+  },
+  {
+   "pair_id": 6,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Min operations to zero a subarray with odd-length XOR replacement is a different task from maximizing sum minus XOR."
+  },
+  {
+   "pair_id": 7,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting coins to balance counts and counting equidistant vertex sets in a tree are unrelated."
+  },
+  {
+   "pair_id": 9,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the same divisibility task, differing only in the bounds on a, b, c, d."
+  },
+  {
+   "pair_id": 10,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Decrypting a circular letter mapping and counting adjacent swaps to become lexicographically smaller are different tasks."
+  },
+  {
+   "pair_id": 11,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Adding platforms or deleting cells at a cost and repainting houses with a window of size k are unrelated."
+  },
+  {
+   "pair_id": 12,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A permutation avoiding an abc subsequence and the smallest beautiful string with letter counts divisible by k are different tasks."
+  },
+  {
+   "pair_id": 13,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum size of a beautiful array and reachability queries for a robot frog are unrelated."
+  },
+  {
+   "pair_id": 14,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "They share the RBS definition boilerplate, but unique recovery from '?' and reordering strings to maximize RBS prefixes are different tasks."
+  },
+  {
+   "pair_id": 15,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard and easy versions of the same promising-substrings problem, differing only in constraints."
+  },
+  {
+   "pair_id": 16,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A permutation with k distinct adjacent differences and Simon's 2n-permutation equation are different tasks."
+  },
+  {
+   "pair_id": 17,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactively guessing a permutation via mod queries and building a minimum-weight permutation are different tasks."
+  },
+  {
+   "pair_id": 18,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Table row/column swap queries and reducing a fraction given as products are unrelated despite a loose space theme."
+  },
+  {
+   "pair_id": 19,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single flips that make a sequence regular and finding an RBS subsequence of length k are different tasks."
+  },
+  {
+   "pair_id": 20,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A minimum downward path cover of a tree and counting balanced black/white subtrees share only tree boilerplate."
+  },
+  {
+   "pair_id": 21,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the same floor-division cost minimization, differing only in constraints."
+  },
+  {
+   "pair_id": 22,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting flips that make a sequence regular and checking whether a '?' RBS recovery is unique are different tasks."
+  },
+  {
+   "pair_id": 23,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Typing time on a custom keyboard and the minimum-extraction array operation are unrelated."
+  },
+  {
+   "pair_id": 24,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Omkar, but one simulates a landslide on heights and the other repeatedly applies d - a_i."
+  },
+  {
+   "pair_id": 25,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Reordering strings to maximize RBS prefixes and mapping A/B/C letters to brackets are different tasks."
+  },
+  {
+   "pair_id": 26,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard (zeros allowed) and easy (no zeros) versions of the same alternating-sum partition problem."
+  },
+  {
+   "pair_id": 27,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "A Fillomino region partition and removing tents to maximize weight are different tasks."
+  },
+  {
+   "pair_id": 29,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the same simple-RBS substring counting; the hard version adds removal queries."
+  },
+  {
+   "pair_id": 30,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Both feature Sasha, but making a matrix palindromic and summing prices after digit removal are different tasks."
+  },
+  {
+   "pair_id": 31,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard (q = n) and easy (q = 1) versions of the same sum-minus-XOR subsegment problem."
+  },
+  {
+   "pair_id": 32,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "The same intersecting-wires counting problem, with smaller and larger constraints on n."
+  },
+  {
+   "pair_id": 33,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Printing a digit rhombus and finding the largest number shown on a seven-segment display are unrelated."
+  },
+  {
+   "pair_id": 34,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Even-prefix reversals to make two binary strings equal and odd-prefix reversals to sort a permutation are distinct tasks with no shared story."
+  },
+  {
+   "pair_id": 35,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of Kirk's binary string problem, differing only in string length."
+  },
+  {
+   "pair_id": 36,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both are zombie-themed Heidi problems, but one checks a contamination grid for a rectangle and the other counts wall segments."
+  },
+  {
+   "pair_id": 37,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the same binary-table flip problem, differing only in the operation limit (3nm vs nm)."
+  },
+  {
+   "pair_id": 38,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting candy bags equally and counting pennant placements are unrelated."
+  },
+  {
+   "pair_id": 39,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Decrypting a circular letter mapping and finding the smallest k-beautiful string are different tasks."
+  },
+  {
+   "pair_id": 40,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting substrings divisible by 4 and finding a string at a given letter distance share only fast-IO boilerplate."
+  },
+  {
+   "pair_id": 41,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard and easy versions of Tokitsukaze's binary string problem; the hard version also asks for the minimum segment count."
+  },
+  {
+   "pair_id": 42,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding the next unasked sector on a round table and gluing spider trees for maximum diameter are unrelated."
+  },
+  {
+   "pair_id": 43,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest string from delete/duplicate operations and a permutation avoiding an abc subsequence are different tasks."
+  },
+  {
+   "pair_id": 44,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both feature the Little Elephant's array, but one counts pairs by inversions and the other answers x-occurs-x-times queries."
+  },
+  {
+   "pair_id": 45,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both feature Kevin Sun's cow theme, but one computes a Codeforces score and the other solves a pile game."
+  },
+  {
+   "pair_id": 46,
+   "label": "different",
+   "confidence": "high",
+   "reason": "The best correct bracket substring with the most '[' and checking a unique '?' RBS recovery are different tasks."
+  },
+  {
+   "pair_id": 47,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting bracket flips and writing n as a sum of k powers of two are unrelated."
+  },
+  {
+   "pair_id": 48,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Restoring an array from absolute differences and minimizing tree height with re-rooting operations are unrelated."
+  },
+  {
+   "pair_id": 49,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy (k = 2) and hard (general k) versions of the same k-goods-for-one shopping problem."
+  },
+  {
+   "pair_id": 50,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Ashish, but a subsequence cost minimization and an interactive search for hidden tree nodes are different tasks."
+  },
+  {
+   "pair_id": 51,
+   "label": "different",
+   "confidence": "high",
+   "reason": "News spread through friend groups and counting erasable value ranges that leave an array sorted are unrelated."
+  },
+  {
+   "pair_id": 52,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactively guessing a permutation via mod queries and moving a non-attacking rook are unrelated."
+  },
+  {
+   "pair_id": 53,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rearranging unlocked values to minimize the last negative prefix and finding a zero dot product are different tasks."
+  },
+  {
+   "pair_id": 54,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Medal distribution vs bracket-sequence depth sum; unrelated tasks."
+  },
+  {
+   "pair_id": 55,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Exam scheduling vs adding ruler marks; unrelated."
+  },
+  {
+   "pair_id": 56,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Packmen eating asterisks vs making load unimodal; unrelated."
+  },
+  {
+   "pair_id": 57,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Chests with good/bad keys vs counting index pairs a_i<i<a_j<j."
+  },
+  {
+   "pair_id": 58,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only share bracket-sequence boilerplate; counting regular concatenation pairs vs best substring with most '['."
+  },
+  {
+   "pair_id": 59,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same MEX-cut setting, but max sum over a bi-table vs min sum over a binary string are different tasks."
+  },
+  {
+   "pair_id": 60,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same reading-books story; hard version adds exactly m books and outputting indices."
+  },
+  {
+   "pair_id": 61,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest k-good segment vs partition into max good segments; only fast-IO boilerplate shared."
+  },
+  {
+   "pair_id": 63,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Sum minus xor subsegment queries vs k-mex set queries."
+  },
+  {
+   "pair_id": 64,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Party invitation with richer/poorer limits vs deleting elements to avoid terrible subsequences."
+  },
+  {
+   "pair_id": 65,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Odd-sum swaps vs +1/-1 operations; only lexicographic boilerplate shared."
+  },
+  {
+   "pair_id": 66,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Permutation cycle lengths vs removing segments to limit coverage; only easy/hard boilerplate shared."
+  },
+  {
+   "pair_id": 67,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical balanced-removal problem differing only in n limit."
+  },
+  {
+   "pair_id": 68,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Binary array flip/rearrange vs gcd array existence."
+  },
+  {
+   "pair_id": 70,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation minimizing divisors vs interactive fixed-point search."
+  },
+  {
+   "pair_id": 71,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same painting/segments problem, one asks minimum and the other maximum."
+  },
+  {
+   "pair_id": 72,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical ribbon streak problem differing only in color constraint."
+  },
+  {
+   "pair_id": 73,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both Petya lucky-number series but min lucky with digit sum vs least super lucky >= n."
+  },
+  {
+   "pair_id": 74,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting Z-patterns in grid vs substrings divisible by 4; only fast-IO boilerplate shared."
+  },
+  {
+   "pair_id": 75,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Construct min-weight permutation vs count gcd-beautiful permutations."
+  },
+  {
+   "pair_id": 76,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Missile monster pushing vs counting damn rhombi in digraph."
+  },
+  {
+   "pair_id": 77,
+   "label": "different",
+   "confidence": "high",
+   "reason": "LIS of concatenated copies vs shortest perfect-square-product subsequence."
+  },
+  {
+   "pair_id": 78,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Petya lucky-number series; digit-sum minimum vs substring-count constraints are different tasks."
+  },
+  {
+   "pair_id": 79,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Creature spells damage maximization vs graph with given degree set."
+  },
+  {
+   "pair_id": 80,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest substring with a-majority vs counting PalindORme arrays."
+  },
+  {
+   "pair_id": 81,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation for recursive sort vs counting upward triangles."
+  },
+  {
+   "pair_id": 82,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both interactive but guessing a permutation of special numbers vs recovering a swapped string."
+  },
+  {
+   "pair_id": 83,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Bracket cyclic shift beauty after swap vs jury/contestant selection in Catowice."
+  },
+  {
+   "pair_id": 84,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Comparing long integers vs longest k-good segment; only fast-IO boilerplate shared."
+  },
+  {
+   "pair_id": 85,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting regular concatenation pairs vs finding regular subsequence of length k."
+  },
+  {
+   "pair_id": 86,
+   "label": "different",
+   "confidence": "high",
+   "reason": "DAG edge removal cute set vs onager wall breaking."
+  },
+  {
+   "pair_id": 87,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Nastia but good/nearly good numbers vs interactive permutation guessing are different tasks."
+  },
+  {
+   "pair_id": 88,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Hulk hate/love string vs half-queen covering."
+  },
+  {
+   "pair_id": 89,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Only loose coronavirus theme; prefix-sum/reverse array transformation vs park lantern count."
+  },
+  {
+   "pair_id": 90,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Equal price of goods vs reversing substring for longest distinct substring."
+  },
+  {
+   "pair_id": 92,
+   "label": "different",
+   "confidence": "high",
+   "reason": "String game Alice/Bob vs pepper shops tastiness."
+  },
+  {
+   "pair_id": 93,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both Ela at DTL series but luxurious-number counting vs cricket chess reachability."
+  },
+  {
+   "pair_id": 95,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same A and B contest-prep story, but finding fixed compile errors vs counting zero-sum substrings."
+  },
+  {
+   "pair_id": 96,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Construct n distinct RBS vs reorder strings to maximize RBS prefixes."
+  },
+  {
+   "pair_id": 97,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rotating subsegment to maximize a_n-a_1 vs edge coloring to minimize components."
+  },
+  {
+   "pair_id": 98,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical interactive substring-guessing problem differing only in total answer limit."
+  },
+  {
+   "pair_id": 99,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Petya lucky-number series; digit-sum minimum vs probability of interval with k lucky numbers."
+  },
+  {
+   "pair_id": 100,
+   "label": "different",
+   "confidence": "high",
+   "reason": "LIS xor split vs moving a rook on chessboard."
+  },
+  {
+   "pair_id": 101,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Cinema seating inconvenience vs minimal downward path cover of tree."
+  },
+  {
+   "pair_id": 102,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Max-sum alternating subsequence vs candy geometric sum."
+  },
+  {
+   "pair_id": 103,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Chocolate eating break minimization vs grouping pupils with adults for tickets."
+  },
+  {
+   "pair_id": 104,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Adjacent swaps to make s<t vs lexicographically smallest beautiful string."
+  },
+  {
+   "pair_id": 105,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Odd large bouquets vs counting negative balance days."
+  },
+  {
+   "pair_id": 106,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximize own score keeping average vs expected battalion strength with updates."
+  },
+  {
+   "pair_id": 107,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Building t from two subsequence extractions vs dividing power-of-two boxes."
+  },
+  {
+   "pair_id": 108,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Delete/duplicate smallest string vs adjacent swaps to make s<t; only lexicographic boilerplate shared."
+  },
+  {
+   "pair_id": 109,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting regular concatenation pairs vs reordering strings for RBS prefixes."
+  },
+  {
+   "pair_id": 110,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Range-decrement permutation check vs perfect-square permutation construction; unrelated tasks."
+  },
+  {
+   "pair_id": 111,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Claw counting on a recursive tree vs moving a rook on a chessboard."
+  },
+  {
+   "pair_id": 112,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same robot-on-board setting, but one follows a command string and the other follows arrows written in cells, so the tasks differ."
+  },
+  {
+   "pair_id": 113,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both involve products of subsequences and perfect squares, but one asks for the shortest square product (hard) and the other asks whether any non-square product exists (trivial), with no shared story."
+  },
+  {
+   "pair_id": 114,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting stewards strictly between min and max vs splitting 1/2-gram candies equally."
+  },
+  {
+   "pair_id": 115,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Ayush lock-password interactive story, but max over complement subsets vs bitwise OR excluding each element are different tasks."
+  },
+  {
+   "pair_id": 116,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting digit blocks vs painting a cube."
+  },
+  {
+   "pair_id": 117,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character Yaroslav with arrays, but making neighbours distinct by swaps vs maximizing sum by sign flips are different tasks."
+  },
+  {
+   "pair_id": 119,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Avoiding dirty stairs vs minimizing insertion-sort swaps; only the generic name Petya is shared."
+  },
+  {
+   "pair_id": 120,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation minimizing common divisors vs string with no length-3 palindromes."
+  },
+  {
+   "pair_id": 121,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Coloring by prime divisors vs maximum triangle-free graph."
+  },
+  {
+   "pair_id": 122,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Burenka/Buryat setting, but semi-Fibonacci strings vs a chip game on a board are different tasks."
+  },
+  {
+   "pair_id": 123,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum-weight permutation construction vs counting components of an inversion graph."
+  },
+  {
+   "pair_id": 124,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Summing exlog over prime factorizations vs Wu-value queries on 01-strings."
+  },
+  {
+   "pair_id": 125,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Lining up sheep vs grid shortest path with portals."
+  },
+  {
+   "pair_id": 126,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Equalizing candy bags vs assigning football results so every team has an equal score."
+  },
+  {
+   "pair_id": 127,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Sorting by moving value groups vs ordering tickets for an ecological contribution."
+  },
+  {
+   "pair_id": 128,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Shared Petya lucky-numbers series boilerplate, but a probability over intervals vs the lexicographically minimal lucky string are different tasks."
+  },
+  {
+   "pair_id": 129,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Building a max-diameter graph under degree limits vs joining a forest into a min-diameter tree."
+  },
+  {
+   "pair_id": 130,
+   "label": "different",
+   "confidence": "high",
+   "reason": "TV show subscription window vs counting pairs whose product is a k-th power."
+  },
+  {
+   "pair_id": 131,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding a degenerate triangle triple vs counting game sets for every x."
+  },
+  {
+   "pair_id": 132,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both use regular bracket sequences, but the longest regular subsequence vs the longest regular substring with its count are different tasks."
+  },
+  {
+   "pair_id": 133,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard versions of the same Yuzu candy duel problem, differing only in constraints."
+  },
+  {
+   "pair_id": 134,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit hard/easy versions of the k-mex set problem; the hard one adds remove queries."
+  },
+  {
+   "pair_id": 135,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Petya lucky-numbers series, but the minimal lucky number with a given digit sum vs the minimum operations to transform lucky strings are different tasks."
+  },
+  {
+   "pair_id": 136,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Making an array arithmetic with minimum replacements vs selecting elements under an average constraint."
+  },
+  {
+   "pair_id": 137,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single flips that make the sequence regular vs the correct substring with the most square brackets."
+  },
+  {
+   "pair_id": 138,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Cycle length of a tuple generator vs counting good XOR subarrays under bit swaps."
+  },
+  {
+   "pair_id": 139,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum moves to turn a sequence into a permutation vs constructing a permutation that satisfies an equation."
+  },
+  {
+   "pair_id": 140,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy (k=3) and hard (general k) versions of the same LCM-sum problem."
+  },
+  {
+   "pair_id": 141,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Missile shots on monsters vs jump-counting queries on an array."
+  },
+  {
+   "pair_id": 142,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum-weight permutation construction vs the lexicographically smallest permutation after one reversal."
+  },
+  {
+   "pair_id": 143,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Toy train candy delivery vs counting Morse-code letter sequences."
+  },
+  {
+   "pair_id": 144,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Heidi/rebels/Empire story series, but gold stealing per spaceship vs a graph matching cost are different tasks."
+  },
+  {
+   "pair_id": 145,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit hard and easy (n=1) versions of the cinema seating inconvenience problem."
+  },
+  {
+   "pair_id": 146,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest dynasty from abbreviated names vs counting fool paths per tree edge."
+  },
+  {
+   "pair_id": 147,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting concatenated pairs that form regular sequences vs assigning brackets to ABC letters."
+  },
+  {
+   "pair_id": 148,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Removing local maximums vs range queries for minimum weighted distance."
+  },
+  {
+   "pair_id": 149,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Building a string whose substrings occur an odd number of times vs the maximum cost substring of a binary string."
+  },
+  {
+   "pair_id": 150,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Prefix-suffix palindrome vs a number not divisible by its own digits."
+  },
+  {
+   "pair_id": 151,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximum GCD of a pair up to n vs compressing an array so the GCD exceeds 1."
+  },
+  {
+   "pair_id": 152,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical terminal-wire crossing problem in two versions differing only in the n constraint."
+  },
+  {
+   "pair_id": 153,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Equalizing numbers with x+y and |x-y| steps vs a minimum-distance derangement of cats."
+  },
+  {
+   "pair_id": 154,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard versions of sorting by moving elements to the front or back; the hard one allows duplicates."
+  },
+  {
+   "pair_id": 156,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit hard/easy versions of maximizing prefix-GCD sums, differing only in the bound on a_i."
+  },
+  {
+   "pair_id": 157,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting Pokemon evolution plans vs a tree XOR value assignment."
+  },
+  {
+   "pair_id": 158,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shortest common subsequence vs inserting elements to make an array beautiful."
+  },
+  {
+   "pair_id": 159,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Comparing big integers vs partitioning pearls into good segments; only the fast-I/O boilerplate is shared."
+  },
+  {
+   "pair_id": 160,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easier/harder versions of the chocolate boxes divisibility problem."
+  },
+  {
+   "pair_id": 161,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Middle-insertion sortability vs onager shots to break wall sections."
+  },
+  {
+   "pair_id": 162,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Merging pair-programming action sequences vs a shortest grid path with one forbidden cell."
+  },
+  {
+   "pair_id": 163,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both build spanning trees, but maximizing the max degree vs bounding the degrees of two vertices s and t are different tasks."
+  },
+  {
+   "pair_id": 164,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Jam-jar balancing versus checking whether a segment-intersection graph is a tree."
+  },
+  {
+   "pair_id": 165,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Flipping binary digits to hit a remainder versus scheduling microtransaction purchases."
+  },
+  {
+   "pair_id": 166,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same convergence-counting problem; the easy version has q=1 and the hard version up to 1e5 queries."
+  },
+  {
+   "pair_id": 167,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Ship evacuation ordering versus dividing an island between parties."
+  },
+  {
+   "pair_id": 168,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Removing elements to form 4-8-15-16-23-42 subsequences versus merging elements to maximize multiples of 3."
+  },
+  {
+   "pair_id": 169,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Kevin/cows series, but one is a longest alternating subsequence after a flip and the other a pile-splitting game."
+  },
+  {
+   "pair_id": 170,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Multiply by 2 or divide by 6 to reach 1 versus making all array elements divisible by k with an incrementing x."
+  },
+  {
+   "pair_id": 171,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Shared Petya lucky-numbers preamble, but minimum lucky number by digit sum versus sorting with lucky swaps."
+  },
+  {
+   "pair_id": 173,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Sorting two arrays with joint swaps versus shortest-path queries in a layered labyrinth."
+  },
+  {
+   "pair_id": 174,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting reports into folders by loss days versus simulating Joe falling through floors."
+  },
+  {
+   "pair_id": 175,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are easy versions but of unrelated problems: k-mex set queries versus maximizing sum minus xor over a subsegment."
+  },
+  {
+   "pair_id": 176,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting a string into a lexicographically minimal subsequence plus the rest versus a permutation of S avoiding T as a subsequence."
+  },
+  {
+   "pair_id": 177,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest mirrored-prefix string versus the smallest beautiful string that is at least s."
+  },
+  {
+   "pair_id": 178,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Arranging shelf prices with integer means versus an interactive search for a hidden zero."
+  },
+  {
+   "pair_id": 179,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same chef/taster banquet story, but minimizing the number of distinct dishes versus minimizing the fish-meat balance."
+  },
+  {
+   "pair_id": 181,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same increasing/decreasing sequence story, but A splits a shuffled multiset while B must preserve the merge order, which is a different algorithmic task."
+  },
+  {
+   "pair_id": 182,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pair operations leaving at most two values versus arranging 1..2n on a circle with balanced window sums."
+  },
+  {
+   "pair_id": 183,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting rectangles of digit products with a given sum versus the longest Fibonacci-like segment."
+  },
+  {
+   "pair_id": 185,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical longest beautiful XOR subsequence problem; only the bound on a_i differs (200 versus 1e9)."
+  },
+  {
+   "pair_id": 186,
+   "label": "different",
+   "confidence": "high",
+   "reason": "MST over gcd/min edges versus counting balanced permutations."
+  },
+  {
+   "pair_id": 187,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are bracket problems but different tasks: longest regular substring count versus cheapest replacement of '?'."
+  },
+  {
+   "pair_id": 188,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pair operations leaving two values versus the maximum triangle-free graph."
+  },
+  {
+   "pair_id": 189,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting sausage pieces on a pizza crust versus maximum gcd beauty on tree paths."
+  },
+  {
+   "pair_id": 190,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy/hard pair of the freelancer projects problem: complete all projects versus the maximum feasible subset."
+  },
+  {
+   "pair_id": 191,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Levko series, but a beautiful table construction versus a permutation with exactly k gcd-good elements."
+  },
+  {
+   "pair_id": 192,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Delete/duplicate operations for the smallest string versus the smallest beautiful string with counts divisible by k."
+  },
+  {
+   "pair_id": 193,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Shared Petya lucky-numbers preamble, but an interval probability versus counting tree triples with lucky edges."
+  },
+  {
+   "pair_id": 194,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Prefix reversals on an a/b string versus counting common subarrays of permutations."
+  },
+  {
+   "pair_id": 195,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rearranging letters to avoid ugly pairs versus counting special permutation subsegments."
+  },
+  {
+   "pair_id": 196,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Making PIN codes distinct versus cutting wires across two grids."
+  },
+  {
+   "pair_id": 197,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both use RBS boilerplate, but constructing n distinct RBS versus assigning brackets to letters A/B/C."
+  },
+  {
+   "pair_id": 198,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum-cost gcd(a_i, i) operations versus maximum number of gcd insertions."
+  },
+  {
+   "pair_id": 199,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Shared Petya lucky-numbers preamble, but a lucky string construction versus sorting with lucky swaps."
+  },
+  {
+   "pair_id": 200,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shared segment boilerplate, but maximizing the intersection after one removal versus counting points by coverage."
+  },
+  {
+   "pair_id": 201,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same binary-string flip cost problem; easy has n<=3000 and x>=y, hard has n<=5000 and no restriction."
+  },
+  {
+   "pair_id": 202,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum-weight permutation construction versus minimum swaps to minimize a prefix sum."
+  },
+  {
+   "pair_id": 203,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Boxers' unique weights versus the freelancer projects feasibility check."
+  },
+  {
+   "pair_id": 204,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest number with spaced divisors versus throwing out array pairs by sum."
+  },
+  {
+   "pair_id": 205,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are hard versions of unrelated problems: LCM sum construction versus segmenting without square products."
+  },
+  {
+   "pair_id": 206,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same dome-color bot story and task; B adds efficient handling of message-edit queries with larger n, like a hard version."
+  },
+  {
+   "pair_id": 207,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical interactive hidden-two-nodes tree problem; only the query limit differs (14 versus 11)."
+  },
+  {
+   "pair_id": 208,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum size of a beautiful array with sum s versus counting excellent arrays."
+  },
+  {
+   "pair_id": 209,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Removing the longest substring keeping a subsequence versus the freelancer max-subset problem."
+  },
+  {
+   "pair_id": 210,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Removing an element to maximize records versus filling '?' to maximize abab occurrences."
+  },
+  {
+   "pair_id": 211,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Uniqueness of RBS restoration from '?' versus assigning brackets to A/B/C letters."
+  },
+  {
+   "pair_id": 212,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "F1/F2 of the same k-beautiful number problem; only the k bound differs."
+  },
+  {
+   "pair_id": 213,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy/hard Mocha and Diana forest edge-adding problem; only the n bound differs."
+  },
+  {
+   "pair_id": 214,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Shared Petya lucky-numbers preamble, but minimum lucky number by digit sum versus counting tree triples."
+  },
+  {
+   "pair_id": 215,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive permutation guessing via mod queries versus maximum a mod b over a range."
+  },
+  {
+   "pair_id": 216,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both feature Ashish (likely the same round), but an interactive tree search versus array gcd compression."
+  },
+  {
+   "pair_id": 217,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximum binary substring cost versus summed bracket-balancing costs over substrings."
+  },
+  {
+   "pair_id": 218,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest mirrored-prefix string versus minimum adjacent swaps to make s smaller than t."
+  },
+  {
+   "pair_id": 219,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Array jump queries versus counting rhombi in a directed graph."
+  },
+  {
+   "pair_id": 220,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Delete/duplicate string operations versus a mirror-reflection string task; they only share the lexicographic-order boilerplate."
+  },
+  {
+   "pair_id": 221,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Erasing elements under a divisibility rule versus the minimum number of insertions so that a_i <= i."
+  },
+  {
+   "pair_id": 222,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Constructing a grid picture with even neighbour counts versus a 4xn domino tiling where every cut crosses a domino."
+  },
+  {
+   "pair_id": 223,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Delete/duplicate string operations versus minimum adjacent swaps to make s smaller than t."
+  },
+  {
+   "pair_id": 224,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding the earliest local-minimum day versus finding a matching or an independent set in a graph."
+  },
+  {
+   "pair_id": 225,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character Sam, but distributing power-ups and pairing a sequence by multiplier x are different tasks."
+  },
+  {
+   "pair_id": 227,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Collapsing repeated vowels versus a minimum-cost grouping of pupils and adults."
+  },
+  {
+   "pair_id": 228,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Delete/duplicate string operations (hard version) versus a mirror-reflection string task."
+  },
+  {
+   "pair_id": 229,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character William, but parity swaps and counting regular bracket subsegments are different tasks."
+  },
+  {
+   "pair_id": 230,
+   "label": "different",
+   "confidence": "low",
+   "reason": "Binary string flips to avoid 010/101 versus a tree digit-shuffle cost problem; they share no story element in the text."
+  },
+  {
+   "pair_id": 231,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Changing characters to reach k distinct letters versus splitting a sequence into sortable subsequences."
+  },
+  {
+   "pair_id": 232,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both reuse the same median definition, but maximizing a sum of medians over a partition and the maximum median for a given sum are different tasks."
+  },
+  {
+   "pair_id": 233,
+   "label": "different",
+   "confidence": "high",
+   "reason": "The x-th lexicographic BA-string versus minimum adjacent swaps to make s smaller than t."
+  },
+  {
+   "pair_id": 234,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both share interactive boilerplate, but XOR guessing and undoing a swap cipher are different tasks."
+  },
+  {
+   "pair_id": 235,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-number setting, but transforming strings and building a number from substring counts are different tasks."
+  },
+  {
+   "pair_id": 236,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Adjusting a divisibility triple versus summing minimum distances between moving points."
+  },
+  {
+   "pair_id": 237,
+   "label": "different",
+   "confidence": "high",
+   "reason": "XOR of LIS lengths over a split versus the maximum a mod b in a range."
+  },
+  {
+   "pair_id": 238,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Depot delivery distance versus simulating a flower's growth."
+  },
+  {
+   "pair_id": 239,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting triangle plants versus constructing polynomials for Euclid's algorithm."
+  },
+  {
+   "pair_id": 241,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard and easy versions of the same falling-sand puzzle, differing only in the constraint on a_i."
+  },
+  {
+   "pair_id": 242,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding a value that appears three times versus the maximum a mod b."
+  },
+  {
+   "pair_id": 243,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "The same impostors interactive problem, differing only in the query limit (2n versus n+6)."
+  },
+  {
+   "pair_id": 244,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Two versions of Great Vova Wall that differ only in whether vertical bricks are allowed."
+  },
+  {
+   "pair_id": 245,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both count good subarrays, but under different conditions: every value appears exactly three times versus sum equals length."
+  },
+  {
+   "pair_id": 246,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard and easy versions of the potions problem, differing only in n."
+  },
+  {
+   "pair_id": 248,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Heidi/Resistance tree setting, but maximum control for K ships and counting leaves are different tasks."
+  },
+  {
+   "pair_id": 249,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both share rooted-tree boilerplate, but halving edge weights and constructing a binary tree with a given depth sum are different tasks."
+  },
+  {
+   "pair_id": 250,
+   "label": "different",
+   "confidence": "high",
+   "reason": "The maximum a mod b versus moving one rook on a chessboard."
+  },
+  {
+   "pair_id": 251,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Reaching b with +-k steps versus incrementing n to lower its digit sum."
+  },
+  {
+   "pair_id": 252,
+   "label": "different",
+   "confidence": "high",
+   "reason": "The maximum-sum alternating subsequence versus a candy gift with distinct counts per type."
+  },
+  {
+   "pair_id": 253,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A bitwise Hamming median versus counting simple RBS substrings."
+  },
+  {
+   "pair_id": 254,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character Divan, but maximizing a GCD prefix sum and buying chocolate bars are different tasks."
+  },
+  {
+   "pair_id": 255,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both construct a permutation, but one fixes the number of descents and the other fixes the number of distinct adjacent differences."
+  },
+  {
+   "pair_id": 256,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shortest original title versus the lexicographically smallest string with k distinct letters and no equal neighbours."
+  },
+  {
+   "pair_id": 257,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Constructing a Hungry sequence versus covering a complete graph with cycles."
+  },
+  {
+   "pair_id": 258,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Hard and easy versions of the same edge-halving tree problem; the hard one only adds edge costs of 1 or 2."
+  },
+  {
+   "pair_id": 259,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A permutation that a recursive sort fixes versus counting digit blocks."
+  },
+  {
+   "pair_id": 260,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Wabbit and zoo setting, but box pulling and an interactive laser lock are different tasks."
+  },
+  {
+   "pair_id": 261,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "D1/D2 of the same problem, differing only in all elements versus at least half becoming equal."
+  },
+  {
+   "pair_id": 262,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Costed edge halving versus constructing a binary tree with a given depth sum."
+  },
+  {
+   "pair_id": 263,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-number setting, but string transformation and the smallest super lucky number >= n are different tasks."
+  },
+  {
+   "pair_id": 264,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Constructing operation pairs versus moving robbers away from searchlights."
+  },
+  {
+   "pair_id": 265,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are easy versions, but square-free segmentation and a k=3 LCM sum are unrelated tasks."
+  },
+  {
+   "pair_id": 266,
+   "label": "different",
+   "confidence": "high",
+   "reason": "k-mex set queries versus maximizing sum minus xor over a segment; they only share hard-version boilerplate."
+  },
+  {
+   "pair_id": 267,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting into zebra subsequences versus Dima's cell-movement queries."
+  },
+  {
+   "pair_id": 268,
+   "label": "different",
+   "confidence": "high",
+   "reason": "The largest number shown on a seven-segment display versus turns needed to build a chess coloring."
+  },
+  {
+   "pair_id": 269,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both reuse the RBS definition, but finding a subsequence of length k and mapping letters to brackets are different tasks."
+  },
+  {
+   "pair_id": 270,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting diamond tilings versus nested rubber bands drawn from a tree."
+  },
+  {
+   "pair_id": 271,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "The same Bulls and Cows interactive problem, differing only in the query limit (7 versus 50)."
+  },
+  {
+   "pair_id": 272,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both construct a permutation, but a derangement and minimizing indices where i divides p_i are different tasks."
+  },
+  {
+   "pair_id": 273,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Both build spanning trees with degree limits, but one fixes vertex 1's degree at exactly D and the other caps the degrees of two vertices s and t; no shared story."
+  },
+  {
+   "pair_id": 274,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting triplets with lcm >= sum versus building a permutation that maximizes a sum of lcms."
+  },
+  {
+   "pair_id": 275,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same erase-a-block-of-equal-characters setup, but scoring is an arbitrary array a_x in one and the linear a*l+b in the other, so they are distinct problems."
+  },
+  {
+   "pair_id": 277,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Forming ICPC teams versus a lexicographically minimal square tiling."
+  },
+  {
+   "pair_id": 278,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Filling a grid with 1s and 4s versus range queries counting non-decreasing subarrays."
+  },
+  {
+   "pair_id": 279,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Garden watering taps versus connected components of a complement graph."
+  },
+  {
+   "pair_id": 280,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Packing objects into boxes versus the minimum number of heaters to warm a house."
+  },
+  {
+   "pair_id": 281,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy (k=2) and hard (2<=k<=100) versions of the same interactive password problem."
+  },
+  {
+   "pair_id": 282,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit subtasks 1 and 2 of the same strip-painting counting problem, differing only in m."
+  },
+  {
+   "pair_id": 283,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Coloring a carousel versus rotating rectangles to get non-ascending heights."
+  },
+  {
+   "pair_id": 284,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Constructing a p-interesting graph versus finding a maximum-weight subgraph."
+  },
+  {
+   "pair_id": 285,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting distinct prefixes between s and t versus minimum adjacent swaps to make s smaller than t."
+  },
+  {
+   "pair_id": 286,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit hard and easy versions of the bracket-depth sum problem, differing only in n."
+  },
+  {
+   "pair_id": 287,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting distinct prefixes versus finding the lexicographically smallest beautiful string."
+  },
+  {
+   "pair_id": 288,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit easy (k=0) and hard (k<=20) versions of the square-free segment division problem."
+  },
+  {
+   "pair_id": 290,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same 2^k playoff tournament setup, but one answers queries on the number of possible winners and the other reconstructs places from a hash."
+  },
+  {
+   "pair_id": 291,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting permutations with gcd > 1 versus checking cyclic-shift power arrays."
+  },
+  {
+   "pair_id": 292,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Scheduling painters on pictures versus choosing which film genre to exclude."
+  },
+  {
+   "pair_id": 293,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the bracket-sequence definition is shared: one finds a regular subsequence of length k, the other prints n distinct regular bracket sequences."
+  },
+  {
+   "pair_id": 294,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A coin-payment minimum versus counting promising substrings."
+  },
+  {
+   "pair_id": 295,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Distinct-character range queries with updates versus the longest distinct substring after one reversal."
+  },
+  {
+   "pair_id": 296,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Reposting pictures with a segment constraint versus the minimum TV rental cost."
+  },
+  {
+   "pair_id": 297,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Making a price as round as possible versus a humanoid absorbing astronauts."
+  },
+  {
+   "pair_id": 298,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are easy versions, but of different problems: good numbers in base 3 versus permutation cycle lengths."
+  },
+  {
+   "pair_id": 299,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Adjacent swaps to make s smaller than t versus the lexicographically minimal xoration."
+  },
+  {
+   "pair_id": 300,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Scheduling team-split practices versus building a string with no length-3 palindromes."
+  },
+  {
+   "pair_id": 301,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character Ezzat (same round), but splitting to maximize the sum of averages differs from removing grid rows to make it beautiful."
+  },
+  {
+   "pair_id": 302,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximum product of tree component sizes versus the party-leaving puzzle."
+  },
+  {
+   "pair_id": 303,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Petya lucky-numbers series, but minimum operations on lucky strings differs from counting lucky subsequences."
+  },
+  {
+   "pair_id": 304,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Finding a good pair by absolute differences versus subsets with equal LCM."
+  },
+  {
+   "pair_id": 305,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Petya lucky-numbers series, but the minimal lucky number with digit sum n differs from the minimal lucky string."
+  },
+  {
+   "pair_id": 306,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Sherlock round characters, but coloring jewelry by prime divisors differs from counting segments whose sum is a power of k."
+  },
+  {
+   "pair_id": 307,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the bracket definition is shared: one finds the maximum regular subsequence length, the other prints n distinct sequences."
+  },
+  {
+   "pair_id": 308,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Weakened common divisor versus the maximum zebra length."
+  },
+  {
+   "pair_id": 309,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same character Theofanis (same round), but the ideal-farm math check differs from the imposters graph problem."
+  },
+  {
+   "pair_id": 310,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest palindromic prefix+suffix versus a bomb configuration cost on a permutation."
+  },
+  {
+   "pair_id": 311,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the interactive boilerplate is shared: guessing a permutation from products versus guessing x from XOR queries."
+  },
+  {
+   "pair_id": 313,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Coloring jewelry by prime divisors versus constructing a maze with a given number of paths."
+  },
+  {
+   "pair_id": 314,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximum number on a seven-segment display versus a long recurrent binary sequence."
+  },
+  {
+   "pair_id": 315,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Arranging volumes to minimize divisors versus the seven-segment display maximum."
+  },
+  {
+   "pair_id": 316,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the bracket definition is shared: printing n distinct regular sequences versus checking whether question marks have a unique recovery."
+  },
+  {
+   "pair_id": 317,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting pairs with a_j-a_i=j-i versus pairs with a_i*a_j=i+j."
+  },
+  {
+   "pair_id": 318,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A suspicious task-order check versus a grid shortest path with portals."
+  },
+  {
+   "pair_id": 319,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Rearranging letters to avoid ugly pairs versus matching points at distance at least z."
+  },
+  {
+   "pair_id": 320,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Burger profit versus the gas pipeline cost."
+  },
+  {
+   "pair_id": 321,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting digit blocks versus constructing polynomials for Euclid's algorithm."
+  },
+  {
+   "pair_id": 322,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same oolimry array-shuffling story and sadness definition: one constructs a maximum-sadness permutation, the other checks whether a given b has maximum sadness (a paired construct/check problem)."
+  },
+  {
+   "pair_id": 323,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximum of max*min over subarrays versus the maximum of i*j - k*(a_i|a_j)."
+  },
+  {
+   "pair_id": 324,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Explicit hard and easy versions of the Burenka XOR-zeroing problem, differing only in constraints."
+  },
+  {
+   "pair_id": 325,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Placing knights to maximize duels versus making a fence great at minimum cost."
+  },
+  {
+   "pair_id": 326,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Dr. Dolittle queue simulation versus a biathlon path with limited square types."
+  },
+  {
+   "pair_id": 327,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are interactive with the same boilerplate, but A guesses a number with XOR queries and B restores a string from distinct-character counts."
+  },
+  {
+   "pair_id": 328,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both use the lucky-number setting, but A finds the minimal lucky number with a given digit sum and B counts integers by their lucky digits."
+  },
+  {
+   "pair_id": 329,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A sorts a binary string by reversing subsequences; B counts divisor-multiple operations to turn one array into another."
+  },
+  {
+   "pair_id": 330,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts lonely numbers under a gcd/triangle rule; B finds the year with the most people alive."
+  },
+  {
+   "pair_id": 331,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Both share the Polycarp New Year setting, but A tiles a 2xn strip with dominoes and B cuts paper sheets in half."
+  },
+  {
+   "pair_id": 332,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the lexicographically smallest string with letter counts divisible by k; B finds the minimal xoration of a string."
+  },
+  {
+   "pair_id": 333,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A constructs an array whose every subarray is good; B counts subarrays whose border XOR equals the inner sum."
+  },
+  {
+   "pair_id": 334,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts single bracket flips that make a sequence regular; B reorders strings to maximise the number of RBS prefixes."
+  },
+  {
+   "pair_id": 335,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A is about cheating with dynamic problem scoring; B reconstructs prairie partitions."
+  },
+  {
+   "pair_id": 336,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A builds a permutation that maximises a sum of lcms; B counts triplets with lcm at least their sum."
+  },
+  {
+   "pair_id": 337,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A makes three numbers an arithmetic progression with one multiplication; B is an interactive number guess using floor division."
+  },
+  {
+   "pair_id": 338,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A is the k-goods-for-one shopping problem; B reconstructs how a polygon cake was cut into triangles."
+  },
+  {
+   "pair_id": 339,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A is a hiking game on a permutation; B connects the empty cells of a grid into a tree."
+  },
+  {
+   "pair_id": 340,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds a correct bracket substring with the most '['; B reorders strings to maximise RBS prefixes."
+  },
+  {
+   "pair_id": 341,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the smallest unused test index; B maximises the number of teams whose problem sets can be printed."
+  },
+  {
+   "pair_id": 342,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the longest regular subsequence obtainable by deletion; B counts regular subsegments of a compressed bracket sequence."
+  },
+  {
+   "pair_id": 343,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "A adjusts heights into an arithmetic progression with buns; B finds a number that grows x times when its last digit moves to the front."
+  },
+  {
+   "pair_id": 344,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A simulates a monster's hp over repeating rounds; B restores a permutation from its adjacent differences."
+  },
+  {
+   "pair_id": 345,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts teams sharing the k-th place; B tests whether one polygon lies strictly inside another."
+  },
+  {
+   "pair_id": 346,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both share the Valeric/Euro Championship setting, but A assigns balls to baskets and B counts polyline angles."
+  },
+  {
+   "pair_id": 347,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the easy/hard boilerplate is shared: A queries optimal subsequences and B counts answer suits after a cyclic shift."
+  },
+  {
+   "pair_id": 348,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the minimum number of balls in a passing game; B counts permutations of s that are lexicographically smaller than t."
+  },
+  {
+   "pair_id": 349,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds a zero-sum subset; B finds a subarray whose max minus min is at least its length."
+  },
+  {
+   "pair_id": 350,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Only the 'easier version' boilerplate is shared: A uses cyclic column shifts and B computes the difficulty of a nice sequence."
+  },
+  {
+   "pair_id": 351,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the palindrome game, differing only in whether the string starts as a palindrome."
+  },
+  {
+   "pair_id": 352,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "The same interactive second-maximum problem with a 40-query limit versus a 20-query limit."
+  },
+  {
+   "pair_id": 353,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A cuts a triangular carrot into equal areas; B collects banknotes between two guards."
+  },
+  {
+   "pair_id": 354,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Both are interactive string restoration, but A undoes a hidden swap sequence and B uses character and distinct-count queries."
+  },
+  {
+   "pair_id": 355,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds a and b with x*b^a=y; B finds the minimum onager shots to break two wall sections."
+  },
+  {
+   "pair_id": 356,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same spanning-tree setup, but A requires vertex 1 to have degree D and B maximises the maximum degree, a different objective."
+  },
+  {
+   "pair_id": 357,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the largest window avoiding a dead pixel; B finds the minimal olympiad cutoff score."
+  },
+  {
+   "pair_id": 358,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same independent-set-or-cycle framing, but the targets differ: ceil(k/2) set or cycle of at most k versus sqrt(n) set or cycle of at least sqrt(n)."
+  },
+  {
+   "pair_id": 359,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A replaces '?' at minimum cost to form a regular sequence; B counts regular subsegments of a compressed sequence."
+  },
+  {
+   "pair_id": 360,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Only the graph boilerplate is shared: A asks for a spanning tree with deg(1)=D and B for a dominating set of at most n/2 vertices."
+  },
+  {
+   "pair_id": 361,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard and easy versions of the ice-sphere reordering problem, differing only in whether prices can repeat."
+  },
+  {
+   "pair_id": 362,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts pairs whose concatenation is regular; B checks whether replacing the '?' gives a unique RBS."
+  },
+  {
+   "pair_id": 363,
+   "label": "related",
+   "confidence": "low",
+   "reason": "Both feature Vanya, but A finds a lantern radius and B minimises essays to reach a target average grade."
+  },
+  {
+   "pair_id": 364,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A builds a permutation of minimum divisibility weight; B counts mod operations needed to reach a permutation."
+  },
+  {
+   "pair_id": 365,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A sums the pairwise function d over an array; B is the Modcrab battle strategy."
+  },
+  {
+   "pair_id": 366,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the smallest permutation of S that avoids T as a subsequence; B counts adjacent swaps to make s less than t."
+  },
+  {
+   "pair_id": 367,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "The same joking interactive problem with an 82-question limit versus a 53-question limit."
+  },
+  {
+   "pair_id": 368,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the passable-set tree problem, differing only in the number of queries."
+  },
+  {
+   "pair_id": 369,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both use Petya's lucky numbers, but A finds the minimal lucky string and B counts tree triples separated by lucky edges."
+  },
+  {
+   "pair_id": 370,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Both are set in Bitland, but A distributes eggs between two painters and B transforms binary strings with xor/or operations."
+  },
+  {
+   "pair_id": 371,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the minimal co-growing sequence; B classifies path counts in a directed graph."
+  },
+  {
+   "pair_id": 372,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the LCS of k permutations; B answers gcd-ancestor queries on a tree."
+  },
+  {
+   "pair_id": 373,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A splits a string into two subsequences with a minimal a; B counts adjacent swaps to make s less than t."
+  },
+  {
+   "pair_id": 374,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the MEX of n XOR 0..m; B minimises DIFF minus MEX with k changes."
+  },
+  {
+   "pair_id": 375,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A finds the smallest permutation after one reversal; B counts components of the inversion graph."
+  },
+  {
+   "pair_id": 376,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard versions of the prefix-suffix palindrome problem, differing only in constraints."
+  },
+  {
+   "pair_id": 378,
+   "label": "different",
+   "confidence": "high",
+   "reason": "A counts good subsequences built from sequences of consecutive integers; B is an edge-removal game on a tree with pinned vertices."
+  },
+  {
+   "pair_id": 379,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Big-integer comparison vs grid connected components; only fast-IO boilerplate is shared."
+  },
+  {
+   "pair_id": 380,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Seat-painting game on a grid vs maximizing GCD insertions; unrelated tasks."
+  },
+  {
+   "pair_id": 381,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical tree-metric-dimension statement; D1/D2 differ only in the bounds on n and t."
+  },
+  {
+   "pair_id": 382,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical tree problem (add an edge of weight x, compute f(x)); only the constraint on n differs."
+  },
+  {
+   "pair_id": 383,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive XOR guessing vs swapping letters to get a lexicographically smaller string; unrelated."
+  },
+  {
+   "pair_id": 384,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single bracket flips that make the sequence regular vs counting concatenated pairs that are regular; different tasks."
+  },
+  {
+   "pair_id": 385,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation with k descents vs Simon's 2n-permutation equation; only the permutation definition is shared."
+  },
+  {
+   "pair_id": 387,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Prefix+suffix palindrome vs wise-men permutation bitmask counting; only the easy-version boilerplate is shared."
+  },
+  {
+   "pair_id": 388,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive permutation guessing with mod queries vs pirates coin-splitting game; unrelated."
+  },
+  {
+   "pair_id": 389,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Merging words by overlap vs Graph Traveler queries; unrelated."
+  },
+  {
+   "pair_id": 390,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Simultaneous substring reversals in two strings vs lexicographically minimal permutation with adjacent swaps; different tasks."
+  },
+  {
+   "pair_id": 391,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same Pokemon army alternating-sum problem; the easy version has q=0, the hard version adds swaps."
+  },
+  {
+   "pair_id": 392,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Delete/duplicate operations for the smallest string vs smallest permutation avoiding the subsequence abc; different tasks."
+  },
+  {
+   "pair_id": 393,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Bob paper-stripe story, but cutting into two equal-sum pieces vs three is a genuinely different counting task."
+  },
+  {
+   "pair_id": 394,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Regular-subsequence extraction of length k vs reordering strings to maximize RBS prefixes; only the bracket definitions are shared."
+  },
+  {
+   "pair_id": 395,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Cookie baking with magic powder vs bracket-sequence editor simulation; unrelated."
+  },
+  {
+   "pair_id": 396,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Team-split practice scheduling vs printing a digit rhombus; unrelated."
+  },
+  {
+   "pair_id": 397,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting strings from shuffling a substring with k ones vs choosing a permutation of question points to maximize surprise; unrelated."
+  },
+  {
+   "pair_id": 398,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest k-good segment vs Limak string at distance k; only fast-IO boilerplate is shared."
+  },
+  {
+   "pair_id": 399,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting bracket flips vs constructing n distinct regular bracket sequences; different tasks."
+  },
+  {
+   "pair_id": 400,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical Toy Train statement; the simplified version only has smaller n and m."
+  },
+  {
+   "pair_id": 401,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Good-subsequence substring queries vs the year with most people alive; unrelated."
+  },
+  {
+   "pair_id": 402,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-numbers series, but counting tree triples vs sorting with lucky swaps are different tasks."
+  },
+  {
+   "pair_id": 403,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting pairs with a_i<i<a_j<j vs pairs with a_i*a_j=i+j; different conditions and techniques."
+  },
+  {
+   "pair_id": 404,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Graph with prime degrees and a prime edge count vs XOR magic grid construction; unrelated."
+  },
+  {
+   "pair_id": 406,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Max a mod b in a range vs interactive search for the fixed element; unrelated."
+  },
+  {
+   "pair_id": 407,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same rods sign-variable-sum problem; the hard version also requires printing the removed rods."
+  },
+  {
+   "pair_id": 408,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Square-free segment division (k=0) vs k integers summing to n with a small LCM; different problems."
+  },
+  {
+   "pair_id": 409,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Substring with max '[' that is a correct sequence vs constructing n distinct RBS; different tasks."
+  },
+  {
+   "pair_id": 410,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting subtraction operations on pairs vs domino Eulerian path; unrelated."
+  },
+  {
+   "pair_id": 411,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting concatenated regular pairs vs constructing n distinct RBS; different tasks."
+  },
+  {
+   "pair_id": 412,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pairwise non-coprime numbers with GCD 1 vs maze with exactly T paths; unrelated."
+  },
+  {
+   "pair_id": 413,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical optimal-subsequence queries; the hard and easy versions differ only in the bounds on n and m."
+  },
+  {
+   "pair_id": 414,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical skyscraper-floors problem; the easier and harder versions differ only in the bound on n."
+  },
+  {
+   "pair_id": 416,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Divisibility-chain removal vs binary matrix XOR operations; unrelated."
+  },
+  {
+   "pair_id": 417,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation-power cycle period on a string vs train carriage speed updates; unrelated."
+  },
+  {
+   "pair_id": 418,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Two vertex-disjoint paths in a directed graph vs counting fancy block stacks; unrelated."
+  },
+  {
+   "pair_id": 419,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical LCM-triplet counting statement; only the constraint on t differs."
+  },
+  {
+   "pair_id": 420,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum moves to turn a sequence into a permutation vs a permutation with k distinct differences; different tasks."
+  },
+  {
+   "pair_id": 421,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum-OR spanning tree vs coloring letters into palindromes; unrelated."
+  },
+  {
+   "pair_id": 422,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Shifted answer suits counting vs optimal-subsequence queries; only the easy-version boilerplate is shared."
+  },
+  {
+   "pair_id": 423,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting possible initial jury scores vs bamboo-cutting max d; unrelated."
+  },
+  {
+   "pair_id": 424,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Two sequences with equal sums after one removal vs umbrella fatigue DP; unrelated."
+  },
+  {
+   "pair_id": 425,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Same Petya lucky-numbers series, but building a minimal lucky number from substring counts vs counting lucky subsequences are different tasks."
+  },
+  {
+   "pair_id": 426,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Lily-pad lake-depth geometry vs earliest not-so-rainy day; unrelated."
+  },
+  {
+   "pair_id": 427,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting Z-patterns in a grid vs Limak string at distance k; only fast-IO boilerplate is shared."
+  },
+  {
+   "pair_id": 428,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation maximizing the sum of lcm(i,p_i) vs minimum swaps to minimize a prefix sum; different tasks."
+  },
+  {
+   "pair_id": 429,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum substring reversals to balance brackets vs constructing two balanced sequences from a binary mask; different tasks."
+  },
+  {
+   "pair_id": 430,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Robot snowball k-th identifier vs the hard version of the cookie/magic-powder problem (per its input spec); different tasks."
+  },
+  {
+   "pair_id": 431,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive k-itwise XOR password guessing vs longest subarray with AND greater than XOR; unrelated."
+  },
+  {
+   "pair_id": 432,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same 2n-gon-in-square embedding problem; C1/C2 differ only in the parity of n."
+  },
+  {
+   "pair_id": 433,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Smallest sum of distinct powers of 3 vs removing segments to limit coverage; only the easy/hard boilerplate is shared."
+  },
+  {
+   "pair_id": 434,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting staircases under cell flips vs splitting a digit string into two addends that sum to x."
+  },
+  {
+   "pair_id": 435,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both feature Inna, but one covers alarm clocks with segments and the other answers candy-box queries."
+  },
+  {
+   "pair_id": 436,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Lexicographically smallest string via delete/duplicate vs smallest beautiful string with letter counts divisible by k."
+  },
+  {
+   "pair_id": 437,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "D1 and D2 of the same digit-alternating sum; they differ only in the equal-length constraint."
+  },
+  {
+   "pair_id": 438,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest palindrome from a prefix and a suffix vs counting permutations of wise men for each binary string."
+  },
+  {
+   "pair_id": 439,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Permutation with a given decreasing coefficient vs a perfect involution with no fixed points; only the permutation definition is shared."
+  },
+  {
+   "pair_id": 440,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Regular-bracket subsequence of length k vs whether the question-mark replacement is unique."
+  },
+  {
+   "pair_id": 441,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard prefix flip; they differ only in n and the 3n vs 2n operation limit."
+  },
+  {
+   "pair_id": 443,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest removable substring keeping a subsequence vs ordering freelancer projects by rating."
+  },
+  {
+   "pair_id": 444,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Decoding a letter-number string vs interactively guessing the size of a hidden cycle."
+  },
+  {
+   "pair_id": 445,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximising knight duels on a board vs listing all set partitions of toys in a Gray-code order."
+  },
+  {
+   "pair_id": 446,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard XOR of increasing subsequences; only n and a_i bounds differ."
+  },
+  {
+   "pair_id": 447,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "C1 and C2 of taking from either end to build an increasing sequence; they differ only in whether values are distinct."
+  },
+  {
+   "pair_id": 448,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Merging elements to maximise multiples of 3 vs the smallest chessboard for a Manhattan-distance placement."
+  },
+  {
+   "pair_id": 449,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Printing a digit rhombus vs finding a maximal-period linear recurrence mod 2."
+  },
+  {
+   "pair_id": 450,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Splitting n into k parts with a small LCM vs segmenting an array with no square products."
+  },
+  {
+   "pair_id": 451,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Matrix of multiples whose neighbour differences are fourth powers vs counting hybrid prefix-sum arrays."
+  },
+  {
+   "pair_id": 452,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Printing a perfect involution vs the minimum moves to turn a sequence into a permutation."
+  },
+  {
+   "pair_id": 453,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both use the ISO flag setting, but one checks the striped rule and the other minimises repainting under different rules."
+  },
+  {
+   "pair_id": 454,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Interactive guessing of the 4,8,15,16,23,42 permutation vs restoring a string with distinct-count queries."
+  },
+  {
+   "pair_id": 455,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both star Koa the Koala, but one is an XOR game and the other a tide-crossing feasibility task."
+  },
+  {
+   "pair_id": 456,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Increments to make a divisible by b vs increments to bring the digit sum to at most s."
+  },
+  {
+   "pair_id": 457,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting valid domino colourings vs building a permutation with given numbers of local maxima and minima."
+  },
+  {
+   "pair_id": 458,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Whether vertex sets lie on one tree path vs the days needed to write a string with three letters per day."
+  },
+  {
+   "pair_id": 459,
+   "label": "different",
+   "confidence": "medium",
+   "reason": "Counting pairs with floor(a/b) = a mod b vs the minimum operations to reduce a to 0; same format, different tasks."
+  },
+  {
+   "pair_id": 460,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Identical interactive AND/OR/XOR array guessing that differs only in the query limit (n+1 vs n+2)."
+  },
+  {
+   "pair_id": 461,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Same grid corner-flip task with different operation costs."
+  },
+  {
+   "pair_id": 462,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard Marin/Gojou XOR recovery; they differ only in the l=0 vs l>=0 constraint."
+  },
+  {
+   "pair_id": 463,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Grid picture with n fully surrounded cells vs a permutation maximising the XOR beauty sum."
+  },
+  {
+   "pair_id": 464,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest tree path with gcd > 1 vs summing max-min over all tree paths; only the tree-with-values setup is shared."
+  },
+  {
+   "pair_id": 465,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Easy and hard delete/duplicate lexicographic string; only the n and k limits differ."
+  },
+  {
+   "pair_id": 466,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Reaching array b by decrementing nonzero elements vs pairing goods to maximise floor-division revenue."
+  },
+  {
+   "pair_id": 467,
+   "label": "related",
+   "confidence": "high",
+   "reason": "Both feature Wet Shark, but one counts attacking bishop pairs and the other finds the maximum even subset sum."
+  },
+  {
+   "pair_id": 468,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting removal index sequences that produce b vs the minimum days to repaint a street one colour."
+  },
+  {
+   "pair_id": 469,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Pair operations that leave at most two values for any f vs building a maze with exactly T paths."
+  },
+  {
+   "pair_id": 470,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Longest regular bracket subsequence vs repeatedly removing the shortest good prefix."
+  },
+  {
+   "pair_id": 471,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Stone game that forbids the opponent's last pile vs a game that removes from the first non-empty pile; different rules."
+  },
+  {
+   "pair_id": 472,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimising tree eccentricity from vertex 1 with an added edge vs minimum operations with a+1, b+1 and a|b."
+  },
+  {
+   "pair_id": 473,
+   "label": "versions",
+   "confidence": "medium",
+   "reason": "Same Creatnx mirrors expected-days task; B extends A with checkpoints and toggle queries."
+  },
+  {
+   "pair_id": 474,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Minimum sweets given row-min and column-max limits vs ordering points into a winding non-intersecting line."
+  },
+  {
+   "pair_id": 475,
+   "label": "versions",
+   "confidence": "high",
+   "reason": "Hard and easy versions of the same Alice/Bob add-or-subtract game; only the constraints differ."
+  },
+  {
+   "pair_id": 476,
+   "label": "different",
+   "confidence": "high",
+   "reason": "k-mex queries with add and remove vs maximising sum minus xor over a subsegment."
+  },
+  {
+   "pair_id": 477,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Book chapter dependency reading passes vs XOR-triple operations that zero a binary array."
+  },
+  {
+   "pair_id": 478,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Correct substring with the most '[' vs a regular subsequence of length k."
+  },
+  {
+   "pair_id": 479,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Maximising floor(x/a) + x mod a on a range vs reconstructing prefix cyclic-shift counts."
+  },
+  {
+   "pair_id": 480,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Distinct numbers with pairwise gcd > 1 but total gcd 1 vs a maximum triangle-free graph."
+  },
+  {
+   "pair_id": 481,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Counting single flips that make a sequence regular vs assigning brackets to letters A, B and C."
+  },
+  {
+   "pair_id": 482,
+   "label": "different",
+   "confidence": "high",
+   "reason": "Dominating set of at most n/2 vertices vs a spanning tree with maximum degree; only graph input boilerplate is shared."
+  },
+  {
+   "pair_id": 483,
+   "label": "related",
+   "confidence": "medium",
+   "reason": "Same Toastman board and parity condition, but checking a filled board vs counting completions differs in method."
+  },
+  {
+   "pair_id": 484,
+   "label": "related",
+   "confidence": "high",
+   "reason": "E1 and E2 share the deque setting, but one wants the lexicographically smallest result and the other the fewest inversions; the statement calls them separate problems."
+  }
+ ],
+ "sent_to_second_round_2": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  48,
+  49,
+  50,
+  51,
+  52,
+  53,
+  54,
+  55,
+  56,
+  57,
+  58,
+  59,
+  60,
+  61,
+  63,
+  64,
+  65,
+  66,
+  67,
+  68,
+  70,
+  71,
+  72,
+  73,
+  74,
+  75,
+  76,
+  77,
+  78,
+  79,
+  80,
+  81,
+  82,
+  83,
+  84,
+  85,
+  86,
+  87,
+  88,
+  89,
+  90,
+  92,
+  93,
+  95,
+  96,
+  97,
+  98,
+  99,
+  100,
+  101,
+  102,
+  103,
+  104,
+  105,
+  106,
+  107,
+  108,
+  109,
+  110,
+  111,
+  112,
+  113,
+  114,
+  115,
+  116,
+  117,
+  119,
+  120,
+  121,
+  122,
+  123,
+  124,
+  125,
+  126,
+  127,
+  128,
+  129,
+  130,
+  131,
+  132,
+  133,
+  134,
+  135,
+  136,
+  137,
+  138,
+  139,
+  140,
+  141,
+  142,
+  143,
+  144,
+  145,
+  146,
+  147,
+  148,
+  149,
+  150,
+  151,
+  152,
+  153,
+  154,
+  156,
+  157,
+  158,
+  159,
+  160,
+  161,
+  162,
+  163,
+  164,
+  165,
+  166,
+  167,
+  168,
+  169,
+  170,
+  171,
+  173,
+  174,
+  175,
+  176,
+  177,
+  178,
+  179,
+  181,
+  182,
+  183,
+  185,
+  186,
+  187,
+  188,
+  189,
+  190,
+  191,
+  192,
+  193,
+  194,
+  195,
+  196,
+  197,
+  198,
+  199,
+  200,
+  201,
+  202,
+  203,
+  204,
+  205,
+  206,
+  207,
+  208,
+  209,
+  210,
+  211,
+  212,
+  213,
+  214,
+  215,
+  216,
+  217,
+  218,
+  219,
+  220,
+  221,
+  222,
+  223,
+  224,
+  225,
+  227,
+  228,
+  229,
+  230,
+  231,
+  232,
+  233,
+  234,
+  235,
+  236,
+  237,
+  238,
+  239,
+  241,
+  242,
+  243,
+  244,
+  245,
+  246,
+  248,
+  249,
+  250,
+  251,
+  252,
+  253,
+  254,
+  255,
+  256,
+  257,
+  258,
+  259,
+  260,
+  261,
+  262,
+  263,
+  264,
+  265,
+  266,
+  267,
+  268,
+  269,
+  270,
+  271,
+  272,
+  273,
+  274,
+  275,
+  277,
+  278,
+  279,
+  280,
+  281,
+  282,
+  283,
+  284,
+  285,
+  286,
+  287,
+  288,
+  290,
+  291,
+  292,
+  293,
+  294,
+  295,
+  296,
+  297,
+  298,
+  299,
+  300,
+  301,
+  302,
+  303,
+  304,
+  305,
+  306,
+  307,
+  308,
+  309,
+  310,
+  311,
+  313,
+  314,
+  315,
+  316,
+  317,
+  318,
+  319,
+  320,
+  321,
+  322,
+  323,
+  324,
+  325,
+  326,
+  327,
+  328,
+  329,
+  330,
+  331,
+  332,
+  333,
+  334,
+  335,
+  336,
+  337,
+  338,
+  339,
+  340,
+  341,
+  342,
+  343,
+  344,
+  345,
+  346,
+  347,
+  348,
+  349,
+  350,
+  351,
+  352,
+  353,
+  354,
+  355,
+  356,
+  357,
+  358,
+  359,
+  360,
+  361,
+  362,
+  363,
+  364,
+  365,
+  366,
+  367,
+  368,
+  369,
+  370,
+  371,
+  372,
+  373,
+  374,
+  375,
+  376,
+  378,
+  379,
+  380,
+  381,
+  382,
+  383,
+  384,
+  385,
+  387,
+  388,
+  389,
+  390,
+  391,
+  392,
+  393,
+  394,
+  395,
+  396,
+  397,
+  398,
+  399,
+  400,
+  401,
+  402,
+  403,
+  404,
+  406,
+  407,
+  408,
+  409,
+  410,
+  411,
+  412,
+  413,
+  414,
+  416,
+  417,
+  418,
+  419,
+  420,
+  421,
+  422,
+  423,
+  424,
+  425,
+  426,
+  427,
+  428,
+  429,
+  430,
+  431,
+  432,
+  433,
+  434,
+  435,
+  436,
+  437,
+  438,
+  439,
+  440,
+  441,
+  443,
+  444,
+  445,
+  446,
+  447,
+  448,
+  449,
+  450,
+  451,
+  452,
+  453,
+  454,
+  455,
+  456,
+  457,
+  458,
+  459,
+  460,
+  461,
+  462,
+  463,
+  464,
+  465,
+  466,
+  467,
+  468,
+  469,
+  470,
+  471,
+  472,
+  473,
+  474,
+  475,
+  476,
+  477,
+  478,
+  479,
+  480,
+  481,
+  482,
+  483,
+  484
+ ]
+}

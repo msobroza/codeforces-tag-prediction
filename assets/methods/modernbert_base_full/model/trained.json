@@ -1,0 +1,30 @@
+{
+  "root": "modernbert_base_full",
+  "folds": {
+    "fold_0": {
+      "file": "fold_0/weights.safetensors",
+      "sha256": "d4065d128c49d875f3312ca8cb0a953c5a798d3b05bd948dcfe050a50fe48532",
+      "bytes": 598458240
+    },
+    "fold_1": {
+      "file": "fold_1/weights.safetensors",
+      "sha256": "45a570561e048c25fd2b1bc009c976ff29581c42ba329071267a91f0605b9a09",
+      "bytes": 598458240
+    },
+    "fold_2": {
+      "file": "fold_2/weights.safetensors",
+      "sha256": "7838f95e458c096d321d50279b5e9daa84e833833f9da5f0bdc2800b8937e650",
+      "bytes": 598458240
+    },
+    "fold_3": {
+      "file": "fold_3/weights.safetensors",
+      "sha256": "d9b6f93da233b4a479485f6897ea5d5fc237b4cda3bf6669a7dbd0b6e0e71e74",
+      "bytes": 598458240
+    },
+    "fold_4": {
+      "file": "fold_4/weights.safetensors",
+      "sha256": "73b16f5a3b939e9355e38bca68fdfdaa5ad8d33d7bcf3319e07f81f70d9f65e4",
+      "bytes": 598458240
+    }
+  }
+}

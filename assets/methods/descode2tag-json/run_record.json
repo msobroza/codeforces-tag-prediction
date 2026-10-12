@@ -1,0 +1,187 @@
+{
+  "method": "descode2tag-json",
+  "recipe_sha256": "ab2e1bf3792022a0ab2232b010d3a9810c645ad1b067447a9562d9363a21b696",
+  "git": {
+    "commit": "395ae47eb35695211d791b141979d13e302c84d1",
+    "code_dirty": false
+  },
+  "environment": {
+    "python": "3.12.12",
+    "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+    "packages": {
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "skops": "0.16.0",
+      "mlflow": "3.16.1",
+      "jinja2": "3.1.6",
+      "openai": "3.26.0"
+    },
+    "lock_mismatches": {},
+    "uv_lock_sha256": "8e95ff641875c74d9fb6d98a9180368ca577e275bb1dea1deae3ccc0350dbce6",
+    "threadpools": [
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "prefix": "libgomp",
+        "version": null,
+        "num_threads": 12
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.34.106.0",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "version": "0.3.31.dev",
+        "num_threads": 12,
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "torch": null
+  },
+  "dataset_sha256": "266d2792ebbc985570cf804a540cecc6248c6ed44b1bf298cb13bf38b937e413",
+  "split_sha256": "a6ab006cf108ecfb1b43970750371c85a08e1a26aa4a47beaf5a984dbe5029d9",
+  "verdicts_sha256": "0959222915e5a49323d8ca4803ef584a0c1c20f5accf58e4bbe77e5b403db60c",
+  "settings": {
+    "MODEL_SEED": 0,
+    "MODEL_MAX_ITER": 5000,
+    "CUE_TREE_MIN_NODES": 4,
+    "CUE_MAX_SAMPLE_LINES": 200,
+    "CUE_PLAYER_WORDS": [
+      "alice",
+      "bob",
+      "first",
+      "second",
+      "draw",
+      "petya",
+      "vasya",
+      "win",
+      "lose",
+      "winner",
+      "loser"
+    ],
+    "TEXT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec",
+      "prob_desc_notes"
+    ],
+    "STATEMENT_FIELDS": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec"
+    ],
+    "RUSSIAN_LETTER_SHARE": 0.5,
+    "FOCUS_TAGS": [
+      "math",
+      "graphs",
+      "strings",
+      "number theory",
+      "trees",
+      "geometry",
+      "games",
+      "probabilities"
+    ]
+  },
+  "allow_dirty": false,
+  "created_at": "2026-10-08T21:46:38+00:00",
+  "prompts": [
+    "prompts:/descode2tag/2"
+  ],
+  "method_entries": {
+    "prompt": {
+      "name": "descode2tag",
+      "version": 2,
+      "uri": "prompts:/descode2tag/2",
+      "content_sha256": "e14e0992173645d345153d3af8a9d8a98dec1f30d4cc3d9682a891e57811dcf4"
+    },
+    "llm_settings": {
+      "provider": "openai",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "none",
+      "temperature": 0.3157894736842105,
+      "top_p": 1.0,
+      "max_output_tokens": 512,
+      "output_format": "json"
+    },
+    "fields": [
+      "prob_desc_description",
+      "prob_desc_input_spec",
+      "prob_desc_output_spec",
+      "prob_desc_notes",
+      "source_code"
+    ],
+    "constants": {
+      "lang_cluster": "Python"
+    },
+    "extra": {},
+    "text_parser_version": 1,
+    "answers_sha256": {
+      "dev": "e6e319c1e90ebd5f8db29c2b299e64ee3d1ec709a27434ec4dcb78778f47d8f0",
+      "test": "66d94d6203d4548071d4678faa4090e7a468374665cd7a687f5d96b896a91346"
+    },
+    "answers_commit": {
+      "dev": "49a9b70648975e2f939e98262fb5f245ef7d545f",
+      "test": "395ae47eb35695211d791b141979d13e302c84d1"
+    },
+    "answers": {
+      "dev": {
+        "answers": 3988,
+        "statuses": {
+          "completed": 3988
+        },
+        "failed": 0,
+        "unknown_pieces": 0,
+        "empty_answers": 0,
+        "served_models": {
+          "gpt-6-luna": 3988
+        },
+        "usage": {
+          "input_tokens": 4915532,
+          "cached_tokens": 0,
+          "output_tokens": 78401,
+          "reasoning_tokens": 0
+        },
+        "cost_usd": {
+          "input_cost": 0.4915532,
+          "output_cost": 0.0392005,
+          "total_cost": 0.5307537
+        }
+      },
+      "test": {
+        "answers": 994,
+        "statuses": {
+          "completed": 994
+        },
+        "failed": 0,
+        "unknown_pieces": 0,
+        "empty_answers": 0,
+        "served_models": {
+          "gpt-6-luna": 994
+        },
+        "usage": {
+          "input_tokens": 1191732,
+          "cached_tokens": 0,
+          "output_tokens": 19518,
+          "reasoning_tokens": 0
+        },
+        "cost_usd": {
+          "input_cost": 0.1191732,
+          "output_cost": 0.009759,
+          "total_cost": 0.1289322
+        }
+      }
+    },
+    "dev_in_sample": false
+  }
+}
